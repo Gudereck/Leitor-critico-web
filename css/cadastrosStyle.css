@@ -1,0 +1,128 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+  background-color: #f4f0ea;
+}
+
+a {
+  text-decoration: none;
+  color: #2600ff;
+}
+
+/* Estilos da barra de navegação */
+.nav-bar {
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease;
+}
+
+.nav-bar h1 {
+  color: white;
+  font-size: 24px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos da seção de formulário */
+section {
+  padding: 100px 20px;
+  margin-top: 60px;
+  height: 100dvh;
+}
+
+.form-section {
+  max-width: 100dvh;
+  max-height: 50dvh;
+  margin: 4rem auto;
+  background-color: #f4f0ea;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.form-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+form input {
+  width: 90%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+form select {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Estilos da seção container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}
+
+.container p {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Estilos do rodapé */
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #ddd;
+  margin-top: 3rem;
+  position: relative;
+}

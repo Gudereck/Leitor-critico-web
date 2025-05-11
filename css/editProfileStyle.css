@@ -1,0 +1,79 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+  background-color: #f4f0ea;
+}
+
+#buttonExcluir {
+  background-color: red;
+  color: white;
+}
+
+#buttonSair {
+  background-color: #333;
+  color: white;
+}
+
+#buttonSalvar {
+  background-color: #04a104;
+  color: white;
+}
+
+/* Estilos da seção de formulário */
+.form-section {
+  max-width: 50dvh;
+  max-height: 60dvh;
+  margin: 4rem auto;
+  background-color: #f4f0ea;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+form input {
+  width: 90%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 1.5rem;
+  width: auto;
+  padding: 0.8rem 1.5rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem; /* espaço entre os botões */
+  margin-top: 1.5rem;
+}
+
+/* Estilos do rodapé */
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #ddd;
+  margin-top: 3rem;
+  position: relative;
+}

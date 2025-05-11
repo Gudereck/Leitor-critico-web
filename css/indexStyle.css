@@ -1,0 +1,85 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Estilos da seção de formulário */
+nav {
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease;
+}
+
+.nav-bar #logo-container {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: #3d3d3d;
+  margin-right: 6dvh;
+}
+
+.nav-bar #linkCadastro {
+  background-color: #f4f0ea;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: #333;
+  text-decoration: none;
+  margin-right: 6dvh;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+section {
+  padding: 100px 20px;
+  margin-top: 60px;
+  height: 100dvh;
+}
+
+#login {
+  background-color: #f4f4f4;
+}
+
+#melhoresLivros,
+#descobrir,
+#novosLancamentos,
+#generos {
+  background-color: #e2e2e2;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Estilos do rodapé */
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #ddd;
+  margin-top: 3rem;
+}
