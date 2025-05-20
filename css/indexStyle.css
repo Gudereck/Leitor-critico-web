@@ -83,3 +83,16 @@ section {
   background-color: #ddd;
   margin-top: 3rem;
 }
+
+#todasAsImagens {
+  display: flex;
+  align-items: flex-start;
+  justify-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 100vh;
+}
+
+.imgContainer {
+  padding: 25px;
+}
