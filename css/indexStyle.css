@@ -84,6 +84,8 @@ section {
   margin-top: 3rem;
 }
 
+/* estilos da coluna de livros  */
+/* estilo imagens - para deixar em linha  */
 #todasAsImagens {
   display: flex;
   align-items: flex-start;
@@ -92,7 +94,55 @@ section {
   gap: 20px;
   height: 100vh;
 }
-
+/* espaço entre as imagens */
 .imgContainer {
   padding: 25px;
+}
+/* para "centralizar" a página inteira */
+#containerPrincipal {
+  margin-left: 10dvh;
+  margin-right: 5.9dvh;
+}
+/* altura e largura das imagens */
+.imgLivros {
+  width: 150px;
+  height: 150px;
+  text-align: center;
+}
+/* estilo titulo do livro e do autor */
+.h1Livros {
+  font-size: 15px;
+}
+.nomeAutor {
+  font-size: 10px;
+}
+/* linha em baixo do autor */
+.linhaAutor {
+  border-bottom: 2px gray solid;
+}
+/* para flutuar a nota dos criticos e o texto, esperar javaScript para finalizar */
+.containerAvaliacaoDosCriticos {
+  display: flex;
+  gap: 20px;
+  font-size: 9px;
+  color: gray;
+}
+/* para flutuar a nota dos usuarios e o texto, esperar javaScript para finalizar */
+.containerAvaliacaoDosUsuarios {
+  display: flex;
+  gap: 20px;
+  font-size: 9px;
+  color: gray;
+}
+/* para estilizar as notas dos usuarios */
+.notaCriticaUsuarios {
+  color: black;
+  font-weight: bold;
+  font-size: 10px;
+}
+/* para estilizar as notas dos críticos */
+.notaCriticaContainer {
+  color: black;
+  font-weight: bold;
+  font-size: 10px;
 }
