@@ -106,14 +106,17 @@ section {
 /* altura e largura das imagens */
 .imgLivros {
   width: 150px;
-  height: 150px;
+  height: 200px;
   text-align: center;
 }
 /* estilo titulo do livro e do autor */
 .h1Livros {
   font-size: 15px;
+  margin: 5px 0 2px 0;
+  word-wrap: break-word;
 }
 .nomeAutor {
+  text-align: left;
   font-size: 10px;
 }
 /* linha em baixo do autor */
@@ -123,14 +126,18 @@ section {
 /* para flutuar a nota dos criticos e o texto, esperar javaScript para finalizar */
 .containerAvaliacaoDosCriticos {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
   font-size: 9px;
   color: gray;
 }
 /* para flutuar a nota dos usuarios e o texto, esperar javaScript para finalizar */
 .containerAvaliacaoDosUsuarios {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
   font-size: 9px;
   color: gray;
 }
@@ -138,11 +145,18 @@ section {
 .notaCriticaUsuarios {
   color: black;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 14px;
+  margin: 10px;
 }
 /* para estilizar as notas dos críticos */
 .notaCriticaContainer {
   color: black;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 14px;
+  margin: 10px;
+}
+/* para deixar o texto responsivo a largura da imagem */
+.nomeLivroEAutor {
+  width: 150px;
+  text-align: justify;
 }
