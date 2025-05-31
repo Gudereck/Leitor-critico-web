@@ -11,25 +11,26 @@ function logout() {
   }
 }
 
-// Adiciona o evento de clique ao botão de editar perfil
-document.getElementById("editPerfil").addEventListener("click", function () {
-  window.location.href = "editProfile.html";
-});
 
 
 
-
-// Adicionar quando o JavaScript para registro de criação de conta for criado 
+// Adicionar quando o JavaScript e ligação com o banco de dados para registro de criação de conta for criado
 /*
 let name = document.getElementById("user-name");
+
 document.addEventListener("DOMContentLoaded", function () {
   // Verifica se o usuário está logado
   if (!isLoggedIn()) {
     window.location.href = "login.html";
   } else {
-    // Se o usuário estiver logado, exibe o nome do usuário
+    // Exibe o nome do usuário
     const user = JSON.parse(localStorage.getItem("user"));
-    name.innerHTML = user.name;
+    document.getElementById("user-name").innerHTML = user.name;
   }
+
+  // Adiciona evento ao botão Editar Perfil
+  document.getElementById("editPerfil").addEventListener("click", function () {
+    window.location.href = "editProfile.html";
+  });
 });
 */

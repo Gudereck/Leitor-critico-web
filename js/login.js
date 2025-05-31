@@ -21,14 +21,14 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (response.ok) {
-      // Supondo que o backend retorne { token, tipo: "user" ou "crítico" }
+      // Supondo que o backend retorne { token, tipo: "Usuario" ou "critico" }
       localStorage.setItem("token", data.token);
       localStorage.setItem("tipo", data.tipo);
 
-      if (data.tipo === "user") {
-        window.location.href = "dashboard-user.html";
+      if (data.tipo === "Usuario") {
+        window.location.href = "dashboardUsuario.html";
       } else {
-        window.location.href = "dashboard-critico.html";
+        window.location.href = "dashboardCritico.html";
       }
     } else {
       alert(data.msg || "Login inválido");

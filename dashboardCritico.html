@@ -7,7 +7,7 @@
       name="description"
       content="Dashboard para gerenciamento de críticas de livros"
     />
-    <title>Dashboard the Crítico</title>
+    <title>Dashboard Do Crítico</title>
     <link rel="stylesheet" href="css/criticoStyle.css" />
   </head>
   <body>
@@ -28,24 +28,18 @@
         <p>Aqui você pode gerenciar suas críticas e avaliações.</p>
       </div>
 
-      <div class="card">
-        <h3>Suas Críticas</h3>
-        <ul id="criticas-list">
+      <div class="card" id="MinhasCríticas">
+        <h3>Minhas Críticas</h3>
+        <ul id="lista-criticas">
           <!-- As críticas serão carregadas aqui via JS -->
         </ul>
       </div>
     </main>
 
     <footer class="footer">
-      <p>&copy; 2025 CriticMind</p>
+      <p>&copy; 2025 <!--nome da plataforma--></p>
     </footer>
 
     <script src="js/dashboardCritico.js"></script>
-    <script>
-      function logout() {
-        localStorage.clear();
-        window.location.href = "loginOficial.html";
-      }
-    </script>
   </body>
 </html>

@@ -11,7 +11,7 @@ function adicionarComentários() {
 inputComentário.value = "";
 
 function renderizarComentários() {
-  const commentsList = document.getElementById("commentsList");
+  const commentsList = document.getElementById("lista-criticas");
   commentsList.innerHTML = "";
 
   for (let i = 0; i < comments.length; i++) {
