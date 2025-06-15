@@ -1,0 +1,25 @@
+{
+  "name": "backend-login-cadastro",
+  "version": "1.0.0",
+  "description": "Projeto TCC - Banco de Dados",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gudereck/Projeto-TCC.git"
+  },
+  "keywords": [],
+  "author": "Luiz Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gudereck/Projeto-TCC/issues"
+  },
+  "homepage": "https://github.com/Gudereck/Projeto-TCC#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  }
+}

@@ -1,4 +1,20 @@
 {
   "liveServer.settings.port": 5501,
-  "cSpell.words": ["generos", "Lancamentos"]
+  "cSpell.words": ["generos", "indisponivel", "Lancamentos"],
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "projeto-tcc",
+      "username": "root",
+      "connectionTimeout": 5000,
+      "database": "cadastro_usuario"
+    }
+  ]
 }
