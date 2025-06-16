@@ -1,14 +1,13 @@
-import express from "express";
-import dotenv from "dotenv";
-import connectToDB from "./database/db.js";
-
+const express = require('express');
 const app = express();
-dotenv.config();
-const port = process.env.port || 4000;
-app.use(express.json());
+const path = require('path');
 
-connectToDB();
+app.use(express.static('view'));
 
-app.listen(port, () => {
-  console.log(`server indisponivel ${port}`);
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'view', 'livros.html'));
+});
+
+app.listen(3000, () => {
+  console.log('Servidor rodando em http://localhost:3000');
 });
