@@ -2,10 +2,12 @@ html {
   scroll-behavior: smooth;
 }
 
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
+  background-color: #ebc556;
 }
 
 /* Estilos da seção de formulário */
@@ -96,7 +98,9 @@ section {
 }
 /* espaço entre as imagens */
 .imgContainer {
+  height: 300px;
   padding: 25px;
+  margin-bottom: 50px;
 }
 /* para "centralizar" a página inteira */
 #containerPrincipal {
@@ -108,6 +112,8 @@ section {
   width: 150px;
   height: 200px;
   text-align: center;
+  border: solid black 3px;
+  border-radius: 4px;
 }
 /* estilo titulo do livro e do autor */
 .h1Livros {
@@ -121,7 +127,7 @@ section {
 }
 /* linha em baixo do autor */
 .linhaAutor {
-  border-bottom: 2px gray solid;
+  border-bottom: 2px black solid;
 }
 /* para flutuar a nota dos criticos e o texto, esperar javaScript para finalizar */
 .containerAvaliacaoDosCriticos {
@@ -130,7 +136,8 @@ section {
   gap: 8px;
   margin-bottom: 8px;
   font-size: 9px;
-  color: gray;
+  color: black;
+  font-style: italic;
 }
 /* para flutuar a nota dos usuarios e o texto, esperar javaScript para finalizar */
 .containerAvaliacaoDosUsuarios {
@@ -139,7 +146,9 @@ section {
   gap: 8px;
   margin-bottom: 8px;
   font-size: 9px;
-  color: gray;
+  color: black;
+  font-style: italic;
+  
 }
 /* para estilizar as notas dos usuarios */
 .notaCriticaUsuarios {
