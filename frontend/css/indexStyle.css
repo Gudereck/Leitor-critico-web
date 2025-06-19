@@ -2,12 +2,24 @@ html {
   scroll-behavior: smooth;
 }
 
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
-  background-color: #ebc556;
+  background-color: #f4f4f4;
+}
+
+.top-bar {
+  height: 50px;
+}
+.nome-da-plataforma {
+  display: flex;
+  justify-content: left;
+  justify-items: center;
+  margin-top: 25px;
+  margin-left: 10px;
+  font-family: "WDXL Lubrifont SC", sans-serif;
+  font-size: 25px;
 }
 
 /* Estilos da seção de formulário */
@@ -17,7 +29,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
@@ -89,12 +100,15 @@ section {
 /* estilos da coluna de livros  */
 /* estilo imagens - para deixar em linha  */
 #todasAsImagens {
+  background-color: white;
   margin-top: 2px;
   display: flex;
   align-items: flex-start;
   justify-items: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  padding: 20px 0;
   height: 100vh;
 }
 /* espaço entre as imagens */
@@ -149,7 +163,6 @@ section {
   font-size: 9px;
   color: black;
   font-style: italic;
-  
 }
 /* para estilizar as notas dos usuarios */
 .notaCriticaUsuarios {
