@@ -89,6 +89,7 @@ section {
 /* estilos da coluna de livros  */
 /* estilo imagens - para deixar em linha  */
 #todasAsImagens {
+  margin-top: 2px;
   display: flex;
   align-items: flex-start;
   justify-items: flex-start;
