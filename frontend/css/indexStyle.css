@@ -29,9 +29,9 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  width: 100%;
+  max-width: 100%;
   top: 0;
-  z-index: 1000;
+  /* z-index: 0; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
   transition: background-color 0.3s ease;
 }
@@ -119,8 +119,8 @@ section {
 }
 /* para "centralizar" a página inteira */
 #containerPrincipal {
-  margin-left: 10dvh;
-  margin-right: 5.9dvh;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* altura e largura das imagens */
 .imgLivros {
