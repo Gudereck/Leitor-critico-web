@@ -15,7 +15,7 @@ const livros = [
 
 async function preencherLivrosGoogleBooks() {
   const containers = document.querySelectorAll("#todasAsImagens .imgContainer");
-
+  const pesquisa = document.querySelectorAll('#form-control me-2');
   for (let i = 0; i < livros.length && i < containers.length; i++) {
     const { titulo, autor } = livros[i];
     const container = containers[i];
@@ -36,6 +36,7 @@ async function preencherLivrosGoogleBooks() {
         container.querySelector("img.imgLivros").alt = `Capa do livro ${tituloAPI}`;
         container.querySelector(".h1Livros").textContent = tituloAPI;
         container.querySelector(".nomeAutor").textContent = autorAPI;
+        
       }
     } catch (err) {
       console.error(`Erro ao buscar "${titulo}" de ${autor}:`, err);

@@ -1,128 +1,103 @@
-html {
-  scroll-behavior: smooth;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  scroll-behavior: smooth;
-  background-color: #f4f0ea;
+  background-color: #f4ecdf;
 }
 
-a {
-  text-decoration: none;
-  color: #2600ff;
-}
-
-/* Estilos da barra de navegação */
-.nav-bar {
-  background-color: #333;
+.container {
   display: flex;
-  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+}
+
+.left-panel {
+  flex: 1;
+  background-color: #b5c8c6;
+  display: flex;
   align-items: center;
-  padding: 1rem 2rem;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
-  transition: background-color 0.3s ease;
+  justify-content: center;
 }
 
-.nav-bar h1 {
-  color: white;
-  font-size: 24px;
+.left-panel img {
+  height: auto;
+  max-width: 90%;
 }
 
-.nav-links {
+.right-panel {
+  flex: 1;
+  background-color: #f4ecdf;
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Estilos da seção de formulário */
-section {
-  padding: 100px 20px;
-  margin-top: 60px;
-  height: 100dvh;
-}
-
-.form-section {
-  max-width: 100dvh;
-  max-height: 50dvh;
-  margin: 4rem auto;
-  background-color: #f4f0ea;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-.form-section h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-form label {
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 0.3rem;
-}
-
-form input {
-  width: 90%;
-  padding: 0.7rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-form button {
-  margin-top: 1.5rem;
+.login-form {
   width: 100%;
-  padding: 0.8rem;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
+  max-width: 900px;
+  padding: 40px;
+  background-color: #f4ecdf;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.login-form h2 {
+  text-align: center;
+  color: #2e3b45;
+  font-size: 32px;
+}
+
+.login-form label {
+  font-size: 16px;
+  color: #2e3b45;
+  margin-bottom: 4px;
+}
+
+.login-form input {
+  padding: 16px;
+  font-size: 18px;
+  border: 1px solid #bccbd6;
+  border-radius: 8px;
+}
+
+.forgot-password {
+  text-align: right;
   font-size: 15px;
 }
 
-form select {
-  width: 100%;
-  padding: 0.7rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.forgot-password a {
+  text-decoration: none;
+  color: #2e3b45;
 }
 
-/* Estilos da seção container */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100dvh;
+button {
+  padding: 16px;
+  background-color: #2e3b45;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  font-size: 18px;
+  cursor: pointer;
 }
 
-.container p {
+button:hover {
+  background-color: #1e2a33;
+}
+
+.register-link {
   text-align: center;
-  margin-top: 1rem;
+  display: block;
+  margin-top: 16px;
+  font-size: 16px;
+  color: #2e3b45;
+  text-decoration: none;
 }
 
-/* Estilos do rodapé */
-.footer {
-  text-align: center;
-  padding: 1rem 0;
-  background-color: #ddd;
-  margin-top: 3rem;
-  position: relative;
+.register-link:hover {
+  text-decoration: underline;
 }
