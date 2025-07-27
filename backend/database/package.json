@@ -2,9 +2,9 @@
   "name": "backend-login-cadastro",
   "version": "1.0.0",
   "description": "Projeto TCC - Banco de Dados",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/Gudereck/Projeto-TCC#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql": "^2.18.1",
     "mysql2": "^3.14.1"
   }
 }
