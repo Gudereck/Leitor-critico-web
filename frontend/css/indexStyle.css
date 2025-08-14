@@ -227,3 +227,17 @@ section {
   width: 150px;
   text-align: justify;
 }
+
+#home {
+  margin-left: 35dvh;
+  margin-right: 35dvh;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+#linkCadastro {
+  align-self: end;
+}
