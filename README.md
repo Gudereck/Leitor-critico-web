@@ -71,7 +71,7 @@ BootStrap <img align="center" alt="Luiz-BootStrap" height="30" width="40" src="h
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/luizteixeirasantos/Projeto-TCC.git
+git clone https://github.com/Gudereck/Projeto-TCC.git
 ```
 
 2. Acesse a pasta do projeto:
