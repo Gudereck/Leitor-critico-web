@@ -1,12 +1,28 @@
 html {
   scroll-behavior: smooth;
+  color-scheme: light dark;
 }
-
+:root {
+  --corBody: #f4f4f4;
+  --corTextos: black;
+  --corContainerLivros: white;
+  --corFooter: #ddd;
+  --corPlaceHolder: #65636c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --corBody: #282828;
+    --corTextos: #f3f3f2;
+    --corContainerLivros: #2c2c2c;
+    --corFooter: #383837;
+    --corPlaceHolder: #aaaaaa;
+  }
+}
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
-  background-color: #f4f4f4;
+  background-color: var(--corBody);
 }
 
 .top-bar {
@@ -22,6 +38,15 @@ body {
   gap: 8px;
 }
 
+#inputPesquisa {
+  border-color: var(--corContainerLivros);
+  background-color: var(--corContainerLivros);
+  color: var(--corTextos);
+}
+
+#inputPesquisa::placeholder {
+  color: var(--corPlaceHolder);
+}
 .search-form input {
   padding: 6px 12px;
   border-radius: 6px;
@@ -56,53 +81,35 @@ body {
   margin-left: 10px;
   font-family: "WDXL Lubrifont SC", sans-serif;
   font-size: 30px;
+  color: var(--corTextos);
 }
-
-/* Estilos da seção de formulário */
-nav {
-  background-color: #333;
+.container-fluid {
+  height: 14px;
+}
+.navbar {
+  background-color: #383737 !important;
+}
+.navbar-nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  justify-content: center;
+  gap: 20px;
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
-  transition: background-color 0.3s ease;
+  font-size: 12px;
 }
-
-.nav-bar #logo-container {
+.navbar-nav .nav-link {
+  color: #f3f3f2 !important;
+}
+.navbar-nav .nav-link:hover {
+  color: #aeafad !important;
+}
+#login-cadastro {
+  background-color: #848484 !important;
+  max-height: 30px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  color: white;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  background-color: #3d3d3d;
-  margin-right: 6dvh;
-}
-
-.nav-bar #linkCadastro {
-  background-color: #f4f0ea;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  color: #333;
-  text-decoration: none;
-  float: right;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
+  text-align: center;
 }
 
 section {
@@ -111,31 +118,20 @@ section {
   height: auto;
 }
 
-#login {
-  background-color: #f4f4f4;
-}
-
-#melhoresLivros,
-#descobrir,
-#novosLancamentos,
-#generos {
-  background-color: #e2e2e2;
-  border-bottom: 1px solid #ccc;
-}
-
 /* Estilos do rodapé */
 .footer {
   text-align: center;
   padding: 1rem 0;
-  background-color: #ddd;
+  background-color: var(--corFooter);
   margin-top: 3rem;
   margin-bottom: 0px;
+  color: var(--corTextos);
 }
 
 /* estilos da coluna de livros  */
 /* estilo imagens - para deixar em linha  */
 #todasAsImagens {
-  background-color: white;
+  background-color: var(--corContainerLivros);
   margin-top: 2px;
   display: flex;
   align-items: flex-start;
@@ -144,8 +140,35 @@ section {
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px 0;
-  height: 60vh;
+  height: 100%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
+#todasAsImagens img {
+  color: var(--corTextos);
+}
+#melhoresAvaliados {
+  position: relative;
+  display: inline-block;
+  text-indent: 1.47%;
+  width: 100%;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--corTextos);
+}
+#melhoresAvaliados::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 20px; /* onde começa a linha em relação à palavra */
+  height: 2px;
+  width: 97.36%; /* até onde a linha vai */
+  background-color: var(--corTextos);
+}
+
 /* espaço entre as imagens */
 .imgContainer {
   display: flex;
@@ -153,7 +176,7 @@ section {
   align-items: center;
   padding: 20px;
   margin-bottom: 10px;
-  background-color: white;
+  background-color: var(--corContainerLivros);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   width: 180px;
@@ -179,48 +202,42 @@ section {
   font-size: 15px;
   margin: 5px 0 2px 0;
   word-wrap: break-word;
+  color: var(--corTextos);
+  font-weight: bold;
 }
 .nomeAutor {
   text-align: left;
   font-size: 10px;
+  color: var(--corTextos);
 }
-/* linha em baixo do autor */
-.linhaAutor {
-  border-bottom: 2px black solid;
-}
-/* para flutuar a nota dos criticos e o texto, esperar javaScript para finalizar */
-.containerAvaliacaoDosCriticos {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-  font-size: 9px;
-  color: black;
-  font-style: italic;
-}
-/* para flutuar a nota dos usuarios e o texto, esperar javaScript para finalizar */
+/* para flutuar a nota dos criticos  e o texto, esperar javaScript para finalizar */
+.containerAvaliacaoDosCriticos,
 .containerAvaliacaoDosUsuarios {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  margin-bottom: 8px;
   font-size: 9px;
-  color: black;
+  color: var(--corTextos);
   font-style: italic;
 }
+
 /* para estilizar as notas dos usuarios */
 .notaCriticaUsuarios {
-  color: black;
+  color: var(--corTextos);
   font-weight: bold;
   font-size: 14px;
   margin: 10px;
 }
 /* para estilizar as notas dos críticos */
 .notaCriticaContainer {
-  color: black;
+  color: var(--corTextos);
   font-weight: bold;
   font-size: 14px;
   margin: 10px;
+}
+.avaliacaoCriticos {
+  align-items: center;
 }
 /* para deixar o texto responsivo a largura da imagem */
 .nomeLivroEAutor {
@@ -229,15 +246,7 @@ section {
 }
 
 #home {
-  margin-left: 35dvh;
-  margin-right: 35dvh;
-}
-
-.nav-bar {
-  display: flex;
-  flex-direction: column;
-}
-
-#linkCadastro {
-  align-self: end;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
