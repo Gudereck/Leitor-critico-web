@@ -1,6 +1,7 @@
-document
-  .getElementById("cadastro-form")
-  .addEventListener("submit", async (e) => {
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("cadastro-form");
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const nome = document.getElementById("nome").value;
@@ -35,3 +36,4 @@ document
       alert("Erro ao conectar com o servidor.");
     }
   });
+});

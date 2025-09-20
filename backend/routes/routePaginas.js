@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const router = express.Router();
 
-const basePath = path.join(__dirname, "../../frontend/pages");
+const basePath = path.join(__dirname, "../../frontend");
 
 // Rota para página inicial
 router.get("/", (req, res) => {

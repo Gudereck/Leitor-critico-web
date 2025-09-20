@@ -36,7 +36,7 @@ body {
   justify-content: center;
 }
 
-.login-form {
+#cadastro-form {
   width: 100%;
   max-width: 900px;
   padding: 40px;
@@ -46,19 +46,19 @@ body {
   gap: 24px;
 }
 
-.login-form h2 {
+#cadastro-form h2 {
   text-align: center;
   color: #2e3b45;
   font-size: 32px;
 }
 
-.login-form label {
+#cadastro-form label {
   font-size: 16px;
   color: #2e3b45;
   margin-bottom: 4px;
 }
 
-.login-form input {
+#cadastro-form input {
   padding: 16px;
   font-size: 18px;
   border: 1px solid #bccbd6;
@@ -100,4 +100,17 @@ button:hover {
 
 .register-link:hover {
   text-decoration: underline;
+}
+
+#cadastro-form option {
+  font-size: 16px;
+  color: #2e3b45;
+  margin-bottom: 4px;
+}
+
+#cadastro-form select {
+  padding: 16px;
+  font-size: 18px;
+  border: 1px solid #bccbd6;
+  border-radius: 8px;
 }

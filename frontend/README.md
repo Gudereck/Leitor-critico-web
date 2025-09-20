@@ -1,4 +1,4 @@
-### <p align="center"><img  alt="Logo-Plataforma" height="400" width="400" src="/frontend/img/logoLeitorCritico.png"> </p>
+### <p align="center"><img  alt="Logo-Plataforma" height="400" width="400" src="/frontend/img/Logo do TCC 01.png"> </p>
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![Versão](https://img.shields.io/badge/versão-1.0-blue)
@@ -92,7 +92,7 @@ npm install
 DB_HOST=localhost
 DB_USER=root
 DB_PASS=sua_senha
-DB_NAME=db_leitor_critico
+DB_NAME=leitor_critico
 ```
 
 5. Inicie o servidor:
