@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Rota para a página inicial (se o frontend for servido pelo backend)
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend", "indexOficial.html"));
+  res.sendFile(path.join(__dirname, "../frontend/views", "indexOficial.html"));
 });
 
 // Exporta a instância do app
