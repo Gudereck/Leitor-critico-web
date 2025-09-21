@@ -8,7 +8,7 @@ app.use(express.json());
 const PORT = 3000;
 
 // Rota de cadastro
-app.post("/cadastro ", (req, res) => {
+app.post("/cadastro", (req, res) => {
   const { nome, email, senha, tipo } = req.body;
 
   // Validação básica

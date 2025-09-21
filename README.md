@@ -71,34 +71,35 @@ BootStrap <img align="center" alt="Luiz-BootStrap" height="30" width="40" src="h
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/Gudereck/Projeto-TCC.git
+git clone https://github.com/Gudereck/Leitor-critico-web.git
 ```
 
 2. Acesse a pasta do projeto:
 
 ```bash
-cd leitor_critico_web
+cd leitor-critico-web
 ```
 
 3. Instale as dependências:
 
 ```bash
+cd backend
 npm install
 ```
 
-4. Configure o banco de dados no arquivo .env:
+4. Inicie o servidor:
+
+```bash
+npm run dev
+```
+
+5. Configure o banco de dados no arquivo .env:
 
 ```bash
 DB_HOST=localhost
 DB_USER=root
 DB_PASS=sua_senha
 DB_NAME=db_leitor_critico
-```
-
-5. Inicie o servidor:
-
-```bash
-npm start
 ```
 
 ---

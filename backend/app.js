@@ -18,7 +18,7 @@ app.get("/api", (req, res) => {
 app.use("/api/usuarios", usuarioRoutes);
 
 // Servir arquivos estáticos do frontend
-// 'frontend' deve estar no mesmo nível que 'backend'
+app.use(express.static(path.join(__dirname, "../frontend/views")));
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Rota para a página inicial (se o frontend for servido pelo backend)
