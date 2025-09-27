@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gudereck/Projeto-TCC.git"
+    "url": "git+https://github.com/Gudereck/Leitor-critico-web.git"
   },
   "keywords": [],
   "author": "Luiz Santos,Gustavo de Deus, Lucas Bueno, Leticia Layla",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Gudereck/Projeto-TCC/issues"
+    "url": "https://github.com/Gudereck/Leitor-critico-web/issues"
   },
-  "homepage": "https://github.com/Gudereck/Projeto-TCC#readme",
+  "homepage": "https://github.com/Gudereck/Leitor-critico-web#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
@@ -26,6 +26,9 @@
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.14.1",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.10"
   }
 }

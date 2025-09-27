@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("path");
 const router = express.Router();
 
-const basePath = path.join(__dirname, "../frontend/views");
+// Ajuste o caminho para a pasta views
+const basePath = path.join(__dirname, "../../frontend/views");
 
 // Rotas para as páginas web
 router.get("/", (req, res) => {

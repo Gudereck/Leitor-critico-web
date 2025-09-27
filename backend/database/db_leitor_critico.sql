@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
-    tipo_usuario ENUM('leitor', 'critico') NOT NULL
+    tipo_usuario ENUM('usuario', 'critico') NOT NULL
 );
 
 CREATE TABLE livros (

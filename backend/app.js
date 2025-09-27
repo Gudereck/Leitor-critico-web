@@ -1,30 +1,24 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const usuarioRoutes = require("./routes/routeUsuarios"); // Importa as rotas de usuário
+
+// Importar suas rotas
+const paginasRoutes = require("./routes/routePaginas");
+const cadastroRoutes = require("./routes/routeCadastro");
 
 const app = express();
 
-// Middlewares
+// Middlewares essenciais
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Rota principal da API
-app.get("/api", (req, res) => {
-  res.json({ message: "API Leitor Crítico funcionando!" });
-});
-
-// Usa as rotas de usuário com o prefixo /api/usuarios
-app.use("/api/usuarios", usuarioRoutes);
-
-// Servir arquivos estáticos do frontend
-app.use(express.static(path.join(__dirname, "../frontend/views")));
+// Servir arquivos estáticos (CSS, JS do frontend, imagens)
 app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname, "../frontend/views")));
 
-// Rota para a página inicial (se o frontend for servido pelo backend)
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/views", "indexOficial.html"));
-});
+// Usar os roteadores
+app.use("/", paginasRoutes); // Rotas que servem as páginas HTML
+app.use("/api", cadastroRoutes); // Rotas da API (para dados)
 
-// Exporta a instância do app
 module.exports = app;
