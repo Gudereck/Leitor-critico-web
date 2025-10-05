@@ -1,37 +1,23 @@
 const express = require("express");
-const path = require("path");
 const router = express.Router();
 
-// Ajuste o caminho para a pasta views
-const basePath = path.join(__dirname, "../../frontend/views");
+// Página inicial
+router.get("/", (req, res) => res.render("index"));
 
-// Rotas para as páginas web
-router.get("/", (req, res) => {
-  res.sendFile(path.join(basePath, "indexOficial.html"));
-});
+// Login
+router.get("/login", (req, res) => res.render("login"));
 
-router.get("/login", (req, res) => {
-  res.sendFile(path.join(basePath, "login.html"));
-});
+// Cadastro
+router.get("/cadastro", (req, res) => res.render("cadastro"));
 
-router.get("/cadastro", (req, res) => {
-  res.sendFile(path.join(basePath, "cadastro.html"));
-});
+// Dashboards
+router.get("/dashboard/usuario", (req, res) => res.render("dashboardUsuario"));
+router.get("/dashboard/critico", (req, res) => res.render("dashboardCritico"));
 
-router.get("/dashboard/usuario", (req, res) => {
-  res.sendFile(path.join(basePath, "dashboardUsuario.html"));
-});
+// Livros
+router.get("/livros", (req, res) => res.render("livrosCritics"));
 
-router.get("/dashboard/critico", (req, res) => {
-  res.sendFile(path.join(basePath, "dashboardCritico.html"));
-});
-
-router.get("/livros", (req, res) => {
-  res.sendFile(path.join(basePath, "livrosCritics.html"));
-});
-
-router.get("/perfil/editar", (req, res) => {
-  res.sendFile(path.join(basePath, "editProfile.html"));
-});
+// Editar perfil
+router.get("/perfil/editar", (req, res) => res.render("editProfile"));
 
 module.exports = router;
