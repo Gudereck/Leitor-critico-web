@@ -20,4 +20,7 @@ router.get("/livros", (req, res) => res.render("livrosCritics"));
 // Editar perfil
 router.get("/perfil/editar", (req, res) => res.render("editProfile"));
 
+// Reviews dos Críticos 
+router.get("/criticsreviews", (req, res) => res.render("criticsreviews"));
+
 module.exports = router;

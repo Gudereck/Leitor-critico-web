@@ -1,9 +1,3 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
   color-scheme: light dark;
@@ -35,6 +29,9 @@ body {
   background-color: var(--corBody);
 }
 
+.top-bar a{
+  text-decoration: none;
+}
 .top-bar {
   width: 100%;
   display: flex;
@@ -93,13 +90,10 @@ body {
   font-size: 30px;
   color: var(--corTextos);
 }
-.top-bar a{
-  text-decoration: none;
-  color: inherit;
-}
 .container-fluid {
   height: 14px;
 }
+
 .navbar {
   background-color: #383737 !important;
 }
@@ -126,27 +120,28 @@ body {
   text-align: center;
 }
 
-#container-livro, #container-informacoes{
-  margin: 45px 0 0 0;
-  padding: 30px;
-}
 /* Estilo container livro */
+
+#container {
+  display: flex;
+  justify-content: center;
+}
 #container-livro {
+  margin-top: 45px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   background-color: var(--corContainerLivros);
   height: 100%;
-  width: 55%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  width: 40%;
   padding: 30px;
 }
 #nome-autor-livro-container {
   /* margin-left: var(--margin-left-principal); */
   width: 100%;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 #nome-livro {
   font-size: 35px;
@@ -154,6 +149,9 @@ body {
   font-weight: 400;
   font-style: normal;
   color: var(--corTextos);
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 #nome-autor {
   font-family: "Cairo", sans-serif;
@@ -164,39 +162,38 @@ body {
   font-size: 15px;
   color: gray;
 }
-#avaliacao{
+#avaliacao {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   background-color: var(--corAvaliacao);
   height: max-content;
-  padding: 10px;
-} 
+  padding: 15px;
+  font-weight: bold;
+}
 #img-avaliacao {
   display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-top: 15px;
   gap: 20px;
 }
 #capa-livro {
   color: var(--corTextos);
-  max-width: 100%;
-  height: auto;
+  display: block;
 }
 .avaliacao-title,
 .media-avaliacao {
   display: block;
   text-align: center;
 }
+
 .texto-avaliacao {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 25px;
   color: var(--corTextos);
-}
-#avaliacao-criticos a{
-  color: var(--corTextos);
-}
-#avaliacao-criticos a:hover span{
-  font-size: 27px;
 }
 .media-avaliacao {
   font-size: 50px;
@@ -207,83 +204,158 @@ body {
   font-style: normal;
   color: var(--corTextos);
 }
-#livro-informacoes{
-  display: flex;
-  margin-right: var(--margin-right-principal);
+
+/* estilos texto avaliacoes */
+
+#text-avaliacoes {
+  margin-top: 30px;
   margin-left: var(--margin-left-principal);
-  margin-top: 45px;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 20px;
-}
-/* informacoes styles */
-#container-informacoes{
-  margin-top: 45px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  color: var(--corTextos);
-  background-color: var(--corContainerLivros);
-  height: 100%;
-  width: 40%;
-  padding: 30px;
-}
-#container-informacoes h1{
-  font-size: 25px;
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-#container-informacoes p{ 
-  margin-left: 10px;
-  font-size: 15px;
-  font-family: "Zalando Sans Expanded", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: 300;
-}
-#container-informacoes span{ 
-  margin-left: 2px;
-  font-size: 15px;
-  font-family: "Zalando Sans Expanded", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: 300;
-}
-/* Estilos detalhes */
-#container-detalhes{
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  margin-top: 40px;
-  background-color: var(--corContainerLivros);
-  margin-left: var(--margin-left-principal);
-  margin-right: var(--margin-right-principal);
-  padding: 20px;
-  color: var(--corTextos);
-  width: calc(100% - (var(--margin-left-principal) + var(--margin-right-principal)));
-}
-#container-detalhes h1{
   font-size: 20px;
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  color: var(--corTextos);
 }
-.linha-padrao{
-  border-bottom: var(--corTextos) 1px solid;
+#linha-text-avaliacoes {
+  margin-right: var(--margin-right-principal);
+  margin-left: var(--margin-left-principal);
+  border-bottom: 1px var(--corTextos) solid;
+}
+
+/* estilos seção forum */
+
+#container-avaliacoes-criticos {
+  font-family: Arial, sans-serif;
+  background: var(--corContainerLivros);
+  color: var(--corTextos);
+  padding: 20px;
+  margin-left: var(--margin-left-principal);
+  margin-right: var(--margin-right-principal);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+#container-avaliacoes-criticos h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#container-avaliacoes-criticos section {
+  background: var(--corAvaliacao);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+#container-avaliacoes-criticos label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#container-avaliacoes-criticos textarea,
+input {
   width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid var(--corTextos);
 }
-#container-detalhes span{
-  text-align: justify;
-  font-size: 15px;
-  font-family: "Zalando Sans Expanded", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
+
+#container-avaliacoes-criticos button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#container-avaliacoes-criticos button:hover {
+  opacity: 0.9;
+}
+
+.critica {
+  background: var(--corContainerLivros);
+  border: 1px solid var(--corContainerLivros);
+  color: var(--corTextos);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.nota {
+  font-size: 40px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 500;
+  margin: 6px 0 0 0;
+  line-height: 1;
   font-style: normal;
 }
 
-/* Estilos do rodapé */
+.nota.vermelha {
+  color: #e53935;
+}
+.nota.amarela {
+  color: #fbc02d;
+}
+.nota.verde {
+  color: #43a047;
+}
 
+#autor-texto-container{
+  font-size: 20px;
+
+}
+.autor {
+  color: var(--corTextos);
+  font-style: italic;
+  font-size: 25px;
+  margin: 10px;
+}
+
+.link a {
+  color: #1565c0;
+  text-decoration: none;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+#container-avaliacoes-criticos small {
+  color: #555;
+}
+
+#contador {
+  color: #666;
+  font-size: 0.9em;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.media {
+  color: var(--corTextos);
+  text-align: right;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#containerListaCriticos {
+  margin-top: 20px;
+  margin-left: var(--margin-left-principal);
+  margin-right: var(--margin-right-principal);
+}
+
+#container-critica-interno{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+/* Estilos do rodapé */
 .footer {
   text-align: center;
   padding: 1rem 0;
