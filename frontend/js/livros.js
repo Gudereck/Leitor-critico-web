@@ -9,13 +9,12 @@ const livros = [
   { titulo: "A Revolução dos Bichos", autor: "George Orwell" },
   { titulo: "O Alquimista", autor: "Paulo Coelho" },
   { titulo: "Capitães da Areia", autor: "Jorge Amado" },
-  { titulo: "O Programador Pragmático: De Aprendiz a Mestre", autor:"Aldir José Coelho Corrêa da Silva"},
-  {titulo: "Entendendo Algoritmos ", autor: "Aditya Y. Bhargava"}
+  { titulo: "O Programador Pragmático: De Aprendiz a Mestre", autor: "Aldir José Coelho Corrêa da Silva" },
+  { titulo: "Entendendo Algoritmos", autor: "Aditya Y. Bhargava" }
 ];
 
 async function preencherLivrosGoogleBooks() {
   const containers = document.querySelectorAll("#todasAsImagens .imgContainer");
-  const pesquisa = document.querySelectorAll('#form-control me-2');
   for (let i = 0; i < livros.length && i < containers.length; i++) {
     const { titulo, autor } = livros[i];
     const container = containers[i];
@@ -32,12 +31,22 @@ async function preencherLivrosGoogleBooks() {
         const tituloAPI = info.title || titulo;
         const autorAPI = (info.authors && info.authors[0]) || autor;
 
+        // Atualiza os elementos como antes
         container.querySelector("img.imgLivros").src = imagem;
         container.querySelector("img.imgLivros").alt = `Capa do livro ${tituloAPI}`;
         container.querySelector(".h1Livros").textContent = tituloAPI;
         container.querySelector(".nomeAutor").textContent = autorAPI;
-        
+
+        // **Modificação: Define o href para /livros com parâmetros**
+        const links = container.querySelectorAll('a');
+        links.forEach(link => {
+          link.href = `/livros?titulo=${encodeURIComponent(tituloAPI)}&autor=${encodeURIComponent(autorAPI)}`;
+        });
       }
+      const links2 = container.querySelectorAll('a');
+        links2.forEach(link => {
+          link.href = `/criticsreviews?titulo=${encodeURIComponent(tituloAPI)}&autor=${encodeURIComponent(autorAPI)}`;
+        });
     } catch (err) {
       console.error(`Erro ao buscar "${titulo}" de ${autor}:`, err);
     }

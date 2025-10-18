@@ -1,156 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-    <!-- BootStrap-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Importando fontes: -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/livrosCritics.css" />
-    <!-- Titulo do livro -->
-    <title>Nome do livro</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <!-- BootStrap-->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  <!-- Importando fontes: -->
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+   <!-- CSS -->
+   <link rel="stylesheet" href="/css/livrosCritics.css" />
   </head>
-
+  
+  <title>Detalhes do Livro</title>
   <body>
-    <!-- TopBar-->
-    <div class="top-bar">
-      <a id ="link-plataforma" href="/"><span class="nome-da-plataforma">LEITOR CRÍTICO</span>
-      </a>
-      <form class="d-flex" role="search">
-        <input
-          id="inputPesquisa"
-          class="form-control me-2"
-          type="search"
-          placeholder="Pesquisar"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-      </form>
-    </div>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Início</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Populares</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Clássicos da Literatura Brasileira</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="#"
-                id="login-cadastro"
-                >Login/Cadastro</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+    <!-- Seu conteúdo HTML -->
     <section>
-<div id="livro-informacoes">
-   
-    <div id="container-livro">
-      <div id="nome-autor-livro-container">
-        <h1 id="nome-livro">Nome do livro</h1>
-        <span id="nome-autor">Nome do autor</span>
-      </div>
+      <div id="livro-informacoes">
+        <div id="container-livro">
+          <div id="nome-autor-livro-container">
+            <h1 id="nome-livro"><%= typeof titulo !== '' ? titulo : 'Nome do livro' %></h1>  <!-- Verifica se titulo está definido -->
+            <span id="nome-autor"><%= typeof autor !== 'undefined' ? autor : 'Nome do autor' %></span>
+          </div>
 
-      <div id="img-avaliacao">
-        <img src="" alt="Imagem do livro" id="capa-livro" />
-        <div id="avaliacao">
-          <div id="avaliacao-criticos">
-            <a href="/criticsreviews">
-              <span class="texto-avaliacao">AVALIAÇÃO DOS CRÍTICOS</span>
-            </a>
-            <span class="media-avaliacao">?</span>
+          <div id="img-avaliacao">
+            <img src="<%= typeof imagem !== 'undefined' ? imagem : '' %>" alt="Imagem do livro" id="capa-livro" />
+            <div id="avaliacao">
+              <div id="avaliacao-criticos">
+                <!-- Link modificado para passar os parâmetros -->
+                <a href="/criticsreviews?titulo=<%= encodeURIComponent(titulo || '') %>&autor=<%= encodeURIComponent(autor || '') %>&imagem=<%= encodeURIComponent(imagem || '') %>">
+                  <span class="texto-avaliacao">AVALIAÇÃO DOS CRÍTICOS</span>
+                </a>
+                <span class="media-avaliacao"><%= typeof error !== 'undefined' && error ? error : '?' %></span>  <!-- Exibe erro se existir -->
+              </div>
+            </div>
           </div>
         </div>
+
+        <div id="container-informacoes">
+          <h1>INFORMAÇÕES</h1>
+          <div class="linha-padrao"></div>
+          <br>
+          <p> ANO: <span id="ano-id"><%= typeof ano !== 'undefined' ? ano : 'Não disponível' %></span> </p> 
+          <p> EDITORA: <span id="editora-id"><%= typeof editora !== 'undefined' ? editora : 'Não disponível' %></span></p>
+          <p> Mais informações adicionais: <span id="mais-info-id"><%= typeof descricao !== 'undefined' ? descricao : 'Não disponível' %></span></p>
+        </div>
+
+        <div id="container-detalhes">
+          <h1>DETALHES</h1>
+          <div class="linha-padrao"></div>
+          <br>
+          <span id="detalhes-livro"><%= typeof descricao !== 'undefined' ? descricao : 'Detalhes não disponíveis' %></span>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div id="container-informacoes">
-      <h1>INFORMAÇÕES</h1>
-      <div class="linha-padrao"></div>
-      <br>
-      <p> ANO: <span id="ano-id"> </span> </p> 
-      <p> EDITORA: <span id="editora-id"> </span></p>
-      <p>  mais informações adcionais ... <span id="mais-info-id"></span></p>
-    </div>
-
-  </div>
-
-  <div id="container-detalhes">
-    <h1>DETALHES</h1>
-    <div class="linha-padrao"></div>
-    <br>
-    <span>Detalhes do livro</span>
-  </div>
-</section>
-
-
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 Leitor Crítico</p>
-      </div>
-    </footer>
+    <!-- Resto do seu HTML -->
   </body>
 </html>
