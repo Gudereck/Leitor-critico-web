@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const fetch = require('node-fetch');  // Certifique-se de instalar: npm install node-fetch
+  // Certifique-se de instalar: npm install node-fetch
 
 // Página inicial
 router.get("/", (req, res) => res.render("index"));
