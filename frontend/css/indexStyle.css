@@ -183,7 +183,7 @@ section {
   background-color: var(--corContainerLivros);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  width: 180px;
+  width: 200px;
   height: 410px;
   overflow: hidden;
 }
@@ -196,6 +196,8 @@ section {
 /* altura e largura das imagens */
 .imgLivros {
   width: 150px;
+  min-height: 200px;
+  min-width: 150px;
   height: 200px;
   text-align: center;
   border: solid black 3px;

@@ -4,7 +4,12 @@ const router = express.Router();
 
 // Página inicial
 router.get("/", (req, res) => res.render("index"));
-
+// Populares
+router.get("/populares", (req, res) => res.render("populares"));
+// Classicos da Literatura Brasileira
+router.get("/classicosdaliteraturabrasileira", (req, res) => res.render("classicos"));
+// Populares em 2024
+router.get("/popularesem2024", (req, res) => res.render("populares2024"));
 // Login
 router.get("/login", (req, res) => res.render("login"));
 

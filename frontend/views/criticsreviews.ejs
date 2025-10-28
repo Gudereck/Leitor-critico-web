@@ -71,13 +71,16 @@
             <a class="nav-link active" aria-current="page" href="/">Início</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Populares</a>
+            <a class="nav-link active" aria-current="page" href="/populares">Populares</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Clássicos da Literatura Brasileira</a>
+            <a class="nav-link active" aria-current="page" href="/classicosdaliteraturabrasileira">Clássicos da Literatura Brasileira</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" id="login-cadastro">Login/Cadastro</a>
+          <a class="nav-link active" aria-current="page" href="/popularesem2024">Os Mais Populares em 2024</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="\login" id="login-cadastro">Login/Cadastro</a>
           </li>
         </ul>
       </div>
@@ -92,9 +95,8 @@
       <div id="container-livro">
 
         <div id="nome-autor-livro-container">
-          <h1 id="nome-livro">
-           </h1>
-              <span id="nome-autor">
+          <a href="/livros"><span id="nome-livro"></span></a>
+          <span id="nome-autor">
                 
               </span>
         </div>
@@ -207,7 +209,7 @@
         <p>${critica.texto}</p>
         ${critica.link ? `<p class="link"><a href="${critica.link}" target="_blank">Ver resenha completa</a></p>` : ""}
         <small>Postado em: ${critica.data}</small>
-      </div>
+        </div>
     `;
     container.appendChild(div);
   }
@@ -217,18 +219,41 @@
     if (nota <= 69) return "amarela";
     return "verde";
   }
+  
+function atualizarMedia() {
+  const criticas = JSON.parse(localStorage.getItem("criticas")) || [];
+  const mediaElem = document.querySelector(".media-avaliacao");
+  const mediaNotasElem = document.getElementById("mediaNotas");
 
-  function atualizarMedia() {
-    const criticas = JSON.parse(localStorage.getItem("criticas")) || [];
-    if (criticas.length === 0) {
-      document.getElementById("mediaNotas").textContent = "Sem avaliações ainda.";
-      document.querySelector(".media-avaliacao").textContent = "?";
-      return;
-    }
-    const media = (criticas.reduce((acc, c) => acc + c.nota, 0) / criticas.length).toFixed(1);
-    document.getElementById("mediaNotas").textContent = `Média das Avaliações: ${media}`;
-    document.querySelector(".media-avaliacao").textContent = media;
+  if (criticas.length === 0) {
+    mediaNotasElem.textContent = "Sem avaliações ainda.";
+    mediaElem.textContent = "?";
+    mediaElem.classList.remove("vermelha", "amarela", "verde");
+    return;
   }
+
+  const media = (criticas.reduce((acc, c) => acc + c.nota, 0) / criticas.length).toFixed(1);
+  const cor = getCorNota(media);
+
+  mediaNotasElem.textContent = `Média das Avaliações: ${media}`;
+  mediaElem.textContent = media;
+
+  // Remove possíveis cores antigas e adiciona a nova
+  mediaElem.classList.remove("vermelha", "amarela", "verde");
+  mediaElem.classList.add(cor);
+}
+
+  // function atualizarMedia() {
+  //   const criticas = JSON.parse(localStorage.getItem("criticas")) || [];
+  //   if (criticas.length === 0) {
+  //     document.getElementById("mediaNotas").textContent = "Sem avaliações ainda.";
+  //     document.querySelector(".media-avaliacao").textContent = "?";
+  //     return;
+  //   }
+  //   const media = (criticas.reduce((acc, c) => acc + c.nota, 0) / criticas.length).toFixed(1);
+  //   document.getElementById("mediaNotas").textContent = `Média das Avaliações: ${media}`;
+  //   document.querySelector(".media-avaliacao").textContent = media;
+  // }
 
   // === Exibir dados do livro a partir dos parâmetros da URL ===
   const params = new URLSearchParams(window.location.search);

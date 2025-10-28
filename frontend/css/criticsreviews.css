@@ -143,11 +143,15 @@ body {
   flex-wrap: wrap;
   margin-bottom: 30px;
 }
+#nome-autor-livro-container a{
+  text-decoration: none;
+}
 #nome-livro {
   font-size: 35px;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  text-align: center;
   color: var(--corTextos);
   width: 100%;
   display: flex;
@@ -160,6 +164,8 @@ body {
   font-style: normal;
   font-variation-settings: "slnt" 0;
   font-size: 15px;
+  width: 100%;
+  text-align: center;
   color: gray;
 }
 #avaliacao {
@@ -181,6 +187,13 @@ body {
 #capa-livro {
   color: var(--corTextos);
   display: block;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border: solid var(--corAvaliacao) 2px;
+  text-align: center;
+  color: var(--corTextos);
+  width: 250px;
+  height: 380px;
 }
 .avaliacao-title,
 .media-avaliacao {
@@ -295,7 +308,16 @@ input {
   font-style: normal;
 }
 
-.nota.vermelha {
+.nota.vermelha, .media-avaliacao.vermelha { 
+  color: #e53935; 
+} 
+.nota.amarela, .media-avaliacao.amarela { 
+  color: #f3d73b; 
+} 
+.nota.verde, .media-avaliacao.verde {
+   color: #43a047; 
+}
+/* .nota.vermelha {
   color: #e53935;
 }
 .nota.amarela {
@@ -303,7 +325,7 @@ input {
 }
 .nota.verde {
   color: #43a047;
-}
+} */
 
 #autor-texto-container{
   font-size: 20px;
@@ -350,9 +372,12 @@ input {
   margin-right: var(--margin-right-principal);
 }
 
-#container-critica-interno{
+#nota-autor{
+  gap: 20px;
   display: flex;
-  gap: 10px;
+}
+#container-critica-interno{
+  gap: 20px;
   margin-bottom: 20px;
 }
 /* Estilos do rodapé */
