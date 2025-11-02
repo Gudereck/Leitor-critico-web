@@ -6,3 +6,5 @@ const PORT = process.env.PORT || 3000; // Define a porta, com um fallback para 3
 app.listen(PORT, () => {
   console.log(`Servidor backend rodando em http://localhost:${PORT}`);
 });
+
+

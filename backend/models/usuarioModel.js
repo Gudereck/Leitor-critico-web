@@ -1,17 +1,16 @@
-const db = require("../database/connection");
+const db = require("../database/db");
 
 const Usuario = {
   // Cria um novo usuário no banco
   create: (novoUsuario, callback) => {
     const query =
-      "INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?)";
+      "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
     db.query(
       query,
       [
         novoUsuario.nome,
         novoUsuario.email,
         novoUsuario.senha,
-        novoUsuario.tipo,
       ],
       (err, results) => {
         if (err) return callback(err);

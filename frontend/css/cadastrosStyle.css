@@ -102,13 +102,13 @@ button:hover {
   text-decoration: underline;
 }
 
-#cadastro-form option {
+.cadastro-form option {
   font-size: 16px;
   color: #2e3b45;
   margin-bottom: 4px;
 }
 
-#cadastro-form select {
+.cadastro-form select {
   padding: 16px;
   font-size: 18px;
   border: 1px solid #bccbd6;

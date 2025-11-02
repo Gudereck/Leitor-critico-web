@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("cadastro-form");
+  const form = document.querySelector(".cadastro-form");
+
+  if (!form) {
+    console.error("Formulário .cadastro-form não encontrado!");
+    return;
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -7,33 +12,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const nome = document.getElementById("nome").value;
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
-    const tipo_usuario = document.getElementById("tipo").value;
+    const confirmarSenha = document.getElementById("confirmar-senha").value;
 
-    if (!nome || !email || !senha || !tipo_usuario) {
-      alert("Preencha todos os campos!");
+    // Validação simples no frontend
+    if (!nome || !email || !senha || !confirmarSenha) {
+      alert("Por favor, preencha todos os campos.");
       return;
     }
 
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem!");
+      return;
+    }
+
+    // Preparar os dados para envio
+    const dadosCadastro = {
+      nome: nome,
+      email: email,
+      senha: senha,
+    };
+
     try {
-      const response = await fetch("http://localhost:3000/api/cadastro", {
+      // Envia os dados para a API usando Fetch
+      const response = await fetch("/api/cadastro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nome, email, senha, tipo_usuario }),
+        body: JSON.stringify(dadosCadastro),
       });
 
-      const data = await response.json();
+      const result = await response.json();
 
       if (response.ok) {
-        alert("Cadastro realizado com sucesso!");
+        alert(result.msg); // "Cadastro realizado com sucesso!"
         window.location.href = "/login";
       } else {
-        alert(data.msg || "Erro ao cadastrar.");
+        alert(result.msg);
       }
-    } catch (err) {
-      console.error(err);
-      alert("Erro ao conectar com o servidor.");
+    } catch (error) {
+      console.error("Erro ao cadastrar:", error);
+      alert("Ocorreu um erro. Tente novamente.");
     }
   });
 });
