@@ -31,8 +31,8 @@ async function preencherLivrosGoogleBooks() {
         const tituloAPI = info.title || titulo;
         const autorAPI = info.authors?.[0] || autor;
 
-        container.querySelector("img.img24").src = imagem;
-        container.querySelector("img.img24").alt = `Capa do livro ${tituloAPI}`;
+        container.querySelector("img.img2024").src = imagem;
+        container.querySelector("img.img2024").alt = `Capa do livro ${tituloAPI}`;
         container.querySelector(".h1Livros").textContent = tituloAPI;
         container.querySelector(".nomeAutor").textContent = autorAPI;
 
