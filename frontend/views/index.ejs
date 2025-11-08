@@ -28,6 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="css/indexStyle.css" />
     <!-- Titulo Pagina Principal -->
@@ -47,11 +48,16 @@
           placeholder="Pesquisar"
           aria-label="Search"
         />
-        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+       <button class="btn btn-outline-success" type="submit">Pesquisar</button>
       </form>
     </div>
     <!-- Navbar -->
-
+<div class="user-profile">
+      <a href="/dashboardCritico" class="user-link" title="Ir para o perfil">
+        <i class="fas fa-user-circle user-icon"></i>
+        <span id="nomeUsuario">Nome do Usuário</span>  <!-- Substitua dinamicamente com JavaScript ou backend -->
+      </a>
+    </div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNav">

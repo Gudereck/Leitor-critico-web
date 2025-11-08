@@ -24,7 +24,7 @@ router.get("/cadastro", (req, res) => res.render("cadastro"));
 
 // Dashboards
 router.get("/dashboard/usuario", (req, res) => res.render("dashboardUsuario"));
-router.get("/dashboard/critico", (req, res) => res.render("dashboardCritico"));
+router.get("/dashboardCritico", (req, res) => res.render("dashboardCritico"));
 
 // Livros - Modificado para capturar parâmetros e sempre passar variáveis
 router.get("/livros", async (req, res) => {
@@ -83,5 +83,5 @@ router.get("/perfil/editar", (req, res) => res.render("editProfile"));
 
 // Reviews dos Críticos
 router.get("/criticsreviews", (req, res) => res.render("criticsreviews"));
-
+router.get("/criticsreviews/:id", (req, res) => res.render("reviewDetalhes"));
 module.exports = router;
