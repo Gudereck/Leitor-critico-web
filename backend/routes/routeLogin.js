@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../database/db");
-const bcrypt = require("bcrypt"); // Importe o bcrypt para comparar senhas
+const bcrypt = require("bcrypt");
 
 // Rota de login
-router.post("/login", async (req, res) => {
+router.post("/", async (req, res) => {
   const { email, senha } = req.body;
 
   // Validação básica
