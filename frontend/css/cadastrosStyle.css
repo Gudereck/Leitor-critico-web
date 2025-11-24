@@ -11,13 +11,13 @@ body {
 
 .container {
   display: flex;
-  height: 100vh;
+  height: 105vh;
   width: 100%;
 }
 
 .left-panel {
-  flex: 1;
-  background-color: #b5c8c6;
+  width: 50%; 
+  background-color: #2B2A2B;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,12 +25,12 @@ body {
 
 .left-panel img {
   height: auto;
-  max-width: 90%;
+  width: 90%;
+  max-height: 100%;
 }
-
 .right-panel {
   flex: 1;
-  background-color: #f4ecdf;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +40,7 @@ body {
   width: 100%;
   max-width: 900px;
   padding: 40px;
-  background-color: #f4ecdf;
+
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -77,7 +77,7 @@ body {
 
 button {
   padding: 16px;
-  background-color: #2e3b45;
+  background-color: #2B2A2B;
   color: white;
   border: none;
   border-radius: 24px;
@@ -86,7 +86,7 @@ button {
 }
 
 button:hover {
-  background-color: #1e2a33;
+  background-color:  #3A3A3C;
 }
 
 .register-link {
