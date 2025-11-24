@@ -88,7 +88,7 @@
     <div class="top-bar">
       <a href="/"><span class="nome-da-plataforma">LEITOR CRÍTICO</span></a>
 
-      <form class="d-flex" role="search">
+      <form class="d-flex" cargo="search">
         <input
           id="inputPesquisa"
           class="form-control me-2"
@@ -215,9 +215,9 @@
       // Simulação de login
       const usuarioAtual = {
         nome: "Me Julga - Cintia Brunelli",
-        role: "critico",
+        cargo: "critico",
       };
-      const isCritico = usuarioAtual.role === "critico";
+      const isCritico = usuarioAtual.cargo === "critico";
 
       document.getElementById("formCritico").style.display = isCritico
         ? "block"
@@ -352,5 +352,6 @@
         <p>&copy; 2025 Leitor Crítico</p>
       </div>
     </footer>
+    <script src="js/adminControl.js"></script>
   </body>
 </html>

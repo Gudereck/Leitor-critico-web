@@ -1,3 +1,5 @@
+@import url(hamburgerMenu.css);
+
 html {
   scroll-behavior: smooth;
   color-scheme: light dark;
@@ -31,6 +33,7 @@ body {
 .top-bar {
   width: 100%;
   display: flex;
+  /* position: relative; */
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
@@ -76,7 +79,13 @@ body {
 }
 
 .d-flex {
-  width: 20%px;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .nome-da-plataforma {
@@ -90,7 +99,7 @@ body {
 }
 
 .container-fluid {
-  height: 14px;
+  height: 35px;
 }
 
 .navbar {
@@ -118,6 +127,7 @@ body {
 }
 
 #login-cadastro,
+#login-cadastro-hamburger,
 .logoutCadastro {
   background-color: #848484 !important;
   padding: 5px;
@@ -302,7 +312,8 @@ section {
 .user-profile {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
+
 }
 
 .user-link {
@@ -329,4 +340,17 @@ section {
   color: var(--corTextos);
   font-size: 16px;
   font-weight: bold;
+}
+
+@media (max-width: 990px) {
+  .right-elements {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .user-profile,
+  .navbar {
+    display: none;
+  }
 }

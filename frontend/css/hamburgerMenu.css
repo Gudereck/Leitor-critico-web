@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+.menu-hamburger {
+    display: block;
+    position: relative;
+    top: 40px;
+    right: 40px;
+    z-index: 4;
+}
+
+.menu-toggle {
+    display: none;
+
+}
+
+.menu-icon {
+    width: 35px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 5;
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    bottom: 43px;
+}
+
+.linha {
+    width: 30px;
+    height: 4px;
+    background-color: green;
+    border-radius: 2px;
+    transition: 0.3s;
+
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 75%;
+    width: 25%;
+    height: 100%;
+    background-color: #000;
+    z-index: 2;
+    transform: scale(0);
+    transition: 0.5s;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: safe;
+    justify-content: center;
+    gap: 20px;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+}
+
+.menu ul {
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    margin: 0 8px;
+    border: 1px solid #f4f4f1;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.menu a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f4f4f1;
+    transition: 0.3s;
+    padding: 10px;
+    background-color: transparent !important;
+}
+
+.menu a:hover {
+    color: green !important;
+    transition: 0.3s ease-in-out !important;
+
+}
+
+
+/* Animação */
+#menu-toggle:checked+.menu-icon .linha:nth-child(1) {
+    transform: rotate(45deg) translate(13px, 13px);
+}
+
+#menu-toggle:checked+.menu-icon .linha:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle:checked+.menu-icon .linha:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+#menu-toggle:checked~.overlay {
+    transform: scale(1);
+}
+
+@media (min-width: 990px) {
+    .menu-hamburger {
+        display: none;
+    }
+}

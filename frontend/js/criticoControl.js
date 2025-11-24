@@ -2,13 +2,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
 
-  // Garante que o usuário so tenha acesso a página "wave.html", caso esteja logado!
-  // if (!usuario) {
-  //   alert(`Você não está logado!`);
-  //   window.location.href = "/login.html";
-  //   return;
-  // }
-
   // Faz com que os botões de login e logout apareçam ou desapareçam, dependendo da situação do usuario (se está logado ou não)
   const loginCadastro = document.getElementById("login-cadastro");
   const logout = document.getElementById("logout");
