@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<<<<<<< HEAD
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -10,42 +11,57 @@
   <div class="container">
     <div class="left-panel">
       <img src="../img/Ícone do Livro e Literatura.png" alt="Avatar lendo um livro" />
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="/css/loginStyle.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-panel">
+        <img src="/img/Avatar lendo.png" alt="Avatar lendo um livro" />
+      </div>
+      <div class="right-panel">
+        <form class="login-form">
+          <h2>ENTRAR</h2>
+
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Digite seu email"
+            required
+          />
+
+          <label for="senha">Senha:</label>
+          <input
+            type="password"
+            id="senha"
+            name="senha"
+            placeholder="Digite sua senha"
+            required
+            title=""
+          />
+
+          <div class="forgot-password">
+            <a href="#">Esqueceu sua senha?</a>
+          </div>
+
+          <button type="submit">Entrar</button>
+          <button type="button" onclick="window.location.href='/'">
+            Voltar
+          </button>
+
+          <a class="register-link" href="/cadastro"
+            >Não tem uma conta? Cadastre-se</a
+          >
+        </form>
+      </div>
+>>>>>>> 7532b3dee434a7b9019b04da291b5accb9afafc6
     </div>
-    <div class="right-panel">
-      <form class="login-form">
-        <h2>ENTRAR</h2>
-
-        <label for="email">Email:</label>
-        <input 
-          type="email" 
-          id="email" 
-          name="email" 
-          placeholder="Digite seu email" 
-          required 
-        />
-
-        <label for="senha">Senha:</label>
-        <input 
-          type="password" 
-          id="senha" 
-          name="senha" 
-          placeholder="Digite sua senha" 
-          required 
-          title="Mínimo 6 caracteres, 1 letra maiúscula e 1 número"
-          pattern="^(?=.*[A-Z])(?=.*[0-9]).{6,}$"
-        />
-
-        <div class="forgot-password">
-          <a href="#">Esqueceu sua senha?</a>
-        </div>
-
-        <button type="submit">Entrar</button>
-
-        <a class="register-link" href="/cadastro">Não tem uma conta? Cadastre-se</a>
-      </form>
-    </div>
-  </div>
-  <script src="/frontend/js/login.js"></script>
-</body>
+    <script src="../js/login.js"></script>
+  </body>
 </html>
-

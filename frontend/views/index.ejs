@@ -28,9 +28,13 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <!-- CSS -->
     <link rel="stylesheet" href="css/indexStyle.css" />
+    <link rel="stylesheet" href="css/hamburgerMenu.css" />
     <!-- Titulo Pagina Principal -->
     <link rel="shortcut icon" href="../img/Ícone minimalista de livro.png">
     <title>Leitor Crítico - Home</title>
@@ -49,16 +53,77 @@
           placeholder="Pesquisar"
           aria-label="Search"
         />
-       <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
       </form>
+      <!-- Menu hamburger -->
+      <div class="menu-hamburger" id="menuHamburger">
+        <input type="checkbox" id="menu-toggle" hidden />
+        <label for="menu-toggle" class="menu-icon">
+          <div class="linha"></div>
+          <div class="linha"></div>
+          <div class="linha"></div>
+        </label>
+        <div class="overlay">
+          <nav class="menu">
+            <div
+              class="user-profile"
+             style="
+                display: flex;
+                align-items: center;
+                margin: 0 8px;
+                border: 1px solid #f4f4f1;
+                border-radius: 5px;
+              "
+            >
+              <a
+                href="/dashboardCritico"
+                class="user-link"
+                title="Ir para o perfil"
+              >
+                <i class="fas fa-user-circle user-icon"></i>
+                <span id="nomeUsuario">Nome do Usuário</span>
+                <!-- Substitua dinamicamente com JavaScript ou backend -->
+              </a>
+            </div>
+            <li>
+              <a href="/">Início</a>
+            </li>
+            <li>
+              <a href="/populares">Populares</a>
+            </li>
+            <li>
+              <a href="/classicosdaliteraturabrasileira"
+                >Clássicos da Literatura Brasileira</a
+              >
+            </li>
+            <li>
+              <a href="/popularesem2024">Os Mais Populares em 2024</a>
+            </li>
+            <li>
+              <a
+                style="background-color: transparent !important"
+                class="nav-link active"
+                aria-current="page"
+                href="/login"
+                id="login-cadastro-hamburger"
+                >Login/Cadastro</a
+              >
+              <a
+                style="
+                  background-color: transparent !important;
+                  margin-bottom: 15px;
+                "
+                href=""
+                id="logout-hamburger"
+                class="logoutCadastro"
+                >Logout</a
+              >
+            </li>
+          </nav>
+        </div>
+      </div>
     </div>
     <!-- Navbar -->
-<div class="user-profile">
-      <a href="/dashboardCritico" class="user-link" title="Ir para o perfil">
-        <i class="fas fa-user-circle user-icon"></i>
-        <span id="nomeUsuario">Nome do Usuário</span>  <!-- Substitua dinamicamente com JavaScript ou backend -->
-      </a>
-    </div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -91,12 +156,24 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href="\login"
+                href="/login"
                 id="login-cadastro"
                 >Login/Cadastro</a
               >
+              <a href="" id="logout" class="logoutCadastro">Logout</a>
             </li>
           </ul>
+        </div>
+        <div class="user-profile">
+          <a
+            href="/dashboardCritico"
+            class="user-link"
+            title="Ir para o perfil"
+          >
+            <i class="fas fa-user-circle user-icon"></i>
+            <span id="nomeUsuario">Nome do Usuário</span>
+            <!-- Substitua dinamicamente com JavaScript ou backend -->
+          </a>
         </div>
       </div>
     </nav>
@@ -254,7 +331,9 @@
         <p>&copy; 2025 Leitor Crítico</p>
       </div>
     </footer>
-    <script src="js/comments.js"></script>
-    <script src="js/livros.js"></script>
+    <script src="../js/comments.js"></script>
+    <script src="../js/livros.js"></script>
+    <script src="../js/criticoControl.js"></script>
+    <script src="../js/loginLogoutHamb.js"></script>
   </body>
 </html>

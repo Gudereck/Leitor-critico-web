@@ -28,7 +28,7 @@ console.log(
 // Rotas
 app.use("/", paginasRoutes);
 app.use("/api", cadastroRoutes);
-app.use("/api", loginRoutes);
+app.use("/api/login", loginRoutes);
 app.use("/api/admin", adminRoutes);
 
 module.exports = app;

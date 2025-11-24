@@ -1,0 +1,60 @@
+<h1>Solicitações de Cadastro Pendentes</h1>
+<div id="lista-solicitacoes"></div>
+
+<script>
+  const listaSolicitacoesEl = document.getElementById("lista-solicitacoes");
+
+  async function carregarSolicitacoes() {
+    const response = await fetch("/api/admin/solicitacoes");
+    const solicitacoes = await response.json();
+
+    listaSolicitacoesEl.innerHTML = ""; // Limpa a lista antes de adicionar os novos
+
+    if (solicitacoes.length === 0) {
+      listaSolicitacoesEl.innerHTML = "<p>Nenhuma solicitação pendente.</p>";
+      return;
+    }
+
+    solicitacoes.forEach((user) => {
+      const userDiv = document.createElement("div");
+      userDiv.className = "solicitacao-item";
+      userDiv.innerHTML = `
+                <p><strong>Nome:</strong> ${user.nome}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Data:</strong> ${user.data_cadastro}</p>
+                <button onclick="aprovarUsuario(${user.id})">Aprovar</button>
+                <button onclick="rejeitarUsuario(${user.id})">Rejeitar</button>
+            `;
+      listaSolicitacoesEl.appendChild(userDiv);
+    });
+  }
+
+  async function aprovarUsuario(id) {
+    if (!confirm("Tem certeza que deseja aprovar este usuário?")) return;
+
+    const response = await fetch(`/api/admin/aprovar/${id}`, {
+      method: "POST",
+    });
+    const data = await response.json();
+    alert(data.mensagem);
+    if (response.ok) {
+      carregarSolicitacoes(); // Recarrega a lista
+    }
+  }
+
+  async function rejeitarUsuario(id) {
+    if (!confirm("Tem certeza que deseja rejeitar este usuário?")) return;
+
+    const response = await fetch(`/api/admin/rejeitar/${id}`, {
+      method: "POST",
+    });
+    const data = await response.json();
+    alert(data.mensagem);
+    if (response.ok) {
+      carregarSolicitacoes(); // Recarrega a lista
+    }
+  }
+
+  // Carrega as solicitações quando a página é aberta
+  document.addEventListener("DOMContentLoaded", carregarSolicitacoes);
+</script>
