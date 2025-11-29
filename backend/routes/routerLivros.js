@@ -1,35 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const pool = require("../database/db");
- 
+const livrosController = require("../controllers/livrosController");
 
-// Certifique-se de instalar: npm install node-fetch
-
-// Página inicial
-router.get("/", (req, res) => res.render("index"));
+// Lista os 12 fixos (ou busca + salva)
+router.get("/", livrosController.buscarOuPopularLivros);
 
 // Populares
-router.get("/populares", (req, res) => res.render("populares"));
+router.get("/populares", livrosController.populares);
 
-// Classicos da Literatura Brasileira
-router.get("/classicosdaliteraturabrasileira", (req, res) =>
-  res.render("classicos")
-);
+// Populares 2024
+router.get("/populares-2024", livrosController.populares2024);
 
-// Populares em 2024
-router.get("/popularesem2024", (req, res) => res.render("populares2024"));
-
-// Login
-router.get("/login", (req, res) => res.render("login"));
-
-// Cadastro
-router.get("/cadastro", (req, res) => res.render("cadastro"));
-
-// Dashboards
-router.get("/dashboard/usuario", (req, res) => res.render("dashboardUsuario"));
-router.get("/dashboardCritico", (req, res) => res.render("dashboardCritico"));
-
-// Livros - Modificado para capturar parâmetros e sempre passar variáveis
+// Clássicos
+router.get("/classicos", livrosController.classicos);
 router.get("/livros", async (req, res) => {
   const id = req.query.id;
   if (!id)
@@ -68,11 +51,7 @@ router.get("/livros", async (req, res) => {
   livro_id: livro.id_livro,
   titulo: livro.titulo,
   autor: livro.autores,
-  ano: livro.data_publicacao
-        ? livro.data_publicacao instanceof Date
-            ? livro.data_publicacao.toISOString().split("T")[0].split("-")[0]
-            : String(livro.data_publicacao).split("-")[0]
-        : "",
+  ano: anoCalc,
   editora: livro.editora,
   descricao: livro.descricao,
   imagem: livro.link_imagem,
@@ -90,10 +69,4 @@ router.get("/livros", async (req, res) => {
 });
 
 
-// Editar perfil
-router.get("/perfil/editar", (req, res) => res.render("editProfile"));
-
-// Reviews dos Críticos
-router.get("/criticsreviews", (req, res) => res.render("criticsreviews"));
-router.get("/criticsreviews/:id", (req, res) => res.render("reviewDetalhes"));
 module.exports = router;

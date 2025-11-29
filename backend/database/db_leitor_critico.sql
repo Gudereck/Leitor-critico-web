@@ -67,3 +67,11 @@ CREATE TABLE
         id_livro INT,
         FOREIGN KEY (id_livro) REFERENCES livros (id_livro) ON DELETE CASCADE
     );
+
+    CREATE TABLE categorias_cache (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    id_livro INT NOT NULL,
+    FOREIGN KEY (id_livro) REFERENCES livros(id_livro) ON DELETE CASCADE
+);
+

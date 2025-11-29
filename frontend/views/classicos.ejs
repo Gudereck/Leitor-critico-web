@@ -1,276 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-    <!-- BootStrap-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Importando fontes: -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/classicosStyle.css" />
-    <!-- Titulo Pagina Principal -->
-    <title>Leitor Crítico - Populares</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <body>
-    <!-- TopBar-->
-    <div class="top-bar">
-      <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
+  <link rel="stylesheet" href="/css/criticsreviews.css" />
 
-      <form class="d-flex" role="search">
-        <input
-          id="inputPesquisa"
-          class="form-control me-2"
-          type="search"
-          placeholder="Pesquisar"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-      </form>
-    </div>
-    <!-- Navbar -->
+  <title>Detalhes do Livro</title>
+</head>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Início</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/populares"
-                >Populares</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="/classicosdaliteraturabrasileira"
-                >Clássicos da Literatura Brasileira</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="/popularesem2024"
-                >Os Mais Populares em 2024</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="\login"
-                id="login-cadastro"
-                >Login/Cadastro</a
-              >
-              <a href="" id="logout" class="logoutCadastro">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<body>
 
-    <!-- Seções da página -->
+  <!-- Torna o ID do livro disponível para o JS -->
+  <script>
+    window.LIVRO_ID = "<%= livro_id %>";
+  </script>
 
-    <section id="home">
-      <div id="containerPrincipal">
-        <div id="todasAsImagens">
-          <h2 id="melhoresAvaliados">CLÁSSICOS DA LITERATURA BRASILEIRA</h2>
+  <!-- ====================== DETALHES DO LIVRO ====================== -->
 
-          <!-- APENAS TROCA DAS CLASSES PARA imgBr -->
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
+  <section id="livro-detalhes">
+    <h1 id="titulo-livro"></h1>
+    <h3 id="autor-livro"></h3>
 
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
+    <img id="capa-livro" src="" alt="Capa do livro" />
 
-          <!-- repetições mantidas, apenas classe alterada -->
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgBr" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
-              </a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-          <!-- O restante segue com imgBr -->
-          <!-- (todo o bloco abaixo foi mantido, apenas substituída a classe.) -->
+    <p><strong>Editora:</strong> <span id="editora"></span></p>
+    <p><strong>Ano:</strong> <span id="ano"></span></p>
+    <p><strong>Idioma:</strong> <span id="idioma"></span></p>
+    <p><strong>Páginas:</strong> <span id="paginas"></span></p>
+    <p><strong>Categoria:</strong> <span id="categoria"></span></p>
+    <p><strong>ISBN 10:</strong> <span id="isbn10"></span></p>
+    <p><strong>ISBN 13:</strong> <span id="isbn13"></span></p>
 
-          <!-- ... todo o restante das divs imgContainer ... -->
-        </div>
-      </div>
-    </section>
+    <h3>Descrição</h3>
+    <p id="descricao"></p>
+  </section>
 
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 Leitor Crítico</p>
-      </div>
-    </footer>
+  <hr>
 
-    <script src="js/comments.js"></script>
-    <script src="js/livrosPopularesBr.js"></script>
-  </body>
+  <!-- ====================== FORMULÁRIO DO CRÍTICO ====================== -->
+
+  <h2>Avaliação dos Críticos</h2>
+  <div id="mediaNotas"></div>
+
+  <section id="formCritico" style="display: none">
+    <form id="criticaForm">
+      <input type="hidden" id="usuario">
+
+      <label>Escreva sua crítica (máx. 100 caracteres):</label>
+      <textarea id="texto" maxlength="100" required></textarea>
+      <small id="contador">0/100</small>
+
+      <label>Nota (0 a 100):</label>
+      <input id="nota" type="number" min="0" max="100" required>
+
+      <label>Link da resenha (opcional):</label>
+      <input id="link" type="url" placeholder="https://exemplo.com">
+
+      <button type="submit">Enviar crítica</button>
+    </form>
+  </section>
+
+  <hr>
+
+  <!-- ====================== LISTA DE CRÍTICAS ====================== -->
+
+  <section>
+    <div id="criticasContainer"></div>
+  </section>
+
+  <script src="/js/livrosCritics.js"></script>
+
+</body>
 </html>

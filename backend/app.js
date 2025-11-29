@@ -7,7 +7,7 @@ const paginasRoutes = require("./routes/routePaginas");
 const cadastroRoutes = require("./routes/routeCadastro");
 const loginRoutes = require("./routes/routeLogin");
 const adminRoutes = require("./routes/routeAdmin");
-
+const routerLivros = require("./routes/routerLivros");
 const app = express();
 
 app.use(cors());
@@ -30,5 +30,6 @@ app.use("/", paginasRoutes);
 app.use("/api", cadastroRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/livros", routerLivros);
 
 module.exports = app;

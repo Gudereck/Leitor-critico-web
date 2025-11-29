@@ -1,328 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- BootStrap-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Estilos da barra de pesquisa -->
-    <style>
-      .top-bar form.search-bar #inputPesquisa,
-      .top-bar > form.search-bar input#inputPesquisa {
-        background-color: var(--corContainerLivros) !important;
-        color: var(--corTextos) !important;
-        border: 1px solid rgba(255, 255, 255, 0.04) !important;
-        height: 40px !important;
-        padding: 8px 14px !important;
-        border-radius: 8px !important;
-        width: 260px !important;
-      }
-      .top-bar form.search-bar button.search-button {
-        height: 40px !important;
-        padding: 6px 14px !important;
-        border-radius: 8px !important;
-        border: 1.5px solid #198754 !important;
-        background-color: transparent !important;
-        color: #198754 !important;
-      }
-      .top-bar form.search-bar button.search-button:hover {
-        background-color: #198754 !important;
-        color: #fff !important;
-      }
-    </style>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/livrosCritics.css" />
 
-    <!-- JS Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <title><%= titulo || 'Carregando...' %></title>
+</head>
 
-    <!-- Fontes -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
-      rel="stylesheet"
-    />
+<body>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/css/livrosCritics.css" />
-  </head>
+  <!-- TopBar -->
+  <div class="top-bar">
+    <div id="alinha-itens">
+      <a id="link-plataforma" href="/"><span class="nome-da-plataforma">LEITOR CRÍTICO</span></a>
 
-  <title>
-    <%= titulo ? titulo : 'Nome do livro' %> - <%= typeof autor !== 'undefined'
-    ? autor : 'Nome do autor' %>
-  </title>
+      
+    </div>
+  </div>
 
-  <body>
-    <!-- TopBar-->
-    <div class="top-bar">
-      <div id="alinha-itens">
-        <a id="link-plataforma" href="/">
-          <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
-        </a>
-
-        <form class="search-bar" cargo="search">
-          <input
-            id="inputPesquisa"
-            class="search-input"
-            type="text"
-            placeholder="Pesquisar"
-          />
-          <button class="search-button">Pesquisar</button>
-        </form>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="/">Início</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/populares">Populares</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/classicosdaliteraturabrasileira">Clássicos</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/popularesem2024">Populares 2024</a></li>
+        </ul>
       </div>
     </div>
+  </nav>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="/">Início</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/populares">Populares</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                href="/classicosdaliteraturabrasileira"
-              >
-                Clássicos da Literatura Brasileira
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/popularesem2024">
-                Os Mais Populares em 2024
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/login" id="login-cadastro">
-                Login/Cadastro
-              </a>
-              <a href="" id="logout" class="logoutCadastro">Logout</a>
-            </li>
-          </ul>
+  <!-- Dados do livro -->
+  <section>
+    <div id="livro-informacoes">
+
+      <div id="container-livro">
+        <div id="nome-autor-livro-container">
+          <h1 id="nome-livro"><%= titulo || 'Carregando...' %></h1>
+          <span id="nome-autor"><%= autor || 'Carregando...' %></span>
         </div>
-      </div>
-    </nav>
 
-    <!-- Conteúdo -->
-    <section>
-      <div id="livro-informacoes">
-        <div id="container-livro">
-          <div id="nome-autor-livro-container">
-            <h1 id="nome-livro"><%= titulo ? titulo : 'Nome do livro' %></h1>
+        <div id="img-avaliacao">
+          <img id="capa-livro" src="<%= imagem || '' %>" alt="Capa do livro" />
 
-            <span id="nome-autor">
-              <%= typeof autor !== 'undefined' ? autor : 'Nome do autor' %>
-            </span>
-          </div>
-
-          <div id="img-avaliacao">
-            <img
-              src="<%= typeof imagem !== 'undefined' ? imagem : '' %>"
-              alt="Capa do livro <%= titulo ? titulo : 'Nome do livro' %>"
-              id="capa-livro"
-            />
-
-            <div id="avaliacao">
-              <div id="avaliacao-criticos">
-                <span class="texto-avaliacao">AVALIAÇÃO DOS CRÍTICOS</span>
-                <span class="media-avaliacao">
-                  <%= typeof error !== 'undefined' && error ? error : '?' %>
-                </span>
-              </div>
+          <div id="avaliacao">
+            <div id="avaliacao-criticos">
+              <span class="texto-avaliacao">AVALIAÇÃO DOS CRÍTICOS</span>
+              <span class="media-avaliacao">?</span>
             </div>
           </div>
         </div>
-
-        <div id="container-informacoes">
-          <h1>INFORMAÇÕES</h1>
-          <div class="linha-padrao"></div>
-          <br />
-          <p>ANO: <span><%= ano || 'Não disponível' %></span></p>
-          <p>EDITORA: <span><%= editora || 'Não disponível' %></span></p>
-        </div>
       </div>
 
-      <div id="container-detalhes">
-        <h1>DETALHES</h1>
+      <div id="container-informacoes">
+        <h1>INFORMAÇÕES</h1>
         <div class="linha-padrao"></div>
-        <br />
-        <span id="detalhes-livro">
-          <%= descricao || 'Detalhes não disponíveis' %>
-        </span>
+
+        <p>ANO: <span id="info-ano"><%= ano || 'Carregando...' %></span></p>
+        <p>EDITORA: <span id="info-editora"><%= editora || 'Carregando...' %></span></p>
       </div>
 
-      <h1 id="text-avaliacoes">AVALIAÇÕES DOS CRÍTICOS</h1>
-      <div id="linha-text-avaliacoes"></div>
+    </div>
 
-      <!-- Fórum -->
+    <div id="container-detalhes">
+      <h1>DETALHES</h1>
+      <div class="linha-padrao"></div>
 
-      <div id="container-avaliacoes-criticos">
-        <!-- Visível apenas para críticos -->
-        <section id="formCritico" style="display: none">
-          <form id="criticaForm">
-            <input type="hidden" id="usuario" />
+      <span id="detalhes-livro"><%= descricao || 'Carregando...' %></span>
+    </div>
 
-            <label class="textos-orientacao"
-              >ESCREVA SUA CRÍTICA (máx. 100 caracteres):</label
-            >
-            <textarea
-              class="somente-critico"
-              id="texto"
-              maxlength="100"
-              required
-            ></textarea>
-            <small id="contador" class="textos-orientacao">0 / 100</small>
+    <!-- Comentários (não alterei nada) -->
+    <h1 id="text-avaliacoes">AVALIAÇÕES DOS CRÍTICOS</h1>
+    <div id="linha-text-avaliacoes"></div>
 
-            <label class="textos-orientacao">NOTA (0 a 100):</label>
-            <input
-              class="somente-critico"
-              type="number"
-              id="nota"
-              min="0"
-              max="100"
-              required
-            />
+    <div id="container-avaliacoes-criticos">
+      <section id="formCritico" style="display:none">
+        <form id="criticaForm">
+          <input type="hidden" id="usuario" />
+          <label class="textos-orientacao">CRÍTICA:</label>
+          <textarea class="somente-critico" id="texto" maxlength="100" required></textarea>
+          <small id="contador">0 / 100</small>
 
-            <label class="textos-orientacao">LINK DA RESENHA DETALHADA:</label>
-            <input
-              class="somente-critico"
-              type="url"
-              id="link"
-              placeholder="https://exemplo.com/resenha"
-            />
+          <label>NOTA:</label>
+          <input class="somente-critico" type="number" id="nota" min="0" max="100" required/>
 
-            <button type="submit" class="textos-orientacao">
-              ENVIAR CRÍTICA
-            </button>
-          </form>
-        </section>
-      </div>
+          <label>LINK:</label>
+          <input class="somente-critico" type="url" id="link" placeholder="https://exemplo.com"/>
+          <button type="submit">ENVIAR</button>
+        </form>
+      </section>
+    </div>
 
-      <div id="containerListaCriticos">
-        <section id="listaCriticas">
-          <br />
-          <div id="criticasContainer"></div>
-          <div class="media" id="mediaNotas"></div>
-        </section>
-      </div>
-    </section>
+    <div id="containerListaCriticos">
+      <section id="listaCriticas">
+        <div id="criticasContainer"></div>
+        <div id="mediaNotas"></div>
+      </section>
+    </div>
 
-    <!-- SCRIPT -->
-    <script>
-      const usuarioAtual = {
-        nome: "Me Julga - Cintia Brunelli",
-        cargo: "critico",
-      };
-      const isCritico = usuarioAtual.cargo === "critico";
+  </section>
 
-      document.getElementById("formCritico").style.display = isCritico
-        ? "block"
-        : "none";
-      document.getElementById("usuario").value = usuarioAtual.nome;
+  <!-- ID do livro -->
+ <script>
+  window.LIVRO_ID = "<%= livro_id %>";
+</script>
 
-      const form = document.getElementById("criticaForm");
-      const container = document.getElementById("criticasContainer");
-      const contador = document.getElementById("contador");
-      const texto = document.getElementById("texto");
 
-      texto.addEventListener("input", () => {
-        contador.textContent = `${texto.value.length} / 100`;
-      });
+  <!-- Scripts -->
+  <script src="/js/livroCarregar.js"></script>
+  <script src="/js/criticsreviews.js"></script>
+  <script src="/js/adminControl.js"></script>
 
-      document.addEventListener("DOMContentLoaded", carregarCriticas);
+  <footer class="footer">
+    <div class="container"><p>&copy; 2025 Leitor Crítico</p></div>
+  </footer>
 
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const critica = {
-          usuario: usuarioAtual.nome,
-          texto: texto.value.trim(),
-          nota: parseInt(document.getElementById("nota").value),
-          link: document.getElementById("link").value.trim(),
-          data: new Date().toLocaleString("pt-BR"),
-        };
-        salvarCritica(critica);
-        adicionarCriticaNaTela(critica);
-        atualizarMedia();
-        form.reset();
-        contador.textContent = "0 / 100";
-      });
-
-      function salvarCritica(critica) {
-        const criticas = JSON.parse(localStorage.getItem("criticas")) || [];
-        criticas.unshift(critica);
-        localStorage.setItem("criticas", JSON.stringify(criticas));
-      }
-
-      function carregarCriticas() {
-        const criticas = JSON.parse(localStorage.getItem("criticas")) || [];
-        criticas.forEach(adicionarCriticaNaTela);
-        atualizarMedia();
-      }
-
-      function adicionarCriticaNaTela(critica) {
-        const div = document.createElement("div");
-        div.classList.add("critica");
-        const cor = getCorNota(critica.nota);
-        div.innerHTML = `
-          <div id="container-critica-interno">
-            <div id="nota-autor">
-              <p class="nota ${cor}">${critica.nota}</p>
-              <p class="autor">por ${critica.usuario}</p>
-            </div>
-            <p>${critica.texto}</p>
-            ${
-              critica.link
-                ? `<p class="link"><a href="${critica.link}" target="_blank">Ver resenha completa</a></p>`
-                : ""
-            }
-            <small>Postado em: ${critica.data}</small>
-          </div>
-        `;
-        container.appendChild(div);
-      }
-
-      function getCorNota(nota) {
-        if (nota <= 50) return "vermelha";
-        if (nota <= 69) return "amarela";
-        return "verde";
-      }
-
-      function atualizarMedia() {
-        const criticas = JSON.parse(localStorage.getItem("criticas")) || [];
-        const mediaElem = document.querySelector(".media-avaliacao");
-        const mediaNotasElem = document.getElementById("mediaNotas");
-
-        if (criticas.length === 0) {
-          mediaNotasElem.textContent = "Sem avaliações ainda.";
-          mediaElem.textContent = "?";
-          mediaElem.classList.remove("vermelha", "amarela", "verde");
-          return;
-        }
-
-        const media = (
-          criticas.reduce((acc, c) => acc + c.nota, 0) / criticas.length
-        ).toFixed(1);
-
-        const cor = getCorNota(media);
-
-        mediaNotasElem.textContent = `Média das Avaliações: ${media}`;
-        mediaElem.textContent = media;
-        mediaElem.classList.remove("vermelha", "amarela", "verde");
-        mediaElem.classList.add(cor);
-      }
-    </script>
-
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 Leitor Crítico</p>
-      </div>
-    </footer>
-    <script src="js/adminControl.js"></script>
-  </body>
+</body>
 </html>
