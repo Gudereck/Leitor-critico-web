@@ -26,8 +26,8 @@ router.get("/login", (req, res) => res.render("login"));
 router.get("/cadastro", (req, res) => res.render("cadastro"));
 
 // Dashboards
-router.get("/dashboard/usuario", (req, res) => res.render("dashboardUsuario"));
 router.get("/dashboardCritico", (req, res) => res.render("dashboardCritico"));
+router.get("/editProfile", (req, res) => res.render("editProfile"));
 
 // Livros - Modificado para capturar parâmetros e sempre passar variáveis
 router.get("/livros", async (req, res) => {

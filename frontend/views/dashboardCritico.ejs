@@ -7,39 +7,114 @@
       name="description"
       content="Dashboard para gerenciamento de críticas de livros"
     />
+
+    <!-- Importando fontes: -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Importando CSS -->
+    <link rel="stylesheet" href="../style/index.css" />
+    <link rel="shortcut icon" href="../img/capacompleta.jpeg" />
     <title>Dashboard Do Crítico</title>
-    <link rel="stylesheet" href="css/criticoStyle.css" />
   </head>
   <body>
-    <nav class="nav-bar">
-      <div id="logo-container">
-        <img src="img/logo.png" alt="Logo" class="logo-image" />
+    <!-- TopBar-->
+    <div class="top-bar">
+      <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
+
+      <!-- Menu hamburger -->
+      <div class="menu-hamburger" id="menuHamburger">
+        <input type="checkbox" id="menu-toggle" hidden />
+        <label for="menu-toggle" class="menu-icon">
+          <div class="linha"></div>
+          <div class="linha"></div>
+          <div class="linha"></div>
+        </label>
+        <div class="overlay">
+          <nav class="menu">
+            <li>
+              <a href="/">Início</a>
+            </li>
+            <li>
+              <a href="/editProfile">Editar Perfil</a>
+            </li>
+            <li>
+              <a
+                style="
+                  background-color: transparent !important;
+                  margin-bottom: 15px;
+                "
+                href=""
+                id="logout-hamburger"
+                class="logoutCadastro"
+                >Logout</a
+              >
+            </li>
+          </nav>
+        </div>
       </div>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/login" onclick="logout()">Sair</a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/editProfile"
+                >Editar perfil</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="" id="dashLogout" class="logoutCadastro">Logout</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
-    <main class="dashboard-container">
-      <h2>Dashboard do Crítico</h2>
-      <div class="card">
-        <h3>Seja bem-vindo, Crítico!</h3>
-        <p>Aqui você pode gerenciar suas críticas e avaliações.</p>
-      </div>
+    <!-- Seções da página -->
 
-      <div class="card" id="MinhasCríticas">
-        <h3>Minhas Críticas</h3>
-        <ul id="lista-criticas">
-          <!-- As críticas serão carregadas aqui via JS -->
-        </ul>
+    <section id="home">
+      <div class="containerPrincipal">
+        <h2>Dashboard do Crítico</h2>
+        <div class="card">
+          <h3>Seja bem-vindo, Crítico!</h3>
+          <p>Aqui você pode gerenciar suas críticas e avaliações.</p>
+        </div>
+
+        <div class="card" id="MinhasCríticas">
+          <h3>Minhas Críticas</h3>
+          <ul id="lista-criticas">
+            <!-- As críticas serão carregadas aqui via JS -->
+          </ul>
+        </div>
       </div>
-    </main>
+    </section>
 
     <footer class="footer">
-      <p>&copy; 2025 <!--nome da plataforma--></p>
+      <div class="container">
+        <p>&copy; 2025 Leitor Crítico</p>
+      </div>
     </footer>
 
-    <script src="js/dashboardCritico.js"></script>
+    <script src="../js/criticoControl.js"></script>
+    <script src="../js/loginLogoutHamb.js"></script>
   </body>
 </html>

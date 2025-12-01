@@ -1,0 +1,81 @@
+html {
+    scroll-behavior: smooth;
+    color-scheme: light dark;
+}
+
+:root {
+    --corBody: #f4f4f4;
+    --corTextos: black;
+    --corContainerLivros: white;
+    --corFooter: #ddd;
+    --corPlaceHolder: #65636c;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --corBody: #282828;
+        --corTextos: #f3f3f2;
+        --corContainerLivros: #2c2c2c;
+        --corFooter: #383837;
+        --corPlaceHolder: #aaaaaa;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    background-color: var(--corBody);
+}
+
+/* Container  */
+.top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+/* Nome da plataforma */
+.nome-da-plataforma {
+    display: block;
+    justify-content: left;
+    justify-items: center;
+    margin-left: 10px;
+    font-family: "WDXL Lubrifont SC", sans-serif;
+    font-size: 30px;
+    color: var(--corTextos);
+}
+
+/* Formulário search */
+.d-flex {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* input do formulário */
+.form-control {
+    border-color: var(--corContainerLivros);
+    background-color: var(--corContainerLivros);
+    color: var(--corTextos);
+}
+
+.form-control::placeholder {
+    color: var(--corPlaceHolder);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: var(--corFooter);
+    margin-top: 3rem;
+    margin-bottom: 0px;
+    color: var(--corTextos);
+}

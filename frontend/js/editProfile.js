@@ -12,9 +12,19 @@ function deletarConta() {
   }
 }
 
-function logout() {
-  if (confirm("Deseja realmente sair?")) {
+// Função para voltar ao dashboard do crítico
+function voltarCritico() {
+  window.location.href = "/dashboardCritico";
+}
+
+// Cria um evento de Logout
+const logout = document.getElementById("logout");
+
+if (logout) {
+  logout.addEventListener("click", () => {
+    localStorage.removeItem("usuarioLogado");
+    alert(`Logout realizado!`);
+    window.location.href = "/";
     localStorage.clear();
-    window.location.href = "frontend/dashboardUsuario.html";
-  }
+  });
 }

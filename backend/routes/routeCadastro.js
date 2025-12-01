@@ -13,8 +13,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Função Auxiliar para enviar o e-mail
-// (O link precisa ser o seu domínio real ou http://localhost:PORTA para testes)
-async function notificarAdminNovoUsuario(usuarioId, nome, email) {
+async function notificarAdminNovoUsuario(usuarioId, nome, email, redeSocial) {
   const adminEmail = "leitorcriticotcc@gmail.com"; // E-mail do Admin
   const seuDominio = "http://localhost:3000"; // Mudar para o endereço do site (https://seusite.com)
 
@@ -29,6 +28,7 @@ async function notificarAdminNovoUsuario(usuarioId, nome, email) {
             <h1>Novo Usuário Cadastrado</h1>
             <p>Um novo usuário (<b>${nome}</b> / <b>${email}</b>) se cadastrou.</p>
             <p>ID do Usuário: ${usuarioId}</p>
+            <p>Rede Social: ${redeSocial}</p>
             <p>Por padrão, ele é um 'usuarioComum'. Se desejar promovê-lo para 'Critico', clique no link abaixo:</p>
             <br>
             <a href="${linkPromocao}" 
@@ -52,10 +52,10 @@ async function notificarAdminNovoUsuario(usuarioId, nome, email) {
 
 // Rota de cadastro
 router.post("/cadastro", async (req, res) => {
-  const { nome, email, senha } = req.body;
+  const { nome, email, senha, redeSocial } = req.body;
 
   // Validação básica
-  if (!nome || !email || !senha) {
+  if (!nome || !email || !senha || !redeSocial) {
     return res.status(400).json({ msg: "Preencha todos os campos!" });
   }
 
@@ -80,14 +80,14 @@ router.post("/cadastro", async (req, res) => {
 
     // Inserir o novo usuário no banco de dados (com usuario padrão definido como usuarioComum)
     const [result] = await connection.execute(
-      "INSERT INTO usuarios (nome, email, senha, cargo) VALUES (?, ?, ?, ?)",
-      [nome, email, senhaHash, "usuarioComum"]
+      "INSERT INTO usuarios (nome, email, senha, cargo, redeSocial) VALUES (?, ?, ?, ?, ?)",
+      [nome, email, senhaHash, "usuarioComum", redeSocial]
     );
 
     const novoUsuarioId = result.insertId;
     console.log("Usuário cadastrado com ID:", novoUsuarioId);
 
-    notificarAdminNovoUsuario(novoUsuarioId, nome, email);
+    notificarAdminNovoUsuario(novoUsuarioId, nome, email, redeSocial);
 
     return res.status(201).json({
       msg: "Cadastro realizado com sucesso!",

@@ -50,3 +50,15 @@ if (logout) {
     localStorage.clear();
   });
 }
+
+// Cria um evento de Logout
+const dashLogout = document.getElementById("dashLogout");
+
+if (dashLogout) {
+  dashLogout.addEventListener("click", () => {
+    localStorage.removeItem("usuarioLogado");
+    alert(`Logout realizado!`);
+    window.location.href = "/";
+    localStorage.clear();
+  });
+}

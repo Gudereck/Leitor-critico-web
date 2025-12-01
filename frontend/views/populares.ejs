@@ -29,7 +29,8 @@
       rel="stylesheet"
     />
     <!-- CSS -->
-    <link rel="stylesheet" href="css/popularesStyle.css" />
+    <link rel="stylesheet" href="../style/index.css" />
+    <link rel="shortcut icon" href="../img/capacompleta.jpeg" />
     <!-- Titulo Pagina Principal -->
     <title>Leitor Crítico - Populares</title>
   </head>
@@ -39,16 +40,64 @@
     <div class="top-bar">
       <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
 
-      <form class="d-flex" role="search">
-        <input
-          id="inputPesquisa"
-          class="form-control me-2"
-          type="search"
-          placeholder="Pesquisar"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-      </form>
+      <!-- menu hamburger -->
+      <div class="menu-hamburger" id="menuHamburger">
+        <input type="checkbox" id="menu-toggle" hidden />
+        <label for="menu-toggle" class="menu-icon">
+          <div class="linha"></div>
+          <div class="linha"></div>
+          <div class="linha"></div>
+        </label>
+        <div class="overlay">
+          <nav class="menu">
+            <div class="user-profile">
+              <a
+                href="/dashboardCritico"
+                class="user-link"
+                title="Ir para o perfil"
+              >
+                <i class="fas fa-user-circle user-icon"></i>
+                <span id="nomeUsuario">Nome do Usuário</span>
+                <!-- Substitua dinamicamente com JavaScript ou backend -->
+              </a>
+            </div>
+            <li>
+              <a href="/">Início</a>
+            </li>
+            <li>
+              <a href="/populares">Populares</a>
+            </li>
+            <li>
+              <a href="/classicosdaliteraturabrasileira"
+                >Clássicos da Literatura Brasileira</a
+              >
+            </li>
+            <li>
+              <a href="/popularesem2024">Os Mais Populares em 2024</a>
+            </li>
+            <li>
+              <a
+                style="background-color: transparent !important"
+                class="nav-link active"
+                aria-current="page"
+                href="/login"
+                id="login-cadastro-hamburger"
+                >Login/Cadastro</a
+              >
+              <a
+                style="
+                  background-color: transparent !important;
+                  margin-bottom: 15px;
+                "
+                href=""
+                id="logout-hamburger"
+                class="logoutCadastro"
+                >Logout</a
+              >
+            </li>
+          </nav>
+        </div>
+      </div>
     </div>
     <!-- Navbar -->
 
@@ -84,13 +133,24 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href="\login"
+                href="/login"
                 id="login-cadastro"
                 >Login/Cadastro</a
               >
               <a href="" id="logout" class="logoutCadastro">Logout</a>
             </li>
           </ul>
+        </div>
+        <div class="user-profile">
+          <a
+            href="/dashboardCritico"
+            class="user-link"
+            title="Ir para o perfil"
+          >
+            <i class="fas fa-user-circle user-icon"></i>
+            <span id="nomeUsuario">Nome do Usuário</span>
+            <!-- Substitua dinamicamente com JavaScript ou backend -->
+          </a>
         </div>
       </div>
     </nav>
@@ -248,8 +308,9 @@
         <p>&copy; 2025 Leitor Crítico</p>
       </div>
     </footer>
-    <script src="js/comments.js"></script>
-    <script src="/js/populares.js"></script>
-
+    <script src="../js/comments.js"></script>
+    <script src="../js/populares.js"></script>
+    <script src="../js/criticoControl.js"></script>
+    <script src="../js/loginLogoutHamb.js"></script>
   </body>
 </html>

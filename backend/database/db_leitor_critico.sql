@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS
         nome VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
         senha VARCHAR(255) NOT NULL,
-        cargo VARCHAR(7) NOT NULL
+        cargo VARCHAR(15) NOT NULL DEFAULT 'usuarioComum',
+        redeSocial VARCHAR(100)
     );
 
 CREATE TABLE
@@ -68,10 +69,10 @@ CREATE TABLE
         FOREIGN KEY (id_livro) REFERENCES livros (id_livro) ON DELETE CASCADE
     );
 
-    CREATE TABLE categorias_cache (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    id_livro INT NOT NULL,
-    FOREIGN KEY (id_livro) REFERENCES livros(id_livro) ON DELETE CASCADE
-);
-
+CREATE TABLE
+    categorias_cache (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nome VARCHAR(100) NOT NULL,
+        id_livro INT NOT NULL,
+        FOREIGN KEY (id_livro) REFERENCES livros (id_livro) ON DELETE CASCADE
+    );

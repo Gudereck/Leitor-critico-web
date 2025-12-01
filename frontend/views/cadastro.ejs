@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro</title>
-    <link rel="stylesheet" href="/css/cadastrosStyle.css" />
+    <link rel="stylesheet" href="../style/loginCadastro.css" />
   </head>
   <body>
     <div class="container">
       <div class="left-panel">
-        <img src="../img/Ícone do Livro e Literatura.png" alt="Avatar segurando um livro" />
+        <img
+          src="../img/Ícone do Livro e Literatura.png"
+          alt="Avatar segurando um livro"
+        />
       </div>
       <div class="right-panel">
         <form class="cadastro-form" action="/api/cadastro" method="post">
@@ -41,7 +44,6 @@
             placeholder="Crie uma senha"
             required
             title=""
-  
           />
 
           <label for="confirmar-senha">Confirmar senha:</label>
@@ -51,6 +53,14 @@
             name="confirmar_senha"
             placeholder="Insira a senha novamente"
             required
+          />
+
+          <label for="redeSocial">Link para a rede social:</label>
+          <input
+            type="url"
+            id="redeSocial"
+            name="redeSocial"
+            placeholder="http://exemplo.com/seu-perfil"
           />
 
           <button type="submit">Cadastrar</button>

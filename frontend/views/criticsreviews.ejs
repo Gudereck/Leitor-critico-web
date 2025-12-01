@@ -78,7 +78,10 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/criticsreviews.css" />
+    <link rel="stylesheet" href="../style/criticsreviews.css" />
+    <link rel="stylesheet" href="../style/import.css" />
+
+    <link rel="shortcut icon" href="../img/capacompleta.jpeg" />
     <!-- Titulo do livro -->
     <title>Nome do livro</title>
   </head>
@@ -87,17 +90,64 @@
     <!-- TopBar-->
     <div class="top-bar">
       <a href="/"><span class="nome-da-plataforma">LEITOR CRÍTICO</span></a>
-
-      <form class="d-flex" cargo="search">
-        <input
-          id="inputPesquisa"
-          class="form-control me-2"
-          type="search"
-          placeholder="Pesquisar"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-      </form>
+      <!-- Menu hamburger -->
+      <div class="menu-hamburger" id="menuHamburger">
+        <input type="checkbox" id="menu-toggle" hidden />
+        <label for="menu-toggle" class="menu-icon">
+          <div class="linha"></div>
+          <div class="linha"></div>
+          <div class="linha"></div>
+        </label>
+        <div class="overlay">
+          <nav class="menu">
+            <div class="user-profile">
+              <a
+                href="/dashboardCritico"
+                class="user-link"
+                title="Ir para o perfil"
+              >
+                <i class="fas fa-user-circle user-icon"></i>
+                <span id="nomeUsuario">Nome do Usuário</span>
+                <!-- Substitua dinamicamente com JavaScript ou backend -->
+              </a>
+            </div>
+            <li>
+              <a href="/">Início</a>
+            </li>
+            <li>
+              <a href="/populares">Populares</a>
+            </li>
+            <li>
+              <a href="/classicosdaliteraturabrasileira"
+                >Clássicos da Literatura Brasileira</a
+              >
+            </li>
+            <li>
+              <a href="/popularesem2024">Os Mais Populares em 2024</a>
+            </li>
+            <li>
+              <a
+                style="background-color: transparent !important"
+                class="nav-link active"
+                aria-current="page"
+                href="/login"
+                id="login-cadastro-hamburger"
+                >Login/Cadastro</a
+              >
+              <a
+                style="
+                  background-color: transparent !important;
+                  margin-bottom: 15px;
+                "
+                href=""
+                id="logout-hamburger"
+                class="logoutCadastro"
+                >Logout</a
+              >
+            </li>
+          </nav>
+        </div>
+      </div>
     </div>
 
     <!-- Navbar -->
@@ -352,6 +402,7 @@
         <p>&copy; 2025 Leitor Crítico</p>
       </div>
     </footer>
-    <script src="js/adminControl.js"></script>
+    <script src="../js/criticoControl.js"></script>
+    <script src="../js/loginLogoutHamb.js"></script>
   </body>
 </html>

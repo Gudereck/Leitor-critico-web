@@ -1,127 +1,264 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/livrosCritics.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
 
+    <!-- Importando fontes: -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style/livrosCritics.css" />
+    <link rel="stylesheet" href="../style/hamburgerMenu.css" />
+    <link rel="stylesheet" href="../style/navbar.css" />
+    <link rel="stylesheet" href="../style/headerFooter.css" />
+    <link rel="stylesheet" href="../style/index.css" />
+
+    <link rel="shortcut icon" href="../img/capacompleta.jpeg" />
+  </head>
   <title><%= titulo || 'Carregando...' %></title>
-</head>
 
-<body>
-
-  <!-- TopBar -->
-  <div class="top-bar">
-    <div id="alinha-itens">
-      <a id="link-plataforma" href="/"><span class="nome-da-plataforma">LEITOR CRÍTICO</span></a>
-
-      
-    </div>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="/">Início</a></li>
-          <li class="nav-item"><a class="nav-link active" href="/populares">Populares</a></li>
-          <li class="nav-item"><a class="nav-link active" href="/classicosdaliteraturabrasileira">Clássicos</a></li>
-          <li class="nav-item"><a class="nav-link active" href="/popularesem2024">Populares 2024</a></li>
-        </ul>
+  <body>
+    <!-- TopBar -->
+    <div class="top-bar">
+      <div id="alinha-itens">
+        <a id="link-plataforma" href="/"
+          ><span class="nome-da-plataforma">LEITOR CRÍTICO</span></a
+        >
       </div>
     </div>
-  </nav>
 
-  <!-- Dados do livro -->
-  <section>
-    <div id="livro-informacoes">
+    <!-- Menu hamburger -->
+    <div class="menu-hamburger" id="menuHamburger">
+      <input type="checkbox" id="menu-toggle" hidden />
+      <label for="menu-toggle" class="menu-icon">
+        <div class="linha"></div>
+        <div class="linha"></div>
+        <div class="linha"></div>
+      </label>
+      <div class="overlay">
+        <nav class="menu">
+          <div class="user-profile">
+            <a
+              href="/dashboardCritico"
+              class="user-link"
+              title="Ir para o perfil"
+            >
+              <i class="fas fa-user-circle user-icon"></i>
+              <span id="nomeUsuario">Nome do Usuário</span>
+              <!-- Substitua dinamicamente com JavaScript ou backend -->
+            </a>
+          </div>
+          <li>
+            <a href="/">Início</a>
+          </li>
+          <li>
+            <a href="/populares">Populares</a>
+          </li>
+          <li>
+            <a href="/classicosdaliteraturabrasileira"
+              >Clássicos da Literatura Brasileira</a
+            >
+          </li>
+          <li>
+            <a href="/popularesem2024">Os Mais Populares em 2024</a>
+          </li>
+          <li>
+            <a
+              style="background-color: transparent !important"
+              class="nav-link active"
+              aria-current="page"
+              href="/login"
+              id="login-cadastro-hamburger"
+              >Login/Cadastro</a
+            >
+            <a
+              style="
+                background-color: transparent !important;
+                margin-bottom: 15px;
+              "
+              href=""
+              id="logout-hamburger"
+              class="logoutCadastro"
+              >Logout</a
+            >
+          </li>
+        </nav>
+      </div>
+    </div>
 
-      <div id="container-livro">
-        <div id="nome-autor-livro-container">
-          <h1 id="nome-livro"><%= titulo || 'Carregando...' %></h1>
-          <span id="nome-autor"><%= autor || 'Carregando...' %></span>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/populares">Populares</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/classicosdaliteraturabrasileira"
+                >Clássicos da Literatura Brasileira</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/popularesem2024"
+                >Populares 2024</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/login" id="login-cadastro">
+                Login/Cadastro
+              </a>
+              <a href="" id="logout" class="logoutCadastro">Logout</a>
+            </li>
+          </ul>
         </div>
+        <div class="user-profile">
+          <a
+            href="/dashboardCritico"
+            class="user-link"
+            title="Ir para o perfil"
+          >
+            <i class="fas fa-user-circle user-icon"></i>
+            <span id="nomeUsuario">Nome do Usuário</span>
+            <!-- Substitua dinamicamente com JavaScript ou backend -->
+          </a>
+        </div>
+      </div>
+    </nav>
 
-        <div id="img-avaliacao">
-          <img id="capa-livro" src="<%= imagem || '' %>" alt="Capa do livro" />
+    <!-- Dados do livro -->
+    <section>
+      <div id="livro-informacoes">
+        <div id="container-livro">
+          <div id="nome-autor-livro-container">
+            <h1 id="nome-livro"><%= titulo || 'Carregando...' %></h1>
+            <span id="nome-autor"><%= autor || 'Carregando...' %></span>
+          </div>
 
-          <div id="avaliacao">
-            <div id="avaliacao-criticos">
-              <span class="texto-avaliacao">AVALIAÇÃO DOS CRÍTICOS</span>
-              <span class="media-avaliacao">?</span>
+          <div id="img-avaliacao">
+            <img
+              id="capa-livro"
+              src="<%= imagem || '' %>"
+              alt="Capa do livro"
+            />
+
+            <div id="avaliacao">
+              <div id="avaliacao-criticos">
+                <span class="texto-avaliacao">AVALIAÇÃO DOS CRÍTICOS</span>
+                <span class="media-avaliacao">?</span>
+              </div>
             </div>
           </div>
         </div>
+
+        <div id="container-informacoes">
+          <h1>INFORMAÇÕES</h1>
+          <div class="linha-padrao"></div>
+
+          <p>ANO: <span id="info-ano"><%= ano || 'Carregando...' %></span></p>
+          <p>
+            EDITORA:
+            <span id="info-editora"><%= editora || 'Carregando...' %></span>
+          </p>
+        </div>
       </div>
 
-      <div id="container-informacoes">
-        <h1>INFORMAÇÕES</h1>
+      <div id="container-detalhes">
+        <h1>DETALHES</h1>
         <div class="linha-padrao"></div>
 
-        <p>ANO: <span id="info-ano"><%= ano || 'Carregando...' %></span></p>
-        <p>EDITORA: <span id="info-editora"><%= editora || 'Carregando...' %></span></p>
+        <span id="detalhes-livro"><%= descricao || 'Carregando...' %></span>
       </div>
 
-    </div>
+      <!-- Comentários (não alterei nada) -->
+      <h1 id="text-avaliacoes">AVALIAÇÕES DOS CRÍTICOS</h1>
+      <div id="linha-text-avaliacoes"></div>
 
-    <div id="container-detalhes">
-      <h1>DETALHES</h1>
-      <div class="linha-padrao"></div>
+      <div id="container-avaliacoes-criticos">
+        <section id="formCritico" style="display: none">
+          <form id="criticaForm">
+            <input type="hidden" id="usuario" />
+            <label class="textos-orientacao">CRÍTICA:</label>
+            <textarea
+              class="somente-critico"
+              id="texto"
+              maxlength="100"
+              required
+            ></textarea>
+            <small id="contador">0 / 100</small>
 
-      <span id="detalhes-livro"><%= descricao || 'Carregando...' %></span>
-    </div>
+            <label>NOTA:</label>
+            <input
+              class="somente-critico"
+              type="number"
+              id="nota"
+              min="0"
+              max="100"
+              required
+            />
 
-    <!-- Comentários (não alterei nada) -->
-    <h1 id="text-avaliacoes">AVALIAÇÕES DOS CRÍTICOS</h1>
-    <div id="linha-text-avaliacoes"></div>
+            <label>LINK:</label>
+            <input
+              class="somente-critico"
+              type="url"
+              id="link"
+              placeholder="https://exemplo.com"
+            />
+            <button type="submit">ENVIAR</button>
+          </form>
+        </section>
+      </div>
 
-    <div id="container-avaliacoes-criticos">
-      <section id="formCritico" style="display:none">
-        <form id="criticaForm">
-          <input type="hidden" id="usuario" />
-          <label class="textos-orientacao">CRÍTICA:</label>
-          <textarea class="somente-critico" id="texto" maxlength="100" required></textarea>
-          <small id="contador">0 / 100</small>
+      <div id="containerListaCriticos">
+        <section id="listaCriticas">
+          <div id="criticasContainer"></div>
+          <div id="mediaNotas"></div>
+        </section>
+      </div>
+    </section>
 
-          <label>NOTA:</label>
-          <input class="somente-critico" type="number" id="nota" min="0" max="100" required/>
+    <!-- ID do livro -->
+    <script>
+      window.LIVRO_ID = "<%= livro_id %>";
+    </script>
 
-          <label>LINK:</label>
-          <input class="somente-critico" type="url" id="link" placeholder="https://exemplo.com"/>
-          <button type="submit">ENVIAR</button>
-        </form>
-      </section>
-    </div>
+    <footer class="footer">
+      <div class="container"><p>&copy; 2025 Leitor Crítico</p></div>
+    </footer>
+    <!-- Scripts -->
+    <script src="../js/livroCarregar.js"></script>
+    <script src="../js/criticsreviews.js"></script>
 
-    <div id="containerListaCriticos">
-      <section id="listaCriticas">
-        <div id="criticasContainer"></div>
-        <div id="mediaNotas"></div>
-      </section>
-    </div>
-
-  </section>
-
-  <!-- ID do livro -->
- <script>
-  window.LIVRO_ID = "<%= livro_id %>";
-</script>
-
-
-  <!-- Scripts -->
-  <script src="/js/livroCarregar.js"></script>
-  <script src="/js/criticsreviews.js"></script>
-  <script src="/js/adminControl.js"></script>
-
-  <footer class="footer">
-    <div class="container"><p>&copy; 2025 Leitor Crítico</p></div>
-  </footer>
-
-</body>
+    <script src="../js/criticoControl.js"></script>
+    <script src="../js/loginLogoutHamb.js"></script>
+  </body>
 </html>

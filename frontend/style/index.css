@@ -1,0 +1,209 @@
+@import url("import.css");
+
+html {
+    scroll-behavior: smooth;
+    color-scheme: light dark;
+}
+
+:root {
+    --corBody: #f4f4f4;
+    --corTextos: black;
+    --corContainerLivros: white;
+    --corFooter: #ddd;
+    --corPlaceHolder: #65636c;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --corBody: #282828;
+        --corTextos: #f3f3f2;
+        --corContainerLivros: #2c2c2c;
+        --corFooter: #383837;
+        --corPlaceHolder: #aaaaaa;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    background-color: var(--corBody);
+}
+
+section {
+    padding: 20px;
+    margin-top: 10px;
+    height: auto;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* estilos da coluna de livros  */
+/* estilo imagens - para deixar em linha  */
+#todasAsImagens a {
+    text-decoration: none;
+}
+
+#todasAsImagens {
+    background-color: var(--corContainerLivros);
+    margin-top: 2px;
+    display: flex;
+    align-items: flex-start;
+    justify-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+    height: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+#todasAsImagens img {
+    color: var(--corTextos);
+}
+
+#melhoresAvaliados {
+    position: relative;
+    display: inline-block;
+    text-indent: 1.47%;
+    width: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--corTextos);
+}
+
+#melhoresAvaliados::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+    /* onde começa a linha em relação à palavra */
+    height: 2px;
+    width: 97.36%;
+    /* até onde a linha vai */
+    background-color: var(--corTextos);
+}
+
+/* espaço entre as imagens */
+.imgContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: var(--corContainerLivros);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    width: 200px;
+    height: 410px;
+    overflow: hidden;
+}
+
+/* para "centralizar" a página inteira */
+#containerPrincipal {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* altura e largura das imagens */
+.imgLivros,
+.imgpopular,
+.imgBr,
+.img2024 {
+    width: 150px;
+    min-height: 200px;
+    min-width: 150px;
+    height: 200px;
+    text-align: center;
+    border: solid black 3px;
+    border-radius: 4px;
+
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+
+}
+
+.imgLivros:hover,
+.imgpopular:hover,
+.imgBr:hover,
+.img2024:hover {
+    cursor: pointer;
+    transform: scale(1.05) translateY(-8px);
+}
+
+/* estilo titulo do livro e do autor */
+.h1Livros {
+    font-size: 15px;
+    margin: 5px 0 2px 0;
+    word-wrap: break-word;
+    color: var(--corTextos);
+    font-weight: bold;
+}
+
+.nomeAutor {
+    text-align: left;
+    font-size: 10px;
+    color: var(--corTextos);
+}
+
+/* para flutuar a nota dos criticos  e o texto, esperar javaScript para finalizar */
+.containerAvaliacaoDosCriticos,
+.containerAvaliacaoDosUsuarios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 9px;
+    color: var(--corTextos);
+    font-style: italic;
+}
+
+/* para estilizar as notas dos usuarios */
+.notaCriticaUsuarios {
+    color: var(--corTextos);
+    font-weight: bold;
+    font-size: 14px;
+    margin: 10px;
+}
+
+/* para estilizar as notas dos críticos */
+.notaCriticaContainer {
+    color: var(--corTextos);
+    font-weight: bold;
+    font-size: 14px;
+    margin: 10px;
+}
+
+.avaliacaoCriticos {
+    align-items: center;
+}
+
+/* para deixar o texto responsivo a largura da imagem */
+.nomeLivroEAutor {
+    width: 150px;
+    text-align: justify;
+}
+
+#home {
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 990px) {
+    .user-profile,
+    .navbar {
+        display: none;
+    }
+}

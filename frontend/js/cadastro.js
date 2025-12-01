@@ -13,9 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
     const confirmarSenha = document.getElementById("confirmar-senha").value;
+    const redeSocial = document.getElementById("redeSocial").value;
+
 
     // Validação simples no frontend
-    if (!nome || !email || !senha || !confirmarSenha) {
+    if (!nome || !email || !senha || !confirmarSenha || !redeSocial) {
       alert("Por favor, preencha todos os campos.");
       return;
     }
@@ -30,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nome: nome,
       email: email,
       senha: senha,
+      redeSocial: redeSocial,
     };
 
     try {

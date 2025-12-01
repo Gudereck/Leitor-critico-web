@@ -31,9 +31,8 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/indexStyle.css" />
-    <!-- <link rel="stylesheet" href="../css/populares24Style.css" /> -->
-    <link rel="stylesheet" href="../css/hamburgerMenu.css" />
+    <link rel="stylesheet" href="../style/index.css" />
+    <link rel="shortcut icon" href="../img/capacompleta.jpeg" />
 
     <!-- Título -->
     <title>Leitor Crítico - Home</title>
@@ -43,17 +42,6 @@
     <!-- TopBar -->
     <div class="top-bar">
       <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
-
-      <form class="d-flex" role="search">
-        <input
-          id="inputPesquisa"
-          class="form-control me-2"
-          type="search"
-          placeholder="Pesquisar"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-      </form>
       <!-- Menu hamburger -->
       <div class="menu-hamburger" id="menuHamburger">
         <input type="checkbox" id="menu-toggle" hidden />
@@ -64,16 +52,7 @@
         </label>
         <div class="overlay">
           <nav class="menu">
-            <div
-              class="user-profile"
-              style="
-                display: flex;
-                align-items: center;
-                margin: 0 8px;
-                border: 1px solid #f4f4f1;
-                border-radius: 5px;
-              "
-            >
+            <div class="user-profile">
               <a
                 href="/dashboardCritico"
                 class="user-link"
@@ -137,7 +116,10 @@
               >
             </li>
             <li class="nav-item">
-              <a aria-current="page" href="/classicosdaliteraturabrasileira"
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/classicosdaliteraturabrasileira"
                 >Clássicos da Literatura Brasileira</a
               >
             </li>
@@ -160,6 +142,17 @@
               <a href="" id="logout" class="logoutCadastro">Logout</a>
             </li>
           </ul>
+        </div>
+        <div class="user-profile">
+          <a
+            href="/dashboardCritico"
+            class="user-link"
+            title="Ir para o perfil"
+          >
+            <i class="fas fa-user-circle user-icon"></i>
+            <span id="nomeUsuario">Nome do Usuário</span>
+            <!-- Substitua dinamicamente com JavaScript ou backend -->
+          </a>
         </div>
       </div>
     </nav>
