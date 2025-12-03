@@ -1,4 +1,3 @@
-// Função para reset do formulário
 function resetForm() {
   const form = document.querySelector(".login-form");
   if (form) {
@@ -6,7 +5,6 @@ function resetForm() {
   }
 }
 
-// Inicia o evento para enviar os dados do formulário ao backend
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector(".login-form");
 
@@ -32,23 +30,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dadosLogin),
+        credentials: "include",
+        body: JSON.stringify(dadosLogin)
       });
 
       const result = await response.json();
 
       if (response.ok) {
-        alert(result.msg);
-
-        localStorage.setItem("usuarioLogado", JSON.stringify(result.usuario));
-
-        if (result.usuario.cargo === "critico") {
-          window.location.href = "/";
-        } else {
-          alert("Você não possui permissão para logar!");
-        }
+        localStorage.setItem("usuarioLogado", JSON.stringify(result.user));
+        window.location.href = "/";
       } else {
-        alert(result.msg);
+        alert(result.message);
       }
     } catch (error) {
       console.error("Erro na requisição:", error);

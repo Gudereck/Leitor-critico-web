@@ -76,3 +76,26 @@ CREATE TABLE
         id_livro INT NOT NULL,
         FOREIGN KEY (id_livro) REFERENCES livros (id_livro) ON DELETE CASCADE
     );
+
+CREATE TABLE COMENTARIOS (
+    id_comentario INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_livro INT NOT NULL,
+    comentario TEXT NOT NULL,
+    data_comentario DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_livro) REFERENCES livros(id_livro) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS criticas (
+    id_critica INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_livro INT NOT NULL,
+    texto VARCHAR(100) NOT NULL,
+    nota TINYINT NOT NULL CHECK (nota BETWEEN 0 AND 100),
+    link_resenha VARCHAR(500),
+    data_critica DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uq_usuario_livro (id_usuario, id_livro),
+    CONSTRAINT fk_critico_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE,
+    CONSTRAINT fk_critico_livro FOREIGN KEY (id_livro) REFERENCES livros(id_livro) ON DELETE CASCADE
+);

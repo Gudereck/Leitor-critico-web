@@ -199,7 +199,16 @@
         <span id="detalhes-livro"><%= descricao || 'Carregando...' %></span>
       </div>
 
-      <!-- Comentários (não alterei nada) -->
+      
+
+      <div id="containerListaCriticos">
+        <section id="listaCriticas">
+          <div id="criticasContainer"></div>
+          <div id="mediaNotas"></div>
+        </section>
+      </div>
+    </section>
+<!-- Comentários (não alterei nada) -->
       <h1 id="text-avaliacoes">AVALIAÇÕES DOS CRÍTICOS</h1>
       <div id="linha-text-avaliacoes"></div>
 
@@ -237,15 +246,6 @@
           </form>
         </section>
       </div>
-
-      <div id="containerListaCriticos">
-        <section id="listaCriticas">
-          <div id="criticasContainer"></div>
-          <div id="mediaNotas"></div>
-        </section>
-      </div>
-    </section>
-
     <!-- ID do livro -->
     <script>
       window.LIVRO_ID = "<%= livro_id %>";

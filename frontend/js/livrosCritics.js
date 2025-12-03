@@ -1,110 +1,77 @@
-// ============== CARREGAR DETALHES DO LIVRO ==============
-async function carregarLivro() {
-  const id = window.LIVRO_ID;
-  if (!id) return;
-
-  try {
-    const res = await fetch(`/api/livros/detalhes/${id}`);
-    const livro = await res.json();
-
-    document.getElementById("titulo-livro").textContent = livro.titulo || "";
-    document.getElementById("autor-livro").textContent = livro.autores || "";
-    document.getElementById("capa-livro").src = livro.link_imagem || "/img/placeholder.png";
-
-    document.getElementById("editora").textContent = livro.editora || "—";
-    document.getElementById("ano").textContent = livro.data_publicacao?.substring(0,4) || "—";
-    document.getElementById("idioma").textContent = livro.idioma || "—";
-    document.getElementById("paginas").textContent = livro.numero_paginas || "—";
-    document.getElementById("categoria").textContent = livro.categoria_principal || "—";
-    document.getElementById("isbn10").textContent = livro.isbn_10 || "—";
-    document.getElementById("isbn13").textContent = livro.isbn_13 || "—";
-    document.getElementById("descricao").textContent = livro.descricao || "Descrição não disponível";
-
-  } catch (error) {
-    console.error("Erro ao carregar detalhes do livro:", error);
-  }
-}
-
-
-
-// ============== SISTEMA DE CRÍTICAS LOCAL (mantido igual ao seu) ==============
-
-const usuarioAtual = { nome: "Crítico Teste", cargo: "critico" };
-const isCritico = usuarioAtual.cargo === "critico";
-
-document.addEventListener("DOMContentLoaded", () => {
-  carregarLivro();
-  carregarCriticas();
-
-  if (isCritico) {
-    document.getElementById("formCritico").style.display = "block";
-    document.getElementById("usuario").value = usuarioAtual.nome;
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  carregarCriticasServer();
+  inicializarForm();
 });
 
-const form = document.getElementById("criticaForm");
-const container = document.getElementById("criticasContainer");
-const texto = document.getElementById("texto");
-const contador = document.getElementById("contador");
+function inicializarForm() {
+  const form = document.getElementById('criticaForm');
+  if (!form) return;
 
-texto?.addEventListener("input", () => {
-  contador.textContent = `${texto.value.length}/100`;
-});
+  const texto = document.getElementById('texto');
+  const contador = document.getElementById('contador');
 
-form?.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const critica = {
-    usuario: usuarioAtual.nome,
-    texto: texto.value,
-    nota: Number(document.getElementById("nota").value),
-    link: document.getElementById("link").value,
-    data: new Date().toLocaleString("pt-BR"),
-  };
+  texto.addEventListener('input', () => {
+   contador.textContent = `${texto.value.length}/100`;
+  });
 
-  salvarCritica(critica);
-  adicionarCriticaNaTela(critica);
-  atualizarMedia();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  form.reset();
-  contador.textContent = "0/100";
-});
+    const corpo = {
+      id_livro: window.LIVRO_ID,
+      texto: document.getElementById('texto').value.trim(),
+      nota: Number(document.getElementById('nota').value),
+      link_resenha: document.getElementById('link').value.trim()
+    };
 
-function salvarCritica(critica) {
-  const cx = JSON.parse(localStorage.getItem("criticas")) || [];
-  cx.unshift(critica);
-  localStorage.setItem("criticas", JSON.stringify(cx));
+    const res = await fetch('/api/criticas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: "include",
+      body: JSON.stringify(corpo)
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.erro || data.message);
+      return;
+    }
+
+    form.reset();
+    contador.textContent = "0/100";
+    carregarCriticasServer();
+  });
 }
 
-function carregarCriticas() {
-  const cx = JSON.parse(localStorage.getItem("criticas")) || [];
-  cx.forEach(adicionarCriticaNaTela);
-  atualizarMedia();
-}
+async function carregarCriticasServer() {
+  const container = document.getElementById('criticasContainer');
+  const mediaElem = document.getElementById('mediaNotas');
 
-function adicionarCriticaNaTela(critica) {
-  const div = document.createElement("div");
-  div.classList.add("critica");
+  const res = await fetch(`/api/criticas/livro/${window.LIVRO_ID}`, {
+    credentials: "include"
+  });
 
-  div.innerHTML = `
-    <p><strong>${critica.usuario}</strong> — Nota: ${critica.nota}</p>
-    <p>${critica.texto}</p>
-    ${critica.link ? `<a href="${critica.link}" target="_blank">Ver resenha completa</a>` : ""}
-    <small>${critica.data}</small>
-    <hr>
-  `;
+  const data = await res.json();
 
-  container.appendChild(div);
-}
+  container.innerHTML = "";
 
-function atualizarMedia() {
-  const cx = JSON.parse(localStorage.getItem("criticas")) || [];
-  const mediaElem = document.getElementById("mediaNotas");
+  data.criticas.forEach(c => {
+    const div = document.createElement("div");
+    div.className = "critica";
+    div.innerHTML = `
+      <p><strong>${c.nome_usuario}</strong> — Nota: ${c.nota}</p>
+      <p>${c.texto}</p>
+      ${c.link_resenha ? `<a href="${c.link_resenha}" target="_blank">Ver resenha completa</a>` : ""}
+      <small>${new Date(c.data_critica).toLocaleString("pt-BR")}</small>
+      <hr>
+    `;
+    container.appendChild(div);
+  });
 
-  if (cx.length === 0) {
+  if (data.media === null) {
     mediaElem.textContent = "Sem avaliações ainda.";
-    return;
+  } else {
+    mediaElem.textContent = `Média das avaliações: ${data.media} (${data.qtd} avaliações)`;
   }
-
-  const media = cx.reduce((s, n) => s + n.nota, 0) / cx.length;
-  mediaElem.textContent = `Média das avaliações: ${media.toFixed(1)}`;
 }
