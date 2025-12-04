@@ -16,6 +16,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// 🔥 SESSÃO DO USUÁRIO
 app.use(
   session({
     secret: "chave_segura_local",
@@ -24,6 +25,12 @@ app.use(
     cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }
   })
 );
+
+// 🔥 Torna usuário disponível em TODAS as views
+app.use((req, res, next) => {
+  res.locals.usuario = req.session.user || null;
+  next();
+});
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../frontend/views"));
@@ -35,6 +42,7 @@ app.use("/api", cadastroRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/livros", routerLivros);
-app.use("/api", criticasRoutes);
+app.use("/api/criticas", criticasRoutes);
+
 
 module.exports = app;

@@ -42,6 +42,25 @@
     <link rel="shortcut icon" href="../img/capacompleta.jpeg" />
   </head>
   <title><%= titulo || 'Carregando...' %></title>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const usuarioData = <%- JSON.stringify(usuario || null) %>;
+
+    const form = document.getElementById("formCritico");
+    const usuarioInput = document.getElementById("usuario");
+
+    if (!form) return;
+
+    if (usuarioData && usuarioData.cargo === "critico") {
+        form.style.display = "block";
+        if (usuarioInput) usuarioInput.value = usuarioData.nome;
+    } else {
+        form.style.display = "none";
+    }
+});
+</script>
+
+
 
   <body>
     <!-- TopBar -->
@@ -70,7 +89,8 @@
               title="Ir para o perfil"
             >
               <i class="fas fa-user-circle user-icon"></i>
-              <span id="nomeUsuario">Nome do Usuário</span>
+              <span id="nomeUsuario"><%= usuario ? usuario.nome : "Visitante" %></span>
+
               <!-- Substitua dinamicamente com JavaScript ou backend -->
             </a>
           </div>
@@ -148,7 +168,15 @@
             title="Ir para o perfil"
           >
             <i class="fas fa-user-circle user-icon"></i>
-            <span id="nomeUsuario">Nome do Usuário</span>
+            <span id="nomeUsuario">
+  <% if (usuario) { %>
+    <%= usuario.nome %>
+    (<%= usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
+  <% } else { %>
+    Visitante
+  <% } %>
+</span>
+
             <!-- Substitua dinamicamente com JavaScript ou backend -->
           </a>
         </div>
@@ -256,7 +284,7 @@
     </footer>
     <!-- Scripts -->
     <script src="../js/livroCarregar.js"></script>
-    <script src="../js/criticsreviews.js"></script>
+    <script src="../js/livrosCritics.js"></script>
 
     <script src="../js/criticoControl.js"></script>
     <script src="../js/loginLogoutHamb.js"></script>

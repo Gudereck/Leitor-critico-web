@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../style/loginCadastro.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-panel">
+        <img
+          src="../img/Ícone do Livro e Literatura.png"
+          alt="Avatar segurando um livro"
+        />
+      </div>
+      <div class="right-panel">
+        <form class="cadastro-form" action="/api/cadastro" method="post">
+          <h2>CADASTRAR</h2>
+
+          <label for="nome">Nome completo:</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Digite seu nome completo"
+            required
+          />
+
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Digite seu email"
+            required
+          />
+
+          <label for="senha">Senha:</label>
+          <input
+            type="password"
+            id="senha"
+            name="senha"
+            placeholder="Crie uma senha"
+            required
+            title=""
+          />
+
+          <label for="confirmar-senha">Confirmar senha:</label>
+          <input
+            type="password"
+            id="confirmar-senha"
+            name="confirmar_senha"
+            placeholder="Insira a senha novamente"
+            required
+          />
+
+          <label for="redeSocial">Link para a rede social:</label>
+          <input
+            type="url"
+            id="redeSocial"
+            name="redeSocial"
+            placeholder="http://exemplo.com/seu-perfil"
+          />
+
+          <button type="submit">Cadastrar</button>
+
+          <a class="register-link" href="/login">Já tem uma conta? Entrar</a>
+        </form>
+      </div>
+    </div>
+    <script src="./js/cadastro.js"></script>
+  </body>
+</html>

@@ -460,3 +460,48 @@ input {
   margin-bottom: 0px;
   color: var(--corTextos);
 }
+
+/* CARD */
+.critica-box {
+    display:flex;
+    background:#1c1c1c;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
+    gap:18px;
+}
+
+/* NOTA */
+.avaliacao-nota {
+    font-size:32px;
+    font-weight:700;
+    width:75px;
+    height:75px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+.verde { background:#0fa828; }
+.amarelo { background:#c9b300; }
+.vermelho { background:#b30000; }
+
+/* INFORMAÇÕES DA CRÍTICA */
+.critica-info { flex:1; color:#fff; }
+.usuario { font-size:19px; font-weight:bold; }
+.estrela { color:#ffce39; font-size:20px; }
+
+.texto { font-size:15px; opacity:0.9; margin:5px 0; }
+
+/* LINK */
+.link-review {
+    font-size:15px;
+    color:#2ea2ff;
+    font-weight:bold;
+}
+.link-review:hover { color:#6ec8ff; }
+
+/* DATA */
+.data { display:block; margin-top:5px; font-size:12px; opacity:0.7; }

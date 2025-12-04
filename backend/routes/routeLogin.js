@@ -39,18 +39,16 @@ router.post("/", async (req, res) => {
       id: usuario.id,
       nome: usuario.nome,
       email: usuario.email,
-      cargo: usuario.cargo,
+      cargo: usuario.cargo
     };
 
     return res.status(200).json({
       message: "Login realizado com sucesso!",
-      user: req.session.user,
+      user: req.session.user
     });
   } catch (error) {
     console.error("Erro no login:", error);
-    return res.status(500).json({
-      message: "Erro no servidor. Tente novamente mais tarde.",
-    });
+    return res.status(500).json({ message: "Erro no servidor. Tente novamente mais tarde." });
   }
 });
 

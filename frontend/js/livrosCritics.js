@@ -1,77 +1,111 @@
-document.addEventListener('DOMContentLoaded', () => {
-  carregarCriticasServer();
-  inicializarForm();
-});
+document.addEventListener("DOMContentLoaded", () => {
+  const usuario = window.USUARIO || null;
+  const idLivro = window.LIVRO_ID;
 
-function inicializarForm() {
-  const form = document.getElementById('criticaForm');
-  if (!form) return;
+  if (!idLivro) return alert("ID do livro não informado.");
 
-  const texto = document.getElementById('texto');
-  const contador = document.getElementById('contador');
+  // Formulário só para críticos
+  const form = document.getElementById("formCritico");
+  if (usuario && usuario.cargo === "critico") {
+    form.style.display = "block";
+  }
 
-  texto.addEventListener('input', () => {
-   contador.textContent = `${texto.value.length}/100`;
-  });
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const corpo = {
-      id_livro: window.LIVRO_ID,
-      texto: document.getElementById('texto').value.trim(),
-      nota: Number(document.getElementById('nota').value),
-      link_resenha: document.getElementById('link').value.trim()
-    };
-
-    const res = await fetch('/api/criticas', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: "include",
-      body: JSON.stringify(corpo)
-    });
-
+  carregarCriticas(idLivro);
+  carregarMedia(idLivro);
+async function carregarMedia(id) {
+    const res = await fetch(`/api/criticas/media/${id}`);
     const data = await res.json();
 
-    if (!res.ok) {
-      alert(data.erro || data.message);
-      return;
+    const mediaElemento = document.querySelector(".media-avaliacao");
+
+    if (!data.media) {
+        mediaElemento.innerText = "?";
+        return;
     }
 
-    form.reset();
-    contador.textContent = "0/100";
-    carregarCriticasServer();
-  });
+    const media = parseFloat(data.media).toFixed(1);
+    mediaElemento.innerText = media;
+
+    // Cores automáticas
+    if (media >= 70) mediaElemento.style.color = "limegreen";
+    else if (media >= 50) mediaElemento.style.color = "gold";
+    else mediaElemento.style.color = "red";
 }
 
-async function carregarCriticasServer() {
-  const container = document.getElementById('criticasContainer');
-  const mediaElem = document.getElementById('mediaNotas');
+  // Enviar crítica
+  document
+    .getElementById("criticaForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const texto = document.getElementById("texto").value.trim();
+      const nota = document.getElementById("nota").value;
+      const link = document.getElementById("link").value.trim();
 
-  const res = await fetch(`/api/criticas/livro/${window.LIVRO_ID}`, {
-    credentials: "include"
-  });
+      const res = await fetch("/api/criticas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id_livro: idLivro,
+          texto,
+          nota,
+          link_resenha: link,
+        }),
+      });
 
-  const data = await res.json();
+      const response = await res.json();
+      if (response.success) {
+        alert("Crítica enviada!");
+        location.reload();
+      } else {
+        alert("Erro ao salvar: " + response.message);
+      }
+    });
+});
 
+async function carregarCriticas(id) {
+  const res = await fetch(`/api/criticas/${id}`);
+  const criticas = await res.json();
+  const container = document.getElementById("criticasContainer");
   container.innerHTML = "";
 
-  data.criticas.forEach(c => {
-    const div = document.createElement("div");
-    div.className = "critica";
-    div.innerHTML = `
-      <p><strong>${c.nome_usuario}</strong> — Nota: ${c.nota}</p>
-      <p>${c.texto}</p>
-      ${c.link_resenha ? `<a href="${c.link_resenha}" target="_blank">Ver resenha completa</a>` : ""}
-      <small>${new Date(c.data_critica).toLocaleString("pt-BR")}</small>
-      <hr>
-    `;
-    container.appendChild(div);
-  });
+  if (!criticas.length) return (container.innerHTML = "Nenhuma crítica ainda.");
 
-  if (data.media === null) {
-    mediaElem.textContent = "Sem avaliações ainda.";
-  } else {
-    mediaElem.textContent = `Média das avaliações: ${data.media} (${data.qtd} avaliações)`;
-  }
+  // 🔥 AQUI É A VERSÃO FINAL — SOMENTE ESSA
+  criticas.forEach((c) => {
+    container.innerHTML += `
+        <div class="critica-box">
+        
+            <div class="avaliacao-nota ${
+              c.nota >= 70 ? "verde" : c.nota >= 50 ? "amarelo" : "vermelho"
+            }">
+                ${c.nota}
+            </div>
+
+            <div class="critica-info">
+                <div class="critico-nome">
+                    <span class="usuario">${c.usuario}</span>
+                    ${
+                      c.cargo === "critico"
+                        ? `<span class="estrela">⭐</span>`
+                        : ""
+                    }
+                </div>
+
+                <p class="texto">${c.texto}</p>
+
+                ${
+                  c.link_resenha
+                    ? `
+                    <a href="${c.link_resenha}" target="_blank" class="link-review">Ver resenha completa →</a>
+                `
+                    : ""
+                }
+
+                <span class="data">${new Date(c.data_critica).toLocaleString(
+                  "pt-BR"
+                )}</span>
+            </div>
+        </div>
+        `;
+  });
 }

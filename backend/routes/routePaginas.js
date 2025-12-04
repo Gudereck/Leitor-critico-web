@@ -1,39 +1,37 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../database/db");
- 
 
-// Certifique-se de instalar: npm install node-fetch
+// Todas as páginas agora recebem usuario da sessão automaticamente
 
 // Página inicial
-router.get("/", (req, res) => res.render("index"));
+router.get("/", (req, res) => res.render("index", { usuario: req.session.user }));
 
 // Populares
-router.get("/populares", (req, res) => res.render("populares"));
+router.get("/populares", (req, res) => res.render("populares", { usuario: req.session.user }));
 
 // Classicos da Literatura Brasileira
 router.get("/classicosdaliteraturabrasileira", (req, res) =>
-  res.render("classicos")
+  res.render("classicos", { usuario: req.session.user })
 );
 
 // Populares em 2024
-router.get("/popularesem2024", (req, res) => res.render("populares2024"));
+router.get("/popularesem2024", (req, res) => res.render("populares2024", { usuario: req.session.user }));
 
 // Login
-router.get("/login", (req, res) => res.render("login"));
+router.get("/login", (req, res) => res.render("login", { usuario: req.session.user }));
 
 // Cadastro
-router.get("/cadastro", (req, res) => res.render("cadastro"));
+router.get("/cadastro", (req, res) => res.render("cadastro", { usuario: req.session.user }));
 
 // Dashboards
-router.get("/dashboardCritico", (req, res) => res.render("dashboardCritico"));
-router.get("/editProfile", (req, res) => res.render("editProfile"));
+router.get("/dashboardCritico", (req, res) => res.render("dashboardCritico", { usuario: req.session.user }));
+router.get("/editProfile", (req, res) => res.render("editProfile", { usuario: req.session.user }));
 
-// Livros - Modificado para capturar parâmetros e sempre passar variáveis
+// Livros com dados e sessão
 router.get("/livros", async (req, res) => {
   const id = req.query.id;
-  if (!id)
-    return res.status(400).send("ID do livro não informado.");
+  if (!id) return res.status(400).send("ID do livro não informado.");
 
   try {
     const [rows] = await pool.query(
@@ -55,33 +53,33 @@ router.get("/livros", async (req, res) => {
        LEFT JOIN autores a ON a.id_autor = la.id_autor
        LEFT JOIN isbns i ON i.id_livro = l.id_livro
        WHERE l.id_livro = ?
-       GROUP BY l.id_livro`,
-      [id]
+       GROUP BY l.id_livro`, [id]
     );
 
     if (rows.length === 0)
-      return res.render("livrosCritics", { error: "Livro não encontrado" });
+      return res.render("livrosCritics", { error: "Livro não encontrado", usuario: req.session.user });
 
     const livro = rows[0];
 
     res.render("livrosCritics", {
-  livro_id: livro.id_livro,
-  titulo: livro.titulo,
-  autor: livro.autores,
-  ano: livro.data_publicacao
+      usuario: req.session.user, // 🔥 Agora o EJS recebe usuário também
+      livro_id: livro.id_livro,
+      titulo: livro.titulo,
+      autor: livro.autores,
+      ano: livro.data_publicacao
         ? livro.data_publicacao instanceof Date
-            ? livro.data_publicacao.toISOString().split("T")[0].split("-")[0]
-            : String(livro.data_publicacao).split("-")[0]
+          ? livro.data_publicacao.toISOString().split("T")[0].split("-")[0]
+          : String(livro.data_publicacao).split("-")[0]
         : "",
-  editora: livro.editora,
-  descricao: livro.descricao,
-  imagem: livro.link_imagem,
-  idioma: livro.idioma,
-  paginas: livro.numero_paginas,
-  categoria: livro.categoria_principal,
-  isbn10: livro.isbn_10,
-  isbn13: livro.isbn_13
-});
+      editora: livro.editora,
+      descricao: livro.descricao,
+      imagem: livro.link_imagem,
+      idioma: livro.idioma,
+      paginas: livro.numero_paginas,
+      categoria: livro.categoria_principal,
+      isbn10: livro.isbn_10,
+      isbn13: livro.isbn_13
+    });
 
   } catch (err) {
     console.error(err);
@@ -89,11 +87,8 @@ router.get("/livros", async (req, res) => {
   }
 });
 
-
-// Editar perfil
-router.get("/perfil/editar", (req, res) => res.render("editProfile"));
-
 // Reviews dos Críticos
-router.get("/criticsreviews", (req, res) => res.render("criticsreviews"));
-router.get("/criticsreviews/:id", (req, res) => res.render("reviewDetalhes"));
+router.get("/criticsreviews", (req, res) => res.render("criticsreviews", { usuario: req.session.user }));
+router.get("/criticsreviews/:id", (req, res) => res.render("reviewDetalhes", { usuario: req.session.user }));
+
 module.exports = router;

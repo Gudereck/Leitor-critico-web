@@ -61,7 +61,17 @@
                 title="Ir para o perfil"
               >
                 <i class="fas fa-user-circle user-icon"></i>
-                <span id="nomeUsuario">Nome do Usuário</span>
+               <span id="nomeUsuario">
+  <% if (usuario) { %>
+    <%= usuario.nome %>
+    (<%= usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
+  <% } else { %>
+    Visitante
+  <% } %>
+</span>
+
+
+
                 <!-- Substitua dinamicamente com JavaScript ou backend -->
               </a>
             </div>
@@ -151,9 +161,15 @@
             title="Ir para o perfil"
           >
             <i class="fas fa-user-circle user-icon"></i>
-            <span id="nomeUsuario">Nome do Usuário</span>
-            <!-- Substitua dinamicamente com JavaScript ou backend -->
-          </a>
+            <span id="nomeUsuario">
+  <% if (usuario) { %>
+    <%= usuario.nome %>
+    (<%= usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
+  <% } else { %>
+    Visitante
+  <% } %>
+</span>
+
         </div>
       </div>
     </nav>
