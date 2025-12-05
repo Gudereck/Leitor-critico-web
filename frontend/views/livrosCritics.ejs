@@ -32,6 +32,28 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
     <!-- CSS -->
     <link rel="stylesheet" href="../style/livrosCritics.css" />
     <link rel="stylesheet" href="../style/hamburgerMenu.css" />
@@ -42,25 +64,23 @@
     <link rel="shortcut icon" href="../img/capacompleta.jpeg" />
   </head>
   <title><%= titulo || 'Carregando...' %></title>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const usuarioData = <%- JSON.stringify(usuario || null) %>;
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const usuarioData = <%- JSON.stringify(usuario || null) %>;
 
-    const form = document.getElementById("formCritico");
-    const usuarioInput = document.getElementById("usuario");
+        const form = document.getElementById("formCritico");
+        const usuarioInput = document.getElementById("usuario");
 
-    if (!form) return;
+        if (!form) return;
 
-    if (usuarioData && usuarioData.cargo === "critico") {
-        form.style.display = "block";
-        if (usuarioInput) usuarioInput.value = usuarioData.nome;
-    } else {
-        form.style.display = "none";
-    }
-});
-</script>
-
-
+        if (usuarioData && usuarioData.cargo === "critico") {
+            form.style.display = "block";
+            if (usuarioInput) usuarioInput.value = usuarioData.nome;
+        } else {
+            form.style.display = "none";
+        }
+    });
+  </script>
 
   <body>
     <!-- TopBar -->
@@ -89,7 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
               title="Ir para o perfil"
             >
               <i class="fas fa-user-circle user-icon"></i>
-              <span id="nomeUsuario"><%= usuario ? usuario.nome : "Visitante" %></span>
+              <span id="nomeUsuario"
+                ><%= usuario ? usuario.nome : "Visitante" %></span
+              >
 
               <!-- Substitua dinamicamente com JavaScript ou backend -->
             </a>
@@ -169,13 +191,10 @@ document.addEventListener("DOMContentLoaded", () => {
           >
             <i class="fas fa-user-circle user-icon"></i>
             <span id="nomeUsuario">
-  <% if (usuario) { %>
-    <%= usuario.nome %>
-    (<%= usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
-  <% } else { %>
-    Visitante
-  <% } %>
-</span>
+              <% if (usuario) { %> <%= usuario.nome %> (<%=
+              usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
+              <% } else { %> Visitante <% } %>
+            </span>
 
             <!-- Substitua dinamicamente com JavaScript ou backend -->
           </a>
@@ -202,78 +221,79 @@ document.addEventListener("DOMContentLoaded", () => {
             <div id="avaliacao">
               <div id="avaliacao-criticos">
                 <span class="texto-avaliacao">AVALIAÇÃO DOS CRÍTICOS</span>
-                <span class="media-avaliacao">?</span>
+                <span class="media-avaliacao"></span>
               </div>
             </div>
           </div>
         </div>
 
-        <div id="container-informacoes">
-          <h1>INFORMAÇÕES</h1>
-          <div class="linha-padrao"></div>
-
-          <p>ANO: <span id="info-ano"><%= ano || 'Carregando...' %></span></p>
-          <p>
-            EDITORA:
-            <span id="info-editora"><%= editora || 'Carregando...' %></span>
-          </p>
+        <div>
+          <div id="container-informacoes">
+            <h1>INFORMAÇÕES</h1>
+            <div class="linha-padrao"></div>
+            <br />
+            <p>ANO: <span id="info-ano"><%= ano || 'Carregando...' %></span></p>
+            <p>
+              EDITORA:
+              <span id="info-editora"><%= editora || 'Carregando...' %></span>
+            </p>
+          </div>
+          <div id="container-detalhes">
+            <h1>DETALHES</h1>
+            <div class="linha-padrao"></div>
+            <br />
+            <span id="detalhes-livro"><%= descricao || 'Carregando...' %></span>
+          </div>
         </div>
       </div>
 
-      <div id="container-detalhes">
-        <h1>DETALHES</h1>
-        <div class="linha-padrao"></div>
-
-        <span id="detalhes-livro"><%= descricao || 'Carregando...' %></span>
-      </div>
-
-      
-
       <div id="containerListaCriticos">
         <section id="listaCriticas">
+          <h1 id="text-avaliacoes">AVALIAÇÕES DOS CRÍTICOS</h1>
+          <div id="linha-text-avaliacoes"></div>
+          <br>
           <div id="criticasContainer"></div>
           <div id="mediaNotas"></div>
         </section>
       </div>
     </section>
-<!-- Comentários (não alterei nada) -->
-      <h1 id="text-avaliacoes">AVALIAÇÕES DOS CRÍTICOS</h1>
-      <div id="linha-text-avaliacoes"></div>
+    <!-- Comentários (não alterei nada) -->
 
-      <div id="container-avaliacoes-criticos">
-        <section id="formCritico" style="display: none">
-          <form id="criticaForm">
-            <input type="hidden" id="usuario" />
-            <label class="textos-orientacao">CRÍTICA:</label>
-            <textarea
-              class="somente-critico"
-              id="texto"
-              maxlength="100"
-              required
-            ></textarea>
-            <small id="contador">0 / 100</small>
 
-            <label>NOTA:</label>
-            <input
-              class="somente-critico"
-              type="number"
-              id="nota"
-              min="0"
-              max="100"
-              required
-            />
+    <div id="container-avaliacoes-criticos" style="display: none">
+      <section id="formCritico">
+        <form id="criticaForm">
+          <input type="hidden" id="usuario" />
+          <label class="textos-orientacao">CRÍTICA:</label>
+          <textarea
+            class="somente-critico"
+            id="texto"
+            maxlength="100"
+            required
+          ></textarea>
+          <small id="contador">0 / 100</small>
 
-            <label>LINK:</label>
-            <input
-              class="somente-critico"
-              type="url"
-              id="link"
-              placeholder="https://exemplo.com"
-            />
-            <button type="submit">ENVIAR</button>
-          </form>
-        </section>
-      </div>
+          <label>NOTA:</label>
+          <input
+            class="somente-critico"
+            type="number"
+            id="nota"
+            min="0"
+            max="100"
+            required
+          />
+
+          <label>LINK:</label>
+          <input
+            class="somente-critico"
+            type="url"
+            id="link"
+            placeholder="https://exemplo.com"
+          />
+          <button type="submit">ENVIAR</button>
+        </form>
+      </section>
+    </div>
     <!-- ID do livro -->
     <script>
       window.LIVRO_ID = "<%= livro_id %>";

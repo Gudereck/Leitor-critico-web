@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!idLivro) return alert("ID do livro não informado.");
 
   // Formulário só para críticos
-  const form = document.getElementById("formCritico");
+  const form = document.getElementById("container-avaliacoes-criticos");
   if (usuario && usuario.cargo === "critico") {
     form.style.display = "block";
   }
@@ -19,7 +19,7 @@ async function carregarMedia(id) {
     const mediaElemento = document.querySelector(".media-avaliacao");
 
     if (!data.media) {
-        mediaElemento.innerText = "?";
+        mediaElemento.innerText = "NR";
         return;
     }
 

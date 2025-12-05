@@ -58,6 +58,17 @@ router.post("/", async (req, res) => {
             [req.session.user.id, id_livro, texto, nota, link_resenha || null]
         );
 
+        const [rows] = await pool.query(`
+        SELECT AVG(nota) AS media 
+        FROM criticas 
+        WHERE id_livro = ?
+    `, [id]);
+
+    await pool.query(
+            `UPDATE livros SET media_avaliacao = ? WHERE id_livro = ?`,
+            [rows[0].media, id_livro]
+        );
+
         res.json({ success:true });
     } catch (err) {
         console.log(err);
