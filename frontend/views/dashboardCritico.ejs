@@ -5,18 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Dashboard para gerenciamento de críticas de livros"
+      content="Dashboard completo para gerenciamento de críticas e estatísticas de leitura do Leitor Crítico"
     />
 
-    <!-- Importando fontes: -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
       rel="stylesheet"
@@ -25,17 +22,31 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <!-- Importando CSS -->
     <link rel="stylesheet" href="../style/index.css" />
+    <link rel="stylesheet" href="../style/dashboardCritico.css" />
     <link rel="shortcut icon" href="../img/capacompleta.jpeg" />
-    <title>Dashboard Do Crítico</title>
+    <title>Dashboard Do Crítico - Leitor Crítico</title>
   </head>
   <body>
-    <!-- TopBar-->
-    <div class="top-bar">
-      <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
+    <header class="top-bar">
+      <h1 class="nome-da-plataforma">LEITOR CRÍTICO</h1>
 
-      <!-- Menu hamburger -->
+      <!-- nav bar para desktop -->
+      <nav class="navbar-desktop">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/editProfile">Editar perfil</a>
+          </li>
+          <li class="nav-item">
+            <a href="" id="dashLogout" class="logoutCadastro">Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- menu hamburger -->
       <div class="menu-hamburger" id="menuHamburger">
         <input type="checkbox" id="menu-toggle" hidden />
         <label for="menu-toggle" class="menu-icon">
@@ -45,68 +56,100 @@
         </label>
         <div class="overlay">
           <nav class="menu">
+            <li><a href="/">Início</a></li>
+            <li><a href="/editProfile">Editar Perfil</a></li>
             <li>
-              <a href="/">Início</a>
-            </li>
-            <li>
-              <a href="/editProfile">Editar Perfil</a>
-            </li>
-            <li>
-              <a
-                style="
-                  background-color: transparent !important;
-                  margin-bottom: 15px;
-                "
-                href=""
-                id="logout-hamburger"
-                class="logoutCadastro"
-                >Logout</a
-              >
+              <a href="" id="logout-hamburger" class="logoutCadastro">Logout</a>
             </li>
           </nav>
         </div>
       </div>
-    </div>
+    </header>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Início</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/editProfile"
-                >Editar perfil</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="" id="dashLogout" class="logoutCadastro">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Seções da página -->
-
-    <section id="home">
+    <main id="dashboard">
       <div class="containerPrincipal">
-        <h2>Dashboard do Crítico</h2>
-        <div class="card">
-          <h3>Seja bem-vindo, Crítico!</h3>
-          <p>Aqui você pode gerenciar suas críticas e avaliações.</p>
+        <h2 id="nomeCritico" class="nomeCriticoClass"></h2>
+
+        <div class="kpi-cards">
+          <div class="card kpi-card">
+            <i class="fas fa-book-open"></i>
+            <h4>Total de Resenhas</h4>
+            <p id="totalResenhas">42</p>
+            <span>Publicadas no site</span>
+          </div>
+
+          <div class="card kpi-card">
+            <i class="fas fa-pen-to-square"></i>
+            <h4>Rascunhos Pendentes</h4>
+            <p id="rascunhosPendentes">3</p>
+            <span>Aguardando finalização</span>
+          </div>
+
+          <div class="card kpi-card">
+            <i class="fas fa-star"></i>
+            <h4>Média de Avaliação</h4>
+            <p id="mediaAvaliacao">4.2</p>
+            <span>Estrelas de 5.0</span>
+          </div>
+
+          <div class="card kpi-card">
+            <i class="fas fa-chart-line"></i>
+            <h4>Próximo Prazo</h4>
+            <p id="proximoPrazo">15/Dez</p>
+            <span>Resenha do livro [Título]</span>
+          </div>
         </div>
 
-        <div class="card" id="MinhasCríticas">
-          <h3>Minhas Críticas</h3>
-          <ul id="lista-criticas">
-            <!-- As críticas serão carregadas aqui via JS -->
-          </ul>
+        <div class="dashboard-grid">
+          <div class="card dashboard-panel card-acao">
+            <h3>Ações Rápidas</h3>
+            <button class="btn-primary">
+              <i class="fas fa-plus-circle"></i> Criar Nova Crítica
+            </button>
+            <button class="btn-secondary">
+              <i class="fas fa-cog"></i> Gerenciar Rascunhos
+            </button>
+            <button class="btn-secondary">
+              <i class="fas fa-chart-bar"></i> Ver Estatísticas Detalhadas
+            </button>
+          </div>
+
+          <div class="card dashboard-panel card-lista">
+            <h3>Minhas Críticas Recentes</h3>
+            <ul id="lista-criticas">
+              <li>
+                <i class="fas fa-circle-dot"></i> [Título do Livro 1] - Rascunho
+                <button type="button" class="badge rascunho">Editar</button>
+              </li>
+              <li>
+                <i class="fas fa-circle-dot"></i> [Título do Livro 2] -
+                Publicado
+                <button type="button" class="badge publicado">Ver</button>
+              </li>
+            </ul>
+            <a href="/todas-as-criticas">Ver todas as críticas</a>
+          </div>
+
+          <div class="card dashboard-panel card-stats">
+            <h3>Estatísticas de Leitura (Ano)</h3>
+            <p class="stat-item">
+              <i class="fas fa-book"></i> Páginas Lidas:
+              <strong id="paginasLidas">12.450</strong>
+            </p>
+            <p class="stat-item">
+              <i class="fas fa-hashtag"></i> Gênero Principal:
+              <strong id="generoPrincipal">Fantasia Épica</strong>
+            </p>
+            <div
+              id="graficoGeneros"
+              style="height: 150px; background-color: #f0f0f0"
+            >
+              [Área para Gráfico de Gêneros]
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </main>
 
     <footer class="footer">
       <div class="container">

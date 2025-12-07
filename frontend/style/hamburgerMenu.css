@@ -9,7 +9,7 @@
     display: block;
     position: relative;
     top: 40px;
-    right: 40px;
+    right: 0px;
     z-index: 4;
 }
 
@@ -34,7 +34,7 @@
 .linha {
     width: 30px;
     height: 4px;
-    background-color: green;
+    background-color: #2b66aa;
     border-radius: 2px;
     transition: 0.3s;
 

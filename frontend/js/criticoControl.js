@@ -62,3 +62,9 @@ if (dashLogout) {
     localStorage.clear();
   });
 }
+
+document.getElementById(
+  "nomeCritico"
+).innerText = `Bem-vindo(a) ao seu Dashboard, ${
+  JSON.parse(localStorage.getItem("usuarioLogado")).nome
+}!`;
