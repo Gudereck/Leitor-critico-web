@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginCadastro = document.getElementById("login-cadastro");
   const logout = document.getElementById("logout");
 
+  // Garante que o usuário so tenha acesso a página "dashboardCritico", caso esteja logado!
+  if (usuario === null && window.location.pathname === "/dashboardCritico") {
+    window.location.href = "/";
+    return;
+  }
+
   if (usuario) {
     loginCadastro.style.display = "none";
     logout.style.display = "inline-block";
@@ -63,8 +69,38 @@ if (dashLogout) {
   });
 }
 
+// Exibe o nome do crítico no dashboard
 document.getElementById(
   "nomeCritico"
 ).innerText = `Bem-vindo(a) ao seu Dashboard, ${
   JSON.parse(localStorage.getItem("usuarioLogado")).nome
 }!`;
+
+// Exibe os KPIs do crítico no dashboard
+document.getElementById("totalResenhas").innerText = `${
+  JSON.parse(localStorage.getItem("usuarioLogado")).totalResenhas || 0
+}`;
+
+document.getElementById("rascunhosPendentes").innerText = `${
+  JSON.parse(localStorage.getItem("usuarioLogado")).rascunhosPendentes || 0
+}`;
+
+document.getElementById("mediaAvaliacao").innerText = `${
+  JSON.parse(localStorage.getItem("usuarioLogado")).mediaAvaliacao || 0
+}`;
+
+// Carrega a lista de críticas do crítico no dashboard
+const listaCriticas = document.getElementById("lista-criticas");
+const criticas =
+  JSON.parse(localStorage.getItem("usuarioLogado")).criticas || [];
+criticas.forEach((critica) => {
+  const li = document.createElement("li");
+  li.innerHTML = `<i class="fas fa-circle-dot"></i> [${critica.titulo}] - ${
+    critica.status
+  } ${
+    critica.status === "Rascunho"
+      ? `<button type="button" class="badge rascunho">Editar</button>`
+      : `<button type="button" class="badge publicado">Ver</button>`
+  }`;
+  listaCriticas.appendChild(li);
+});

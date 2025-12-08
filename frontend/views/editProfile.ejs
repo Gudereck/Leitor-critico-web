@@ -1,68 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <link rel="stylesheet" href="../style/editProfileStyle.css" />
+        <link rel="stylesheet" href="../style/import.css" />
+        <title>Perfil</title>
+    </head>
+    <body>
+        <section class="form-section">
+            <h1>Editar Perfil</h1>
+            <form id="editProfileForm"> 
+                <div>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required />
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+                <div>
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" placeholder="Deixe vazio para manter a senha atual" />
+                </div>
+            </form>
 
-    <!-- Importando fontes: -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- importando CSS -->
-    <link rel="stylesheet" href="../style/editProfileStyle.css" />
-    <link rel="stylesheet" href="../style/import.css" />
-    <title>Perfil</title>
-  </head>
-  <body>
-    <section class="form-section">
-      <h1>Editar Perfil</h1>
-      <form action="/updateProfile" method="POST">
-        <div>
-          <label for="name">Nome:</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div>
-          <label for="password">Senha:</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-      </form>
+            <div class="buttons">
+                <button type="button" id="buttonSalvar">Salvar</button> 
+                
+                <button type="button" onclick="deletarConta()" id="buttonExcluir">
+                    Excluir Conta
+                </button>
+                <button type="button" id="logout" class="buttonSair">Sair</button>
+                <button type="button" id="buttonVoltar" onclick="voltarCritico()">
+                    Voltar
+                </button>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 Leitor Crítico</p>
+            </div>
+        </footer>
 
-      <div class="buttons">
-        <button type="submit" id="buttonSalvar">Salvar</button>
-        <button type="submit" onclick="deletarConta()" id="buttonExcluir">
-          Excluir Conta
-        </button>
-        <button type="button" id="logout" class="buttonSair">Sair</button>
-        <button type="button" id="buttonVoltar" onclick="voltarCritico()">
-          Voltar
-        </button>
-      </div>
-    </section>
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 Leitor Crítico</p>
-      </div>
-    </footer>
-
-    <script src="../js/editProfile.js"></script>
-    <script src="../js/criticoControl.js"></script>
-    <script src="../js/loginLogoutHamb.js"></script>
-  </body>
+        <script src="../js/editProfile.js"></script>
+        <script src="../js/criticoControl.js"></script>
+        <script src="../js/loginLogoutHamb.js"></script>
+    </body>
 </html>

@@ -9,6 +9,7 @@ const loginRoutes = require("./routes/routeLogin");
 const adminRoutes = require("./routes/routeAdmin");
 const routerLivros = require("./routes/routerLivros");
 const criticasRoutes = require("./routes/criticasRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.use(
     secret: "chave_segura_local",
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }
+    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 },
   })
 );
 
@@ -43,6 +44,6 @@ app.use("/api/login", loginRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/livros", routerLivros);
 app.use("/api/criticas", criticasRoutes);
-
+app.use("/api/perfil", profileRoutes);
 
 module.exports = app;

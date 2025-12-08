@@ -202,20 +202,19 @@ a {
 }
 
 @media (max-width: 990px) {
+
     .user-profile,
     .navbar {
         display: none;
     }
-      #melhoresAvaliados::after{
+
+    #melhoresAvaliados::after {
         display: none;
     }
-    #melhoresAvaliados{
+
+    #melhoresAvaliados {
         margin-left: 10px;
         font-size: 15px;
-        
-    }
-}
 
-@media (max-width: 990px){
-  
+    }
 }
