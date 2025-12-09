@@ -1,33 +1,26 @@
-async function carregarPopulares() {
+const cacheCategoria = require('../utils/cacheCategoria');
+const categorias = require('../data/categorias');
+
+exports.populares = async (req, res) => {
   try {
-    const res = await fetch("/api/livros/populares");
-    const livros = await res.json();
-
-    const containers = document.querySelectorAll(".imgContainer");
-
-    livros.forEach((livro, i) => {
-      if (!containers[i]) return;
-
-      const c = containers[i];
-
-      // Imagem
-      c.querySelector("img").src = livro.link_imagem || "/img/placeholder.png";
-
-      // Título
-      c.querySelector(".h1Livros").textContent = livro.titulo;
-
-      // Autor
-      c.querySelector(".nomeAutor").textContent =
-        livro.autores || livro.categoria_principal || "Autor não disponível";
-
-      // Links
-      c.querySelectorAll("a").forEach((link) => {
-        link.href = `/livros?id=${livro.id_livro}`;
-      });
+    const livros = await cacheCategoria('populares', categorias.populares);
+    
+    const livrosPorPagina = 10;
+    const paginaAtual = parseInt(req.query.pagina) || 1;
+    const inicio = (paginaAtual - 1) * livrosPorPagina;
+    const fim = inicio + livrosPorPagina;
+    
+    const livrosPaginados = livros.slice(inicio, fim);
+    const totalPaginas = Math.ceil(livros.length / livrosPorPagina);
+    
+    res.render('populares', {
+      livros: livrosPaginados,
+      paginaAtual,
+      totalPaginas,
+      usuario: req.user || null
     });
   } catch (err) {
-    console.error("Erro ao carregar Populares:", err);
+    console.error(err);
+    res.status(500).render('erro', { mensagem: 'Erro ao carregar populares' });
   }
-}
-
-document.addEventListener("DOMContentLoaded", carregarPopulares);
+};

@@ -2,21 +2,97 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../database/db");
 
-// Todas as páginas agora recebem usuario da sessão automaticamente
+// ✅ MUDE ISSO PARA O TOPO
+const cacheCategoria = require("../utils/cacheCategoria");
+const categorias = require("../data/categorias");
 
 // Página inicial
 router.get("/", (req, res) => res.render("index", { usuario: req.session.user }));
 
 // Populares
-router.get("/populares", (req, res) => res.render("populares", { usuario: req.session.user }));
+router.get("/populares", async (req, res) => {
+  try {
+    const livros = await cacheCategoria("populares", categorias.populares);
+    
+    const livrosPorPagina = 10;
+    const paginaAtual = parseInt(req.query.pagina) || 1;
+    const inicio = (paginaAtual - 1) * livrosPorPagina;
+    const fim = inicio + livrosPorPagina;
+    
+    const livrosPaginados = livros.slice(inicio, fim);
+    const totalPaginas = Math.ceil(livros.length / livrosPorPagina);
+    
+    console.log(`Populares: ${livros.length} livros encontrados`);
+    
+    res.render("populares", {
+      livros: livrosPaginados,
+      paginaAtual,
+      totalPaginas,
+      usuario: req.session.user
+    });
+  } catch (err) {
+    console.error("ERRO:", err.message);
+    res.status(500).send("Erro ao carregar populares");
+  }
+});
 
-// Classicos da Literatura Brasileira
-router.get("/classicosdaliteraturabrasileira", (req, res) =>
-  res.render("classicos", { usuario: req.session.user })
-);
+// Clássicos
+router.get("/classicosdaliteraturabrasileira", async (req, res) => {
+  try {
+    const livros = await cacheCategoria("classicos", categorias.classicos);
+    
+    const livrosPorPagina = 10;
+    const paginaAtual = parseInt(req.query.pagina) || 1;
+    const inicio = (paginaAtual - 1) * livrosPorPagina;
+    const fim = inicio + livrosPorPagina;
+    
+    const livrosPaginados = livros.slice(inicio, fim);
+    const totalPaginas = Math.ceil(livros.length / livrosPorPagina);
+    
+    console.log(`Clássicos: ${livros.length} livros encontrados`);
+    
+    res.render("classicos", {
+      livros: livrosPaginados,
+      paginaAtual,
+      totalPaginas,
+      usuario: req.session.user
+    });
+  } catch (err) {
+    console.error("ERRO:", err.message);
+    res.status(500).send("Erro ao carregar clássicos");
+  }
+});
 
-// Populares em 2024
-router.get("/popularesem2024", (req, res) => res.render("populares2024", { usuario: req.session.user }));
+// Populares 2024
+router.get("/popularesem2024", async (req, res) => {
+  try {
+    const livros = await cacheCategoria("populares2024", categorias.populares2024);
+    
+    const livrosPorPagina = 10;
+    const paginaAtual = parseInt(req.query.pagina) || 1;
+    const inicio = (paginaAtual - 1) * livrosPorPagina;
+    const fim = inicio + livrosPorPagina;
+    
+    const livrosPaginados = livros.slice(inicio, fim);
+    const totalPaginas = Math.ceil(livros.length / livrosPorPagina);
+    
+    console.log(`Populares 2024: ${livros.length} livros encontrados`);
+    
+    res.render("populares2024", {
+      livros: livrosPaginados,
+      paginaAtual,
+      totalPaginas,
+      usuario: req.session.user
+    });
+  } catch (err) {
+    console.error("ERRO:", err.message);
+    res.status(500).send("Erro ao carregar populares 2024");
+  }
+});
+
+// ... resto do código ...
+
+
 
 // Login
 router.get("/login", (req, res) => res.render("login", { usuario: req.session.user }));
@@ -62,7 +138,7 @@ router.get("/livros", async (req, res) => {
     const livro = rows[0];
 
     res.render("livrosCritics", {
-      usuario: req.session.user, // 🔥 Agora o EJS recebe usuário também
+      usuario: req.session.user,
       livro_id: livro.id_livro,
       titulo: livro.titulo,
       autor: livro.autores,

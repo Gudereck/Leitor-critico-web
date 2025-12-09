@@ -260,8 +260,8 @@
     <!-- Comentários (não alterei nada) -->
 
 
-    <div id="container-avaliacoes-criticos" style="display: none">
-      <section id="formCritico">
+    <div id="container-avaliacoes-criticos">
+      <section id="formCritico" style="display: none;">
         <form id="criticaForm">
           <input type="hidden" id="usuario" />
           <label class="textos-orientacao">CRÍTICA:</label>
@@ -304,9 +304,14 @@
     </footer>
     <!-- Scripts -->
     <script src="../js/livroCarregar.js"></script>
-    <script src="../js/livrosCritics.js"></script>
+    <script>
+  window.LIVRO_ID = <%= livro_id %>;
+  window.USUARIO = <%- JSON.stringify(usuario || null) %>;
+</script>
+<script src="/js/livrosCritics.js"></script>
+<script src="../js/criticoControl.js"></script>
+<script src="../js/loginLogoutHamb.js"></script>
 
-    <script src="../js/criticoControl.js"></script>
-    <script src="../js/loginLogoutHamb.js"></script>
+    
   </body>
 </html>

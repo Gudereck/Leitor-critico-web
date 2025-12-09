@@ -13,19 +13,26 @@ async function preencherLivrosBackend() {
       container.querySelector("img.imgLivros").src = livro.link_imagem;
       container.querySelector(".h1Livros").textContent = livro.titulo;
       container.querySelector(".nomeAutor").textContent = livro.autor;
-      container.querySelector(".notaCriticaContainer").textContent = livro.media_avaliacao || "NR";
-const media = Number(livro.media_avaliacao);
-const notaEl = container.querySelector(".notaCriticaContainer");
+  const notaEl = container.querySelector(".notaCriticaContainer");
 
-if (!livro.media_avaliacao) {
-   // branco
-} else if (media > 69) {
-  notaEl.style.color = "#3CCF4E"; // verde elegante
-} else if (media > 59 && media <= 69) {
-  notaEl.style.color = "#FFD93D"; // amarelo suave
-} else if (media <= 59) {
-  notaEl.style.color = "#FF4E4E"; // vermelho moderno
+// se vier null/undefined, mostra "NR"
+if (livro.media_criticos == null) {
+  notaEl.textContent = "NR";
+  notaEl.style.color = ""; // opcional: reseta cor
+} else {
+  const media = Number(livro.media_criticos);
+  notaEl.textContent = media.toFixed(1);
+
+  if (media > 69) {
+    notaEl.style.color = "#3CCF4E";
+  } else if (media > 59 && media <= 69) {
+    notaEl.style.color = "#FFD93D";
+  } else {
+    notaEl.style.color = "#FF4E4E";
+  }
 }
+
+
       const links = container.querySelectorAll("a");
       links.forEach((link) => {
         link.href = `/livros?id=${livro.id_livro}`;

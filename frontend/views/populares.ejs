@@ -62,8 +62,6 @@
               >
                 <i class="fas fa-user-circle user-icon"></i>
                 <span id="nomeUsuario"><%= usuario ? usuario.nome : "Visitante" %></span>
-
-                <!-- Substitua dinamicamente com JavaScript ou backend -->
               </a>
             </div>
             <li>
@@ -104,8 +102,8 @@
         </div>
       </div>
     </div>
-    <!-- Navbar -->
 
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -122,7 +120,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href="classicosdaliteraturabrasileira"
+                href="/classicosdaliteraturabrasileira"
                 >Clássicos da Literatura Brasileira</a
               >
             </li>
@@ -154,173 +152,85 @@
           >
             <i class="fas fa-user-circle user-icon"></i>
             <span id="nomeUsuario">
-  <% if (usuario) { %>
-    <%= usuario.nome %>
-    (<%= usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
-  <% } else { %>
-    Visitante
-  <% } %>
-</span>
-
-            <!-- Substitua dinamicamente com JavaScript ou backend -->
+              <% if (usuario) { %>
+                <%= usuario.nome %>
+                (<%= usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
+              <% } else { %>
+                Visitante
+              <% } %>
+            </span>
           </a>
         </div>
       </div>
     </nav>
 
     <!-- Seções da página -->
-
     <section id="home">
       <div id="containerPrincipal">
         <div id="todasAsImagens">
           <h2 id="melhoresAvaliados">POPULARES</h2>
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
+          
+          <% livros.forEach((livro) => { %>
+            <div class="imgContainer">
+              <a href="/livros?id=<%= livro.id_livro %>">
+                <img src="<%= livro.link_imagem %>" alt="<%= livro.titulo %>" class="imgpopular" />
+              </a>
+              <div class="nomeLivroEAutor">
+                <a href="/livros?id=<%= livro.id_livro %>">
+                  <h1 class="h1Livros"><%= livro.titulo %></h1>
+                </a>
+                <p class="nomeAutor"><%= livro.autor %></p>
               </div>
-            </a>
-          </div>
+              <a href="/livros?id=<%= livro.id_livro %>">
+                <div class="containerAvaliacaoDosCriticos">
+                  <% 
+                    let classCor = '';
+                    let notaTexto = 'NR';
+                    
+                    if (livro.media_criticos != null) {
+                      const media = parseFloat(livro.media_criticos);
+                      notaTexto = media.toFixed(1);
+                      
+                      if (media >= 70) {
+                        classCor = 'verde';
+                      } else if (media >= 50) {
+                        classCor = 'amarelo';
+                      } else {
+                        classCor = 'vermelho';
+                      }
+                    }
+                  %>
+                  <span class="notaCriticaContainer <%= classCor %>"><%= notaTexto %></span>
+                  <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
+                </div>
+              </a>
+            </div>
+          <% }); %>
+        </div>
 
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgpopular" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
+        <!-- Paginação -->
+        <div class="paginacao">
+          <% if (paginaAtual > 1) { %>
+            <a href="/populares?pagina=<%= paginaAtual - 1 %>" class="btn-paginacao">← Anterior</a>
+          <% } %>
+          
+          <span class="info-paginacao">
+            Página <%= paginaAtual %> de <%= totalPaginas %>
+          </span>
+          
+          <% if (paginaAtual < totalPaginas) { %>
+            <a href="/populares?pagina=<%= paginaAtual + 1 %>" class="btn-paginacao">Próxima →</a>
+          <% } %>
         </div>
       </div>
     </section>
+
     <footer class="footer">
       <div class="container">
         <p>&copy; 2025 Leitor Crítico</p>
       </div>
     </footer>
+
     <script src="../js/comments.js"></script>
     <script src="../js/populares.js"></script>
     <script src="../js/criticoControl.js"></script>

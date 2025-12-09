@@ -34,26 +34,31 @@ const livrosFixos = [
 exports.buscarOuPopularLivros = async (req, res) => {
   try {
     const conn = await pool.getConnection();
+const [rows] = await conn.query(`
+  SELECT 
+    l.id_livro,
+    l.titulo,
+    GROUP_CONCAT(DISTINCT a.nome SEPARATOR ', ') AS autor,
+    l.data_publicacao,
+    l.editora,
+    l.media_avaliacao,
+    l.descricao,
+    l.link_imagem,
+    l.idioma,
+    l.numero_paginas,
+    l.categoria_principal,
+    ANY_VALUE(i.isbn_10) AS isbn_10,
+    ANY_VALUE(i.isbn_13) AS isbn_13,
+    AVG(c.nota) AS media_criticos
+  FROM livros l
+  LEFT JOIN livros_autores la ON la.id_livro = l.id_livro
+  LEFT JOIN autores a ON a.id_autor = la.id_autor
+  LEFT JOIN isbns i ON i.id_livro = l.id_livro
+  LEFT JOIN criticas c ON c.id_livro = l.id_livro
+  GROUP BY l.id_livro
+  LIMIT 12
+`);
 
-    const [rows] = await conn.query(`SELECT 
-          l.id_livro,
-          l.titulo,
-          GROUP_CONCAT(a.nome SEPARATOR ', ') AS autor,
-          l.data_publicacao,
-          l.editora,
-          l.media_avaliacao,
-          l.descricao,
-          l.link_imagem,
-          l.idioma,
-          l.numero_paginas,
-          l.categoria_principal,
-          ANY_VALUE(i.isbn_10) AS isbn_10,
-          ANY_VALUE(i.isbn_13) AS isbn_13
-       FROM livros l
-       LEFT JOIN livros_autores la ON la.id_livro = l.id_livro
-       LEFT JOIN autores a ON a.id_autor = la.id_autor
-       LEFT JOIN isbns i ON i.id_livro = l.id_livro
-       GROUP BY l.id_livro LIMIT 12`);
 
     // Se já tem livros → retorna
     if (rows.length > 0) {
@@ -142,8 +147,31 @@ exports.buscarOuPopularLivros = async (req, res) => {
 
     conn.release();
 
-    const [finalLivros] = await pool.query("SELECT * FROM livros LIMIT 12");
-    return res.json(finalLivros);
+    const [finalLivros] = await pool.query(`
+  SELECT 
+    l.id_livro,
+    l.titulo,
+    GROUP_CONCAT(a.nome SEPARATOR ', ') AS autor,
+    l.data_publicacao,
+    l.editora,
+    l.media_avaliacao,
+    l.descricao,
+    l.link_imagem,
+    l.idioma,
+    l.numero_paginas,
+    l.categoria_principal,
+    ANY_VALUE(i.isbn_10) AS isbn_10,
+    ANY_VALUE(i.isbn_13) AS isbn_13,
+    AVG(c.nota) AS media_criticos
+  FROM livros l
+  LEFT JOIN livros_autores la ON la.id_livro = l.id_livro
+  LEFT JOIN autores a ON a.id_autor = la.id_autor
+  LEFT JOIN isbns i ON i.id_livro = l.id_livro
+  LEFT JOIN criticas c ON c.id_livro = l.id_livro
+  GROUP BY l.id_livro
+  LIMIT 12
+`);
+return res.json(finalLivros);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ erro: "Erro ao buscar ou salvar livros" });
