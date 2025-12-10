@@ -174,13 +174,13 @@
           <% livros.forEach((livro) => { %>
             <div class="imgContainer">
               <a href="/livros?id=<%= livro.id_livro %>">
-                <img src="<%= livro.link_imagem %>" alt="<%= livro.titulo %>" class="img2024" />
+                <img src="<%= livro.link_imagem %>" alt="<%= livro.titulo %>" class="imgpopular" />
               </a>
               <div class="nomeLivroEAutor">
                 <a href="/livros?id=<%= livro.id_livro %>">
                   <h1 class="h1Livros"><%= livro.titulo %></h1>
                 </a>
-                <p class="nomeAutor"><%= livro.autor %></p>
+                <p class="nomeAutor"><%= livro.autores || livro.autor %></p>
               </div>
               <a href="/livros?id=<%= livro.id_livro %>">
                 <div class="containerAvaliacaoDosCriticos">
@@ -207,6 +207,7 @@
               </a>
             </div>
           <% }); %>
+
         </div>
 
         <!-- Paginação -->

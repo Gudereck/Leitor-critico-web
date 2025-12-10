@@ -2,12 +2,14 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../database/db");
 
-// ✅ MUDE ISSO PARA O TOPO
 const cacheCategoria = require("../utils/cacheCategoria");
 const categorias = require("../data/categorias");
 
 // Página inicial
-router.get("/", (req, res) => res.render("index", { usuario: req.session.user }));
+const livrosController = require("../controllers/livrosController");
+
+// Página inicial
+router.get("/", livrosController.homeTopDez);
 
 // Populares
 router.get("/populares", async (req, res) => {
@@ -22,7 +24,14 @@ router.get("/populares", async (req, res) => {
     const livrosPaginados = livros.slice(inicio, fim);
     const totalPaginas = Math.ceil(livros.length / livrosPorPagina);
     
-    console.log(`Populares: ${livros.length} livros encontrados`);
+    // 🔍 DEBUG
+    console.log(`========== POPULARES ==========`);
+    console.log(`Total de livros: ${livros.length}`);
+    console.log(`Página atual: ${paginaAtual}`);
+    console.log(`Início: ${inicio}, Fim: ${fim}`);
+    console.log(`Livros nesta página: ${livrosPaginados.length}`);
+    console.log(`Primeiros 3 títulos:`, livrosPaginados.slice(0, 3).map(l => l.titulo));
+    console.log(`==============================\n`);
     
     res.render("populares", {
       livros: livrosPaginados,
@@ -48,9 +57,13 @@ router.get("/classicosdaliteraturabrasileira", async (req, res) => {
     
     const livrosPaginados = livros.slice(inicio, fim);
     const totalPaginas = Math.ceil(livros.length / livrosPorPagina);
-    
-    console.log(`Clássicos: ${livros.length} livros encontrados`);
-    
+    console.log(
+  "CLÁSSICOS PÁGINA",
+  paginaAtual,
+  livrosPaginados.map(l => ({ id: l.id_livro, titulo: l.titulo, autores: l.autores }))
+);
+
+
     res.render("classicos", {
       livros: livrosPaginados,
       paginaAtual,
@@ -76,7 +89,14 @@ router.get("/popularesem2024", async (req, res) => {
     const livrosPaginados = livros.slice(inicio, fim);
     const totalPaginas = Math.ceil(livros.length / livrosPorPagina);
     
-    console.log(`Populares 2024: ${livros.length} livros encontrados`);
+    // 🔍 DEBUG
+    console.log(`========== POPULARES 2024 ==========`);
+    console.log(`Total de livros: ${livros.length}`);
+    console.log(`Página atual: ${paginaAtual}`);
+    console.log(`Início: ${inicio}, Fim: ${fim}`);
+    console.log(`Livros nesta página: ${livrosPaginados.length}`);
+    console.log(`Primeiros 3 títulos:`, livrosPaginados.slice(0, 3).map(l => l.titulo));
+    console.log(`==============================\n`);
     
     res.render("populares2024", {
       livros: livrosPaginados,
@@ -89,10 +109,6 @@ router.get("/popularesem2024", async (req, res) => {
     res.status(500).send("Erro ao carregar populares 2024");
   }
 });
-
-// ... resto do código ...
-
-
 
 // Login
 router.get("/login", (req, res) => res.render("login", { usuario: req.session.user }));

@@ -61,16 +61,11 @@
                 title="Ir para o perfil"
               >
                 <i class="fas fa-user-circle user-icon"></i>
-               <span id="nomeUsuario">
-  <% if (usuario) { %>
-    <%= usuario.nome %>
-    (<%= usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
-  <% } else { %>
-    Visitante
-  <% } %>
-</span>
-
-
+                <span id="nomeUsuario">
+                  <% if (usuario) { %> <%= usuario.nome %> (<%=
+                  usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1)
+                  %>) <% } else { %> Visitante <% } %>
+                </span>
 
                 <!-- Substitua dinamicamente com JavaScript ou backend -->
               </a>
@@ -162,176 +157,71 @@
           >
             <i class="fas fa-user-circle user-icon"></i>
             <span id="nomeUsuario">
-  <% if (usuario) { %>
-    <%= usuario.nome %>
-    (<%= usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
-  <% } else { %>
-    Visitante
-  <% } %>
-</span>
+              <% if (usuario) { %> <%= usuario.nome %> (<%=
+              usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1) %>)
+              <% } else { %> Visitante <% } %>
+            </span>
           </a>
         </div>
       </div>
     </nav>
 
     <!-- Seções da página -->
-
     <section id="home">
       <div id="containerPrincipal">
+        <h2 id="melhoresAvaliados">MELHORES AVALIADOS</h2>
+
         <div id="todasAsImagens">
-          <h2 id="melhoresAvaliados">MELHORES AVALIADOS</h2>
-
+          <% livros.forEach((livro) => { %>
           <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
+            <a href="/livros?id=<%= livro.id_livro %>">
+              <img
+                src="<%= livro.link_imagem %>"
+                alt="<%= livro.titulo %>"
+                class="imgLivros"
+              />
+            </a>
+
             <div class="nomeLivroEAutor">
-              <a href="/livros">
-                <h1 class="h1Livros">Nome do livro</h1>
+              <a href="/livros?id=<%= livro.id_livro %>">
+                <h1 class="h1Livros"><%= livro.titulo %></h1>
               </a>
-              <p class="nomeAutor">Nome do autor</p>
+              <p class="nomeAutor">
+                <%= livro.autores || "Autor não informado" %>
+              </p>
             </div>
-            <a href="/criticsreviews">
-              <div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
 
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
+           <a href="/livros?id=<%= livro.id_livro %>">
+  <div class="containerAvaliacaoDosCriticos">
+    <% 
+      let classCor = "";
+      let notaTexto = "NR";
+      if (livro.media_criticos != null) {
+        const media = Number(livro.media_criticos);
+        notaTexto = media.toFixed(1);
+        if (media >= 70) classCor = "verde";
+        else if (media >= 50) classCor = "amarelo";
+        else classCor = "vermelho";
+      }
+    %>
+    <span class="notaCriticaContainer <%= classCor %>"><%= notaTexto %></span>
+    <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
+  </div>
+</a>
 
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
           </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="imgContainer">
-            <a href="/livros"><img src="" alt="" class="imgLivros" /> </a>
-            <div class="nomeLivroEAutor">
-              <a href="/livros"><h1 class="h1Livros">Nome do livro</h1></a>
-              <p class="nomeAutor">Nome do autor</p>
-            </div>
-            <a href="/criticsreviews"
-              ><div class="containerAvaliacaoDosCriticos">
-                <span class="notaCriticaContainer">?</span>
-                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-              </div>
-            </a>
-          </div>
+          <% }); %>
         </div>
       </div>
     </section>
+
     <footer class="footer">
       <div class="container">
         <p>&copy; 2025 Leitor Crítico</p>
       </div>
     </footer>
     <script src="../js/comments.js"></script>
-    <script src="../js/livros.js"></script>
+    <!-- <script src="../js/livros.js"></script> -->
     <script src="../js/criticoControl.js"></script>
     <script src="../js/loginLogoutHamb.js"></script>
   </body>

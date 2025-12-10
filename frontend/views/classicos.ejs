@@ -3,6 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
+
     <!-- BootStrap-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
@@ -15,6 +16,7 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+
     <!-- Importando fontes: -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,9 +34,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+
     <!-- CSS -->
     <link rel="stylesheet" href="../style/index.css" />
     <link rel="shortcut icon" href="../img/capacompleta.jpeg" />
+
     <!-- Titulo Pagina Principal -->
     <title>Leitor Crítico - Clássicos da Literatura Brasileira</title>
   </head>
@@ -64,20 +68,14 @@
                 <span id="nomeUsuario"><%= usuario ? usuario.nome : "Visitante" %></span>
               </a>
             </div>
+            <li><a href="/">Início</a></li>
+            <li><a href="/populares">Populares</a></li>
             <li>
-              <a href="/">Início</a>
+              <a href="/classicosdaliteraturabrasileira">
+                Clássicos da Literatura Brasileira
+              </a>
             </li>
-            <li>
-              <a href="/populares">Populares</a>
-            </li>
-            <li>
-              <a href="/classicosdaliteraturabrasileira"
-                >Clássicos da Literatura Brasileira</a
-              >
-            </li>
-            <li>
-              <a href="/popularesem2024">Os Mais Populares em 2024</a>
-            </li>
+            <li><a href="/popularesem2024">Os Mais Populares em 2024</a></li>
             <li>
               <a
                 style="background-color: transparent !important"
@@ -88,10 +86,7 @@
                 >Login/Cadastro</a
               >
               <a
-                style="
-                  background-color: transparent !important;
-                  margin-bottom: 15px;
-                "
+                style="background-color: transparent !important; margin-bottom: 15px;"
                 href=""
                 id="logout-hamburger"
                 class="logoutCadastro"
@@ -169,57 +164,67 @@
       <div id="containerPrincipal">
         <div id="todasAsImagens">
           <h2 id="melhoresAvaliados">CLÁSSICOS DA LITERATURA BRASILEIRA</h2>
+
+    <% livros.forEach((livro) => { %>
+  <div class="imgContainer">
+    <a href="/livros?id=<%= livro.id_livro %>">
+      <img src="<%= livro.link_imagem %>" alt="<%= livro.titulo %>" class="imgpopular" />
+    </a>
+
+    <div class="nomeLivroEAutor">
+      <a href="/livros?id=<%= livro.id_livro %>">
+        <h1 class="h1Livros"><%= livro.titulo %></h1>
+      </a>
+      <p class="nomeAutor"> <%= livro.autores || "Autor não cadastrado" %></p>
+    </div>
+
+    <a href="/livros?id=<%= livro.id_livro %>">
+      <div class="containerAvaliacaoDosCriticos">
+        <% 
+          let classCor = '';
+          let notaTexto = 'NR';
           
-          <% livros.forEach((livro) => { %>
-            <div class="imgContainer">
-              <a href="/livros?id=<%= livro.id_livro %>">
-                <img src="<%= livro.link_imagem %>" alt="<%= livro.titulo %>" class="imgBr" />
-              </a>
-              <div class="nomeLivroEAutor">
-                <a href="/livros?id=<%= livro.id_livro %>">
-                  <h1 class="h1Livros"><%= livro.titulo %></h1>
-                </a>
-                <p class="nomeAutor"><%= livro.autor %></p>
-              </div>
-              <a href="/livros?id=<%= livro.id_livro %>">
-                <div class="containerAvaliacaoDosCriticos">
-                  <% 
-                    let classCor = '';
-                    let notaTexto = 'NR';
-                    
-                    if (livro.media_criticos != null) {
-                      const media = parseFloat(livro.media_criticos);
-                      notaTexto = media.toFixed(1);
-                      
-                      if (media >= 70) {
-                        classCor = 'verde';
-                      } else if (media >= 50) {
-                        classCor = 'amarelo';
-                      } else {
-                        classCor = 'vermelho';
-                      }
-                    }
-                  %>
-                  <span class="notaCriticaContainer <%= classCor %>"><%= notaTexto %></span>
-                  <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-                </div>
-              </a>
-            </div>
-          <% }); %>
+          if (livro.media_criticos != null) {
+            const media = parseFloat(livro.media_criticos);
+            notaTexto = media.toFixed(1);
+            
+            if (media >= 70) {
+              classCor = 'verde';
+            } else if (media >= 50) {
+              classCor = 'amarelo';
+            } else {
+              classCor = 'vermelho';
+            }
+          }
+        %>
+        <span class="notaCriticaContainer <%= classCor %>"><%= notaTexto %></span>
+        <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
+      </div>
+    </a>
+  </div>
+<% }); %>
         </div>
 
         <!-- Paginação -->
         <div class="paginacao">
           <% if (paginaAtual > 1) { %>
-            <a href="/classicosdaliteraturabrasileira?pagina=<%= paginaAtual - 1 %>" class="btn-paginacao">← Anterior</a>
+            <a
+              href="/classicosdaliteraturabrasileira?pagina=<%= paginaAtual - 1 %>"
+              class="btn-paginacao"
+              >← Anterior</a
+            >
           <% } %>
-          
+
           <span class="info-paginacao">
             Página <%= paginaAtual %> de <%= totalPaginas %>
           </span>
-          
+
           <% if (paginaAtual < totalPaginas) { %>
-            <a href="/classicosdaliteraturabrasileira?pagina=<%= paginaAtual + 1 %>" class="btn-paginacao">Próxima →</a>
+            <a
+              href="/classicosdaliteraturabrasileira?pagina=<%= paginaAtual + 1 %>"
+              class="btn-paginacao"
+              >Próxima →</a
+            >
           <% } %>
         </div>
       </div>
@@ -232,7 +237,7 @@
     </footer>
 
     <script src="../js/comments.js"></script>
-    <script src="../js/classicos.js"></script>
+    <!-- <script src="../js/classicos.js"></script> -->
     <script src="../js/criticoControl.js"></script>
     <script src="../js/loginLogoutHamb.js"></script>
   </body>

@@ -32,39 +32,39 @@ module.exports = {
     { titulo: "O Palácio da Meia-Noite", autor: "Carlos Ruiz Zafón" }
   ],
 
-populares2024: [
-  { titulo: "Café com Deus Pai 2024: Porções Diárias de Paz", autor: "Júnior Rostirola" },
-  { titulo: "A Biblioteca da Meia-Noite", autor: "Matt Haig" },
-  { titulo: "É Assim que Acaba: 1", autor: "Colleen Hoover" },
-  { titulo: "É Assim que Começa", autor: "Colleen Hoover" },
-  { titulo: "O Homem Mais Rico da Babilônia", autor: "George S. Clason" },
-  { titulo: "Tudo é Rio", autor: "Carla Madeira" },
-  { titulo: "A Psicologia Financeira: Lições Atemporais sobre Fortuna, Ganância e Felicidade", autor: "Morgan Housel" },
-  { titulo: "Verity", autor: "Colleen Hoover" },
-  { titulo: "Perigoso!", autor: "Tim Warnes" },
-  { titulo: "Como Fazer Amigos e Influenciar Pessoas", autor: "Dale Carnegie" },
-  { titulo: "Hábitos Atômicos: Um Método Fácil e Comprovado de Criar Bons Hábitos", autor: "James Clear" },
-  { titulo: "Os Segredos da Mente Milionária", autor: "T. Harv Eker" },
-  { titulo: "O Livro que Você Gostaria que Seus Pais Tivessem Lido", autor: "Philippa Perry" },
-  { titulo: "Nada Pode Me Ferir", autor: "David Goggins" },
-  { titulo: "Forte: Devocionais para Uma Vida Poderosa e Apaixonada", autor: "Lisa Bevere" },
-  { titulo: "A Empregada: Bem-vinda à Família", autor: "Freida McFadden" },
-  { titulo: "O Pequeno Príncipe - Edição de Luxo Almofadada", autor: "Antoine de Saint-Exupéry" },
-  { titulo: "O Deus que Destrói Sonhos", autor: "Rodrigo Bibo" },
-  { titulo: "A Paciente Silenciosa", autor: "Alex Michaelides" },
-  { titulo: "A Hora da Estrela: Edição Comemorativa", autor: "Clarice Lispector" },
-  { titulo: "Mais Esperto que o Diabo: O Mistério Revelado da Liberdade e do Sucesso", autor: "Napoleon Hill" },
-  { titulo: "A Coragem de Ser Imperfeito", autor: "Bruno Perini" },
-  { titulo: "Imperfeitos", autor: "Christina Lauren" },
-  { titulo: "Essencialismo: A Disciplinada Busca por Menos", autor: "Greg McKeown" },
-  { titulo: "Os Sete Maridos de Evelyn Hugo", autor: "Taylor Jenkins Reid" }
-],
+  populares2024: [
+    { titulo: "Café com Deus Pai 2024: Porções Diárias de Paz", autor: "Júnior Rostirola" },
+    { titulo: "A Biblioteca da Meia-Noite", autor: "Matt Haig" },
+    { titulo: "É Assim que Acaba: 1", autor: "Colleen Hoover" },
+    { titulo: "É Assim que Começa", autor: "Colleen Hoover" },
+    { titulo: "O Homem Mais Rico da Babilônia", autor: "George S. Clason" },
+    { titulo: "Tudo é Rio", autor: "Carla Madeira" },
+    { titulo: "A Psicologia Financeira: Lições Atemporais sobre Fortuna, Ganância e Felicidade", autor: "Morgan Housel" },
+    { titulo: "Verity", autor: "Colleen Hoover" },
+    { titulo: "Perigoso!", autor: "Tim Warnes" },
+    { titulo: "Como Fazer Amigos e Influenciar Pessoas", autor: "Dale Carnegie" },
+    { titulo: "Hábitos Atômicos: Um Método Fácil e Comprovado de Criar Bons Hábitos", autor: "James Clear" },
+    { titulo: "Os Segredos da Mente Milionária", autor: "T. Harv Eker" },
+    { titulo: "O Livro que Você Gostaria que Seus Pais Tivessem Lido", autor: "Philippa Perry" },
+    { titulo: "Nada Pode Me Ferir", autor: "David Goggins" },
+    { titulo: "Forte: Devocionais para Uma Vida Poderosa e Apaixonada", autor: "Lisa Bevere" },
+    { titulo: "A Empregada: Bem-vinda à Família", autor: "Freida McFadden" },
+    { titulo: "O Pequeno Príncipe - Edição de Luxo Almofadada", autor: "Antoine de Saint-Exupéry" },
+    { titulo: "O Deus que Destrói Sonhos", autor: "Rodrigo Bibo" },
+    { titulo: "A Paciente Silenciosa", autor: "Alex Michaelides" },
+    { titulo: "A Hora da Estrela: Edição Comemorativa", autor: "Clarice Lispector" },
+    { titulo: "Mais Esperto que o Diabo: O Mistério Revelado da Liberdade e do Sucesso", autor: "Napoleon Hill" },
+    { titulo: "A Coragem de Ser Imperfeito", autor: "Bruno Perini" },
+    { titulo: "Imperfeitos", autor: "Christina Lauren" },
+    { titulo: "Essencialismo: A Disciplinada Busca por Menos", autor: "Greg McKeown" },
+    { titulo: "Os Sete Maridos de Evelyn Hugo", autor: "Taylor Jenkins Reid" }
+  ],
 
-classicos: [
-    // Top 10 Brasileiros
-    { titulo: "Grande Sertão: Veredas", autor: "Guimarães Rosa" },
-    { titulo: "Dom Casmurro", autor: "Machado de Assis" },
+  classicos: [
+    // Top 10 Brasileiros - REORDENADO
     { titulo: "Memórias Póstumas de Brás Cubas", autor: "Machado de Assis" },
+    { titulo: "Dom Casmurro", autor: "Machado de Assis" },
+    { titulo: "Grande Sertão: Veredas", autor: "Guimarães Rosa" },
     { titulo: "O Cortiço", autor: "Aluísio Azevedo" },
     { titulo: "Os Sertões", autor: "Euclides da Cunha" },
     { titulo: "Macunaíma", autor: "Mário de Andrade" },
@@ -94,4 +94,5 @@ classicos: [
     { titulo: "O Ateneu", autor: "Raul Pompéia" },
     { titulo: "Brás, Bexiga e Barra Funda", autor: "Antônio de Alcântara Machado" },
     { titulo: "Sermões", autor: "Antônio Vieira" }
-]};
+  ]
+};
