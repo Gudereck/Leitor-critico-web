@@ -283,4 +283,20 @@ a {
         font-size: 15px;
 
     }
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centro da barra */
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .nome-da-plataforma {
+    margin-right: auto;      /* empurra o logo para a esquerda */
+  }
+
+  .busca-container {
+    flex: 0 1 260px;         /* largura fixa/central */
+  }
 }
+  
