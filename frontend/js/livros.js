@@ -26,7 +26,7 @@ if (livro.media_criticos == null) {
   if (media > 69) {
     notaEl.style.color = "#3CCF4E";
   } else if (media > 59 && media <= 69) {
-    notaEl.style.color = "#FFD93D";
+    notaEl.style.color =  "#d4af37";;
   } else {
     notaEl.style.color = "#FF4E4E";
   }

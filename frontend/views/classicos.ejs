@@ -191,7 +191,17 @@
     <% livros.forEach((livro) => { %>
   <div class="imgContainer">
     <a href="/livros?id=<%= livro.id_livro %>">
-      <img src="<%= livro.link_imagem %>" alt="<%= livro.titulo %>" class="imgpopular" />
+            <% if (livro.link_imagem && livro.link_imagem.trim()) { %>
+              <img
+                class="imgBr"
+                src="<%= livro.link_imagem %>"
+                alt="Capa de <%= livro.titulo %>"
+              />
+              <% } else { %>
+              <div class="capa-livro capa-placeholder">
+                Capa do livro não disponível
+              </div>
+              <% } %>
     </a>
 
     <div class="nomeLivroEAutor">

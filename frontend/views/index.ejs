@@ -43,16 +43,16 @@
     <!-- TopBar-->
     <div class="top-bar">
       <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
-       <form id="formBusca" class="busca-container">
-    <input
-      type="text"
-      id="inputBusca"
-      placeholder="Buscar livro..."
-      autocomplete="off"
-    />
-    <button id="button-buscar" type="submit">Buscar</button>
-    <div id="resultadoBusca" class="resultado-busca"></div>
-  </form>
+      <form id="formBusca" class="busca-container">
+        <input
+          type="text"
+          id="inputBusca"
+          placeholder="Buscar livro..."
+          autocomplete="off"
+        />
+        <button id="button-buscar" type="submit">Buscar</button>
+        <div id="resultadoBusca" class="resultado-busca"></div>
+      </form>
       <!-- Menu hamburger -->
       <div class="menu-hamburger" id="menuHamburger">
         <input type="checkbox" id="menu-toggle" hidden />
@@ -178,18 +178,22 @@
     <!-- Seções da página -->
     <section id="home">
       <div id="containerPrincipal">
-   
-
         <div id="todasAsImagens">
-               <h2 id="melhoresAvaliados">MELHORES AVALIADOS</h2>
+          <h2 id="melhoresAvaliados">MELHORES AVALIADOS</h2>
           <% livros.forEach((livro) => { %>
           <div class="imgContainer">
             <a href="/livros?id=<%= livro.id_livro %>">
+              <% if (livro.link_imagem && livro.link_imagem.trim()) { %>
               <img
-                src="<%= livro.link_imagem %>"
-                alt="<%= livro.titulo %>"
                 class="imgLivros"
+                src="<%= livro.link_imagem %>"
+                alt="Capa de <%= livro.titulo %>"
               />
+              <% } else { %>
+              <div class="capa-livro capa-placeholder">
+                Capa do livro não disponível
+              </div>
+              <% } %>
             </a>
 
             <div class="nomeLivroEAutor">
@@ -201,24 +205,19 @@
               </p>
             </div>
 
-           <a href="/livros?id=<%= livro.id_livro %>">
-  <div class="containerAvaliacaoDosCriticos">
-    <% 
-      let classCor = "";
-      let notaTexto = "NR";
-      if (livro.media_criticos != null) {
-        const media = Number(livro.media_criticos);
-        notaTexto = media.toFixed(1);
-        if (media >= 70) classCor = "verde";
-        else if (media >= 50) classCor = "amarelo";
-        else classCor = "vermelho";
-      }
-    %>
-    <span class="notaCriticaContainer <%= classCor %>"><%= notaTexto %></span>
-    <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
-  </div>
-</a>
-
+            <a href="/livros?id=<%= livro.id_livro %>">
+              <div class="containerAvaliacaoDosCriticos">
+                <% let classCor = ""; let notaTexto = "NR"; if
+                (livro.media_criticos != null) { const media =
+                Number(livro.media_criticos); notaTexto = media.toFixed(1); if
+                (media >= 70) classCor = "verde"; else if (media >= 50) classCor
+                = "amarelo"; else classCor = "vermelho"; } %>
+                <span class="notaCriticaContainer <%= classCor %>"
+                  ><%= notaTexto %></span
+                >
+                <span class="avaliacaoCriticos">(avaliação dos críticos)</span>
+              </div>
+            </a>
           </div>
           <% }); %>
         </div>
@@ -235,6 +234,5 @@
     <script src="../js/criticoControl.js"></script>
     <script src="../js/loginLogoutHamb.js"></script>
     <script src="../js/busca.js"></script>
-
   </body>
 </html>

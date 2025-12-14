@@ -207,7 +207,7 @@ a {
 }
 
 .notaCriticaContainer.amarelo {
-  color: #FFD93D;
+  color:  #e0b72b;
 }
 
 .notaCriticaContainer.vermelho {
@@ -243,7 +243,29 @@ a {
   color: var(--corTextos);
 }
 
-
+.capa-placeholder {
+  width: 150px;
+  height: 200px;
+  background: linear-gradient(135deg, #222, #444);
+  color: #f3f3f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+  border: 3px black solid;
+}
+.capa-placeholder:hover{
+     cursor: pointer;
+    transform: scale(1.05) translateY(-8px);
+}
 
 @media (max-width: 990px) {
 
