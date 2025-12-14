@@ -47,6 +47,59 @@ body {
     font-size: 30px;
     color: var(--corTextos);
 }
+#button-buscar{
+    height: 10%;
+    background-color: green;
+    color: white;
+    border: 2px solid green;
+    border-radius: 5px;
+    padding: 10px;
+}
+.busca-container {
+    
+    height: 200x;
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  gap: 4px;
+}
+
+#inputBusca {
+  padding: 4px 8px;
+  border-radius: 4px;
+  
+  
+}
+
+#resultadoBusca {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--corContainerLivros);
+  color: var(--corTextos);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.item-busca {
+  display: block;
+  padding: 4px 8px;
+  text-decoration: none;
+  color: var(--corTextos);
+}
+
+.item-busca:hover {
+  background: var(--corContainerLivros);
+  
+}
+
+
+.top-bar #inputBusca {
+  width: auto;
+  margin-bottom: 0;
+}
 
 /* Formulário search */
 .d-flex {

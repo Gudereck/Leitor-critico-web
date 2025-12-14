@@ -85,75 +85,82 @@
   <body>
     <!-- TopBar -->
     <div class="top-bar">
-      <div id="alinha-itens">
-        <a id="link-plataforma" href="/"
-          ><span class="nome-da-plataforma">LEITOR CRÍTICO</span></a
-        >
-      </div>
-    </div>
-
-    <!-- Menu hamburger -->
-    <div class="menu-hamburger" id="menuHamburger">
-      <input type="checkbox" id="menu-toggle" hidden />
-      <label for="menu-toggle" class="menu-icon">
-        <div class="linha"></div>
-        <div class="linha"></div>
-        <div class="linha"></div>
-      </label>
-      <div class="overlay">
-        <nav class="menu">
-          <div class="user-profile">
-            <a
-              href="/dashboardCritico"
-              class="user-link"
-              title="Ir para o perfil"
-            >
-              <i class="fas fa-user-circle user-icon"></i>
-              <span id="nomeUsuario"
-                ><%= usuario ? usuario.nome : "Visitante" %></span
+      <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
+       <form id="formBusca" class="busca-container">
+    <input
+      type="text"
+      id="inputBusca"
+      placeholder="Buscar livro..."
+      autocomplete="off"
+    />
+    <button id="button-buscar" type="submit">Buscar</button>
+    <div id="resultadoBusca" class="resultado-busca"></div>
+  </form>
+      <!-- Menu hamburger -->
+      <div class="menu-hamburger" id="menuHamburger">
+        <input type="checkbox" id="menu-toggle" hidden />
+        <label for="menu-toggle" class="menu-icon">
+          <div class="linha"></div>
+          <div class="linha"></div>
+          <div class="linha"></div>
+        </label>
+        <div class="overlay">
+          <nav class="menu">
+            <div class="user-profile">
+              <a
+                href="/dashboardCritico"
+                class="user-link"
+                title="Ir para o perfil"
               >
+                <i class="fas fa-user-circle user-icon"></i>
+                <span id="nomeUsuario">
+                  <% if (usuario) { %> <%= usuario.nome %> (<%=
+                  usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1)
+                  %>) <% } else { %> Visitante <% } %>
+                </span>
 
-              <!-- Substitua dinamicamente com JavaScript ou backend -->
-            </a>
-          </div>
-          <li>
-            <a href="/">Início</a>
-          </li>
-          <li>
-            <a href="/populares">Populares</a>
-          </li>
-          <li>
-            <a href="/classicosdaliteraturabrasileira"
-              >Clássicos da Literatura Brasileira</a
-            >
-          </li>
-          <li>
-            <a href="/popularesem2024">Os Mais Populares em 2024</a>
-          </li>
-          <li>
-            <a
-              style="background-color: transparent !important"
-              class="nav-link active"
-              aria-current="page"
-              href="/login"
-              id="login-cadastro-hamburger"
-              >Login/Cadastro</a
-            >
-            <a
-              style="
-                background-color: transparent !important;
-                margin-bottom: 15px;
-              "
-              href=""
-              id="logout-hamburger"
-              class="logoutCadastro"
-              >Logout</a
-            >
-          </li>
-        </nav>
+                <!-- Substitua dinamicamente com JavaScript ou backend -->
+              </a>
+            </div>
+            <li>
+              <a href="/">Início</a>
+            </li>
+            <li>
+              <a href="/populares">Populares</a>
+            </li>
+            <li>
+              <a href="/classicosdaliteraturabrasileira"
+                >Clássicos da Literatura Brasileira</a
+              >
+            </li>
+            <li>
+              <a href="/popularesem2024">Os Mais Populares em 2024</a>
+            </li>
+            <li>
+              <a
+                style="background-color: transparent !important"
+                class="nav-link active"
+                aria-current="page"
+                href="/login"
+                id="login-cadastro-hamburger"
+                >Login/Cadastro</a
+              >
+              <a
+                style="
+                  background-color: transparent !important;
+                  margin-bottom: 15px;
+                "
+                href=""
+                id="logout-hamburger"
+                class="logoutCadastro"
+                >Logout</a
+              >
+            </li>
+          </nav>
+        </div>
       </div>
     </div>
-
+    
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -238,12 +245,15 @@
               <span id="info-editora"><%= editora || 'Carregando...' %></span>
             </p>
           </div>
-          <div id="container-detalhes">
-            <h1>DETALHES</h1>
-            <div class="linha-padrao"></div>
-            <br />
-            <span id="detalhes-livro"><%= descricao || 'Carregando...' %></span>
-          </div>
+         <% if (descricao && descricao.trim()) { %>
+  <div id="container-detalhes">
+    <h1>DETALHES</h1>
+    <div class="linha-padrao"></div>
+    <br />
+    <span id="detalhes-livro"><%= descricao %></span>
+  </div>
+<% } %>
+
         </div>
       </div>
 
@@ -251,7 +261,7 @@
         <section id="listaCriticas">
           <h1 id="text-avaliacoes">AVALIAÇÕES DOS CRÍTICOS</h1>
           <div id="linha-text-avaliacoes"></div>
-          <br>
+          <br />
           <div id="criticasContainer"></div>
           <div id="mediaNotas"></div>
         </section>
@@ -259,9 +269,8 @@
     </section>
     <!-- Comentários (não alterei nada) -->
 
-
     <div id="container-avaliacoes-criticos">
-      <section id="formCritico" style="display: none;">
+      <section id="formCritico" style="display: none">
         <form id="criticaForm">
           <input type="hidden" id="usuario" />
           <label class="textos-orientacao">CRÍTICA:</label>
@@ -305,13 +314,11 @@
     <!-- Scripts -->
     <script src="../js/livroCarregar.js"></script>
     <script>
-  window.LIVRO_ID = <%= livro_id %>;
-  window.USUARIO = <%- JSON.stringify(usuario || null) %>;
-</script>
-<script src="/js/livrosCritics.js"></script>
-<script src="../js/criticoControl.js"></script>
-<script src="../js/loginLogoutHamb.js"></script>
-
-    
+      window.LIVRO_ID = <%= livro_id %>;
+      window.USUARIO = <%- JSON.stringify(usuario || null) %>;
+    </script>
+    <script src="/js/livrosCritics.js"></script>
+    <script src="../js/criticoControl.js"></script>
+    <script src="../js/loginLogoutHamb.js"></script>
   </body>
 </html>

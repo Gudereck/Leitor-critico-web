@@ -44,10 +44,19 @@
   </head>
 
   <body>
-    <!-- TopBar-->
+     <!-- TopBar-->
     <div class="top-bar">
       <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
-
+       <form id="formBusca" class="busca-container">
+    <input
+      type="text"
+      id="inputBusca"
+      placeholder="Buscar livro..."
+      autocomplete="off"
+    />
+    <button id="button-buscar" type="submit">Buscar</button>
+    <div id="resultadoBusca" class="resultado-busca"></div>
+  </form>
       <!-- Menu hamburger -->
       <div class="menu-hamburger" id="menuHamburger">
         <input type="checkbox" id="menu-toggle" hidden />
@@ -65,17 +74,29 @@
                 title="Ir para o perfil"
               >
                 <i class="fas fa-user-circle user-icon"></i>
-                <span id="nomeUsuario"><%= usuario ? usuario.nome : "Visitante" %></span>
+                <span id="nomeUsuario">
+                  <% if (usuario) { %> <%= usuario.nome %> (<%=
+                  usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1)
+                  %>) <% } else { %> Visitante <% } %>
+                </span>
+
+                <!-- Substitua dinamicamente com JavaScript ou backend -->
               </a>
             </div>
-            <li><a href="/">Início</a></li>
-            <li><a href="/populares">Populares</a></li>
             <li>
-              <a href="/classicosdaliteraturabrasileira">
-                Clássicos da Literatura Brasileira
-              </a>
+              <a href="/">Início</a>
             </li>
-            <li><a href="/popularesem2024">Os Mais Populares em 2024</a></li>
+            <li>
+              <a href="/populares">Populares</a>
+            </li>
+            <li>
+              <a href="/classicosdaliteraturabrasileira"
+                >Clássicos da Literatura Brasileira</a
+              >
+            </li>
+            <li>
+              <a href="/popularesem2024">Os Mais Populares em 2024</a>
+            </li>
             <li>
               <a
                 style="background-color: transparent !important"
@@ -86,7 +107,10 @@
                 >Login/Cadastro</a
               >
               <a
-                style="background-color: transparent !important; margin-bottom: 15px;"
+                style="
+                  background-color: transparent !important;
+                  margin-bottom: 15px;
+                "
                 href=""
                 id="logout-hamburger"
                 class="logoutCadastro"
@@ -97,7 +121,6 @@
         </div>
       </div>
     </div>
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -240,5 +263,6 @@
     <!-- <script src="../js/classicos.js"></script> -->
     <script src="../js/criticoControl.js"></script>
     <script src="../js/loginLogoutHamb.js"></script>
+    <script src="../js/busca.js"></script>
   </body>
 </html>

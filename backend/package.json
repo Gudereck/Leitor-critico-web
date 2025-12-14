@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "Projeto TCC - CEFET-MG - Leitor Crítico",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./server/server.js",
-    "dev": "nodemon ./server/server.js"
-  },
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "predev": "node setupAutores.js",
+  "start": "nodemon ./server/server.js",
+  "dev": "nodemon ./server/server.js",
+  "preencher-autores": "node preencherAutoresCategorias.js",
+  "fix-autores-especiais": "node fixAutoresEspeciais.js"
+},
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Gudereck/Leitor-critico-web.git"

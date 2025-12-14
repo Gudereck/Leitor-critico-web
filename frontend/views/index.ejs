@@ -43,7 +43,16 @@
     <!-- TopBar-->
     <div class="top-bar">
       <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
-
+       <form id="formBusca" class="busca-container">
+    <input
+      type="text"
+      id="inputBusca"
+      placeholder="Buscar livro..."
+      autocomplete="off"
+    />
+    <button id="button-buscar" type="submit">Buscar</button>
+    <div id="resultadoBusca" class="resultado-busca"></div>
+  </form>
       <!-- Menu hamburger -->
       <div class="menu-hamburger" id="menuHamburger">
         <input type="checkbox" id="menu-toggle" hidden />
@@ -169,9 +178,10 @@
     <!-- Seções da página -->
     <section id="home">
       <div id="containerPrincipal">
-        <h2 id="melhoresAvaliados">MELHORES AVALIADOS</h2>
+   
 
         <div id="todasAsImagens">
+               <h2 id="melhoresAvaliados">MELHORES AVALIADOS</h2>
           <% livros.forEach((livro) => { %>
           <div class="imgContainer">
             <a href="/livros?id=<%= livro.id_livro %>">
@@ -224,5 +234,7 @@
     <!-- <script src="../js/livros.js"></script> -->
     <script src="../js/criticoControl.js"></script>
     <script src="../js/loginLogoutHamb.js"></script>
+    <script src="../js/busca.js"></script>
+
   </body>
 </html>

@@ -7,7 +7,7 @@ async function cacheCategoria(nomeCategoria, listaTitulos) {
     `SELECT
       l.id_livro,
       l.titulo,
-      GROUP_CONCAT(a.nome SEPARATOR ', ') AS autores,
+      GROUP_CONCAT(DISTINCT a.nome SEPARATOR ', ') AS autores,
       l.data_publicacao,
       l.editora,
       l.media_avaliacao,
@@ -141,7 +141,7 @@ async function cacheCategoria(nomeCategoria, listaTitulos) {
     `SELECT
       l.id_livro,
       l.titulo,
-      GROUP_CONCAT(a.nome SEPARATOR ', ') AS autores,
+      GROUP_CONCAT(DISTINCT a.nome SEPARATOR ', ') AS autores,
       l.data_publicacao,
       l.editora,
       l.media_avaliacao,

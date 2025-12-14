@@ -40,11 +40,20 @@
   </head>
 
   <body>
-    <!-- TopBar-->
+        <!-- TopBar-->
     <div class="top-bar">
       <span class="nome-da-plataforma">LEITOR CRÍTICO</span>
-
-      <!-- menu hamburger -->
+       <form id="formBusca" class="busca-container">
+    <input
+      type="text"
+      id="inputBusca"
+      placeholder="Buscar livro..."
+      autocomplete="off"
+    />
+    <button id="button-buscar" type="submit">Buscar</button>
+    <div id="resultadoBusca" class="resultado-busca"></div>
+  </form>
+      <!-- Menu hamburger -->
       <div class="menu-hamburger" id="menuHamburger">
         <input type="checkbox" id="menu-toggle" hidden />
         <label for="menu-toggle" class="menu-icon">
@@ -61,7 +70,13 @@
                 title="Ir para o perfil"
               >
                 <i class="fas fa-user-circle user-icon"></i>
-                <span id="nomeUsuario"><%= usuario ? usuario.nome : "Visitante" %></span>
+                <span id="nomeUsuario">
+                  <% if (usuario) { %> <%= usuario.nome %> (<%=
+                  usuario.cargo.charAt(0).toUpperCase() + usuario.cargo.slice(1)
+                  %>) <% } else { %> Visitante <% } %>
+                </span>
+
+                <!-- Substitua dinamicamente com JavaScript ou backend -->
               </a>
             </div>
             <li>
@@ -179,7 +194,7 @@
                 <a href="/livros?id=<%= livro.id_livro %>">
                   <h1 class="h1Livros"><%= livro.titulo %></h1>
                 </a>
-                <p class="nomeAutor"><%= livro.autor %></p>
+                <p class="nomeAutor"><%= livro.autores || livro.autor %></p>
               </div>
               <a href="/livros?id=<%= livro.id_livro %>">
                 <div class="containerAvaliacaoDosCriticos">
@@ -235,5 +250,6 @@
     <script src="../js/populares.js"></script>
     <script src="../js/criticoControl.js"></script>
     <script src="../js/loginLogoutHamb.js"></script>
+    <script src="../js/busca.js"></script>
   </body>
 </html>

@@ -130,7 +130,7 @@ router.get("/livros", async (req, res) => {
       `SELECT 
           l.id_livro,
           l.titulo,
-          GROUP_CONCAT(a.nome SEPARATOR ', ') AS autores,
+          GROUP_CONCAT(DISTINCT a.nome SEPARATOR ', ') AS autores,
           l.data_publicacao,
           l.editora,
           l.descricao,
@@ -178,6 +178,30 @@ router.get("/livros", async (req, res) => {
     res.status(500).send("Erro interno");
   }
 });
+
+
+router.get("/busca", async (req, res) => {
+  const termo = (req.query.q || "").trim();
+  if (!termo) return res.json([]);
+
+  const padrao = `%${termo.toLowerCase()}%`;
+
+  const sql = `
+    SELECT id_livro, titulo
+    FROM livros
+    WHERE
+      REPLACE(REPLACE(REPLACE(REPLACE(LOWER(titulo),
+        'á','a'),'ã','a'),'â','a'),'à','a') LIKE
+      REPLACE(REPLACE(REPLACE(REPLACE(?,
+        'á','a'),'ã','a'),'â','a'),'à','a')
+    ORDER BY titulo
+    LIMIT 20
+  `;
+  const [rows] = await pool.query(sql, [padrao]);
+  res.json(rows);
+});
+
+
 
 // Reviews dos Críticos
 router.get("/criticsreviews", (req, res) => res.render("criticsreviews", { usuario: req.session.user }));

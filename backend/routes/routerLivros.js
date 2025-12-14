@@ -23,7 +23,7 @@ router.get("/livros", async (req, res) => {
       `SELECT 
           l.id_livro,
           l.titulo,
-          GROUP_CONCAT(a.nome SEPARATOR ', ') AS autores,
+          GROUP_CONCAT(DISTINCT a.nome SEPARATOR ', ') AS autores,
           l.data_publicacao,
           l.editora,
           l.descricao,
